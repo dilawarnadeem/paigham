@@ -12,7 +12,6 @@ import { Categories } from '@/config/query'
 import SeoMeta from '@/components/seo';
 
 
-
 export default function Series({ allCategories }: any) {
     console.log(" ~ allCategories:", allCategories)
     return (
