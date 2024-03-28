@@ -79,6 +79,7 @@ body {
      overflow-x: hidden;
 }
 
+
 //slick slider custom dots
 .slick-dots {
      bottom: 0.5rem !important;
@@ -162,4 +163,12 @@ body {
  }
  #u_0_4_am{
      padding-bottom: 56.25% !important;
+ }
+ .mb0{
+     padding-bottom: 0 !important;
+ }
+
+ .iframe-container .fb-video{
+     display: flex;
+     justify-content: center;
  }
