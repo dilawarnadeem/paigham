@@ -206,6 +206,7 @@ export const AllScholars = gql`
   }
 `;
 
+
 export const AllPlaylist = gql`
   query AllPlaylist {
     playLists {
