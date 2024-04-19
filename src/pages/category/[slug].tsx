@@ -1,32 +1,25 @@
 import Category_Banner from '@/components/pageBanner/categoryBanner'
 import SeoMeta from '@/components/seo'
-import VideoPlayer from '@/components/video-player/VideoPlayer'
 import Card from '@/components/video-section/card'
 import apolloClient from '@/config/client'
 import { PostsByCategory } from '@/config/query'
 import { SettingsContext } from '@/context/setting-context'
+import { sliderSettings } from '@/utils'
 import { IPost } from '@/utils/types'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { useRouter } from 'next/router'
 import React, { useContext, useEffect } from 'react'
+import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
+import Slider from 'react-slick'
 
 const Category = ({ posts, slug }: any) => {
-  const { name, categoryInfo, posts: { nodes } } = posts
-  const { setModelIsOpen, videoLink, setVideoLink } = useContext(SettingsContext)
+  const { posts: { nodes } } = posts
+  const { setModelIsOpen, setVideoLink } = useContext(SettingsContext)
   const OpenVideo = (link: string) => {
     setModelIsOpen(true)
     setVideoLink(link)
   }
 
-
-  // useEffect(()=>{
-  //   const type  = nodes[0]?.postInfo?.tmVideoUrl.includes('facebook') && 'facebook'
-  //   const d = {
-  //     link: nodes[0]?.postInfo?.tmVideoUrl,
-  //     type
-  //   }
-  //   setVideoLink(d)
-  // },[])
+  const slider = React.useRef<any>(null);
 
   return (
     <>
@@ -37,12 +30,22 @@ const Category = ({ posts, slug }: any) => {
           <Category_Banner key={idx} item={item} />
         ))
       }
-      <div className='grid grid-cols-2 container mx-auto my-20 px-4 lg:grid-cols-4 gap-4'>
-        {
-          nodes?.slice(0).reverse().map((item: IPost, idx: number) => (
-            <Card item={item} key={idx} OpenVideo={OpenVideo} slug />
-          ))
-        }
+      <div className='container mx-auto my-20 px-4 relative'>
+        <Slider {...sliderSettings} ref={slider}>
+          {
+            nodes?.slice(0).reverse().map((item: IPost, idx: number) => (
+              <Card item={item} key={idx} OpenVideo={OpenVideo} slug />
+            ))
+          }
+        </Slider>
+        <div className={nodes?.length > 4 ? '' : 'lg:hidden'}>
+            <button className='md:text-3xl text-xl text-gray-600 hover:text-primary absolute top-1/2 -mt-20 md:-left-8 -left-4' onClick={() => slider?.current?.slickPrev()}>
+              <MdArrowBackIosNew />
+            </button>
+            <button className='md:text-3xl text-xl text-gray-600 hover:text-primary absolute top-1/2 -mt-20 md:-right-8 -right-4' onClick={() => slider?.current?.slickNext()}>
+              <MdArrowForwardIos />
+            </button>
+          </div>
       </div>
     </>
   )

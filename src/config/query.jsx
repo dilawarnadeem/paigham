@@ -148,6 +148,7 @@ export const Categories = gql`
           categoryBanner {
             mediaItemUrl
           }
+          featured
         }
         posts(first: 1000) {
           nodes {

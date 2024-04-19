@@ -8,16 +8,15 @@ const Category_Banner = ({ item }: any) => {
     const [isFacebookLink, setIsFacebookLink] = useState(false);
     const { videoLink } = useContext(SettingsContext)
     const [link, setLink] = useState<any>()
-    console.log("🚀 ~ link:", link)
 
     useEffect(() => {
         // Check if the link is a Facebook link item.postInfo.tmVideoUrl
         // var link = videoLink?.link.length > 3 ? videoLink?.link : item.postInfo.tmVideoUrl
-        const modifiedYtLink = videoLink?.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')        
-        if (modifiedYtLink?.includes('facebook.com')) {
+        if (videoLink?.link?.includes('facebook.com')) {
             setIsFacebookLink(true);
-            setLink(modifiedYtLink)
+            setLink(videoLink?.link)
         } else {
+            const modifiedYtLink = videoLink?.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')        
             setIsFacebookLink(false);
             setLink(modifiedYtLink)
         }

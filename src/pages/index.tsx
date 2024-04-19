@@ -33,6 +33,8 @@ export default function Home({ allposts, allCategories, allProgramsScheduling, S
     setVideoLink(link)
   }
 
+  const featuredCategories = allCategories.filter((item:any)=>item.categoryInfo.featured === true)
+
   return (
     <>
  
@@ -51,10 +53,10 @@ export default function Home({ allposts, allCategories, allProgramsScheduling, S
             <HiOutlineArrowRight />
           </Link>
         </div>
-        <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2'>
+        <div className=''>
           {
-            allCategories.slice(0, 4).map((item: any, idx: any) => (
-              <CategoryCard key={idx} item={item} />
+            featuredCategories?.map((item: any, idx: any) => (
+              <CategoryCard key={idx} items={item} />
             ))
           }
         </div>
@@ -90,11 +92,14 @@ export default function Home({ allposts, allCategories, allProgramsScheduling, S
 // Tabs section 
 const TabsSection = ({ allposts }: any) => {
   const [posts, setPost] = useState<any>(allposts.slice(0, 3))
-  const [activeCategory, setActiveCategory] = useState('tafseer-ul-quran')
+  const [activeCategory, setActiveCategory] = useState('latest')
+
   const HandleVideosCategoryTabs = (slug: string) => {
     setActiveCategory(slug)
-    const p = allposts.filter((item: any) => item.categories.nodes.some((item: any) => item.slug === slug))
-    setPost(p.slice(0, 8))
+    const p = slug === 'latest' ? 
+    allposts : 
+    allposts.filter((item: any) => item.categories.nodes.some((item: any) => item.slug === slug))
+    setPost(p.slice(0, 6))
   }
   const { modalIsOpen, setModelIsOpen, setVideoLink } = useContext(SettingsContext)
   const OpenVideo = (link: string) => {
@@ -109,7 +114,10 @@ const TabsSection = ({ allposts }: any) => {
         <ul className='flex justify-between space-x-2 overflow-x-scroll xl:overflow-x-hidden font-metapro font-semibold  '>
           {
             tabData.map((item, idx) => (
-              <li key={idx} className={`${activeCategory === item.slug && 'bg-secondary px-4 py-2 text-primary '} flex-1 flex justify-center min-w-[160px] cursor-pointer  items-center`} onClick={() => HandleVideosCategoryTabs(item.slug)}>{item.name}</li>
+              <button key={idx} 
+                className={`${activeCategory === item.slug && 'bg-secondary px-4 py-2 text-primary '} flex-1 flex justify-center min-w-[180px] w-auto cursor-pointer  items-center`} 
+                onClick={() => HandleVideosCategoryTabs(item.slug)}>{item.name}
+              </button>
             ))
           }
         </ul>
@@ -202,16 +210,16 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const tabData = [
   {
-    name: 'Tafseer ul Quran',
-    slug: 'tafseer-ul-quran'
+    name: 'Latest',
+    slug: 'latest'
   },
   {
-    name: 'Subhe Watan',
-    slug: 'subhe-watan'
+    name: 'Ramzan Transmission',
+    slug: 'ramzan-podcast'
   },
   {
-    name: 'Paigham Podcast',
-    slug: 'paigham-podcast'
+    name: 'Short Clips',
+    slug: 'short-videos'
   },
 ]
 
