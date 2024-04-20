@@ -17,13 +17,14 @@ import {category } from '../../public/data'
 import { IScholorType } from '@/utils/types'
 import { Helmet } from 'react-helmet';
 import apolloClient from '@/config/client'
-import { AllPosts, Categories, programsScheduling, AllScholars } from '@/config/query'
+import { AllPosts, Categories, programsScheduling, AllScholars, HomeCategories } from '@/config/query'
 import { GetStaticProps } from 'next'
 import Card from '@/components/video-section/card'
 import FacebookVideoPlayer from '@/components/video-player/FacebookPlayer'
 import SeoMeta from '@/components/seo'
+import CateCard from '@/components/cate-card/CatCard'
 
-const inter = Inter({ subsets: ['latin'] })
+
 
 export default function Home({ allposts, allCategories, allProgramsScheduling, Scholars }: any) {
 
@@ -53,19 +54,16 @@ export default function Home({ allposts, allCategories, allProgramsScheduling, S
             <HiOutlineArrowRight />
           </Link>
         </div>
-        <div className=''>
-          {
-            featuredCategories?.map((item: any, idx: any) => (
-              <CategoryCard key={idx} items={item} />
+        <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4'>
+       {
+            allCategories.map((item: any, idx: any) => (
+              <CateCard key={idx} item={item} />
             ))
           }
         </div>
       </section>
-      {/* videos section  */}
-      {/* <VideoSection allposts={allposts} allCategories={allCategories} /> */}
-      {/* Scholar section  */}
+     
       <section className='container mx-auto mb-28 px-4'>
-        {/* heading  */}
         <div className='flex justify-between items-center mt-20 mb-10 border-b-[3px] border-darkgray pb-5'>
           <h2 className='font-metapro text-3xl md:text-5xl text-darkgray font-bold'>Scholar</h2>
           <Link href="/scholars" className='uppercase flex hover:text-orange items-center gap-x-2 font-metapro text-xl tracking-widest font-semibold rtl:flex-row-reverse'>
@@ -184,16 +182,17 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
 
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [postsResponse, categories, programs, Scholars_Res] = await Promise.all([
+  const [postsResponse, categories, programs, Scholars_Res ] = await Promise.all([
     apolloClient.query({ query: AllPosts }),
-    apolloClient.query({ query: Categories }),
+    apolloClient.query({ query: HomeCategories }),
     apolloClient.query({ query: programsScheduling }),
     apolloClient.query({ query: AllScholars }),
   ]);
 
   const allposts = postsResponse.data.posts.nodes;
-  const allCategories = categories.data.categories.nodes
+  const allCategories = categories.data.categories.nodes  
   const allProgramsScheduling = programs.data.programsScheduling.nodes
+  
   const Scholars = Scholars_Res.data.scholars.nodes
   return {
     props: {

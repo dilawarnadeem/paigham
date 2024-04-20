@@ -174,6 +174,28 @@ export const Categories = gql`
     }
   }
 `;
+export const HomeCategories = gql`
+query HomeCategories {
+  categories(first: 1000, where: { include: ["1","218", "213","210"] }) {
+    nodes {
+      name
+      slug
+      count
+      categoryInfo {
+        catImage {
+          mediaItemUrl
+        }
+        categoryBanner {
+          mediaItemUrl
+        }
+        featured
+      }
+    }
+  }
+}
+`;
+
+
 
 export const programsScheduling = gql`
   query programsScheduling {
