@@ -1,9 +1,6 @@
 
 import PageBanner from '@/components/pageBanner/PageBanner';
 import React from 'react'
-import { Helmet } from 'react-helmet';
-
-import { category } from '../../../public/data'
 import CategoryCard from '@/components/category-card/CategoryCard'
 import { GetStaticProps } from 'next'
 import apolloClient from '@/config/client'
@@ -20,7 +17,7 @@ export default function Series({ allCategories }: any) {
             <PageBanner title="Series" image="/images/banner-2.jpg" />
             <section className='container mx-auto mb-28 px-4 mt-20'>
                 {
-                    allCategories?.toReversed().map((item: any, idx: any) => (
+                    allCategories?.map((item: any, idx: any) => (
                         <CategoryCard key={idx} items={item} />
                     ))
                 }
