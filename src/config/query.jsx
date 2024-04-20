@@ -195,8 +195,6 @@ query HomeCategories {
 }
 `;
 
-
-
 export const programsScheduling = gql`
   query programsScheduling {
     programsScheduling(first: 3) {
