@@ -4,31 +4,19 @@ import FacebookVideoPlayer from '../video-player/FacebookVideoPlayer';
 
 const Category_Banner = ({ item }: any) => {
 
-    const [isFacebookLink, setIsFacebookLink] = useState(false);
     const { videoLink } = useContext(SettingsContext)
     const [link, setLink] = useState<any>()
 
     useEffect(() => {
+        var link = videoLink?.link.length > 3 ? videoLink?.link : item.postInfo.tmVideoUrl
         // Check if the link is a Facebook link
         if (videoLink?.type === 'facebook') {
-            setIsFacebookLink(true);
-            setLink(videoLink?.link)
+            setLink(link)
         } else {
             const modifiedYtLink = videoLink?.replace(videoLink?.includes('https://youtu.be/') ? 'https://youtu.be/' : 'https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
-            setIsFacebookLink(false);
             setLink(modifiedYtLink)
         }
-
-        // var link = videoLink?.link.length > 3 ? videoLink?.link : item.postInfo.tmVideoUrl
-        // if (videoLink?.link?.includes('facebook.com')) {
-        //     setIsFacebookLink(true);
-        //     setLink(videoLink?.link)
-        // } else {
-        //     const modifiedYtLink = videoLink?.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')        
-        //     setIsFacebookLink(false);
-        //     setLink(modifiedYtLink)
-        // }
-    }, [videoLink, isFacebookLink, link]);
+    }, [videoLink, link, item.postInfo.tmVideoUrl]);
 
 
 

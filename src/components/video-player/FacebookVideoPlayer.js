@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 const FacebookVideoPlayer = ({videoUrl}) => {
   const link  = videoUrl?.replace('https://www.facebook.com/watch/?v=', '')
+  
   useEffect(() => {
     // Load Facebook SDK for JavaScript asynchronously
     (function(d, s, id) {
@@ -11,7 +12,7 @@ const FacebookVideoPlayer = ({videoUrl}) => {
       js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-  }, [link]);
+  }, [link, videoUrl]);
 
   return (
     <div id="fb-root">
