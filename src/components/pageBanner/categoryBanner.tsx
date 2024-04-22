@@ -6,7 +6,6 @@ const Category_Banner = ({ item }: any) => {
 
     const { videoLink } = useContext(SettingsContext)
     const [link, setLink] = useState<any>()
-    console.log("🚀 ~ link:", link)
 
     useEffect(() => {
         var link = videoLink?.link.length > 3 ? videoLink?.link : item.postInfo.tmVideoUrl
