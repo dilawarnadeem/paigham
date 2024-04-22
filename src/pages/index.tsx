@@ -109,11 +109,11 @@ const TabsSection = ({ allposts }: any) => {
     <section className="container mx-auto pt-20 px-4">
       {/* top header  */}
       <div className='flex justify-between item-center border-b-2 border-gray-500'>
-        <div className='flex justify-between space-x-2  font-metapro font-semibold  '>
+        <div className='flex flex-wrap justify-between space-x-2  font-metapro font-semibold  '>
           {
             tabData.map((item, idx) => (
               <li key={idx}
-                className={`${activeCategory === item.slug && 'bg-secondary px-4 py-2 text-primary '} flex-1 flex justify-center min-w-[180px] w-auto cursor-pointer items-center`}
+                className={`${activeCategory === item.slug && 'bg-secondary px-4 py-2 text-primary '} flex-1 flex justify-center md:min-w-[180px] w-auto cursor-pointer items-center md:text-base text-sm`}
                 onClick={() => HandleVideosCategoryTabs(item.slug)}>{item.name}
               </li>
             ))
