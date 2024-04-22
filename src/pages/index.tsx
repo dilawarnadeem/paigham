@@ -13,7 +13,7 @@ import VideoPlayer from '@/components/video-player/VideoPlayer'
 import { getVideoCode } from '../utils'
 import { SettingsContext } from '@/context/setting-context'
 import React, { useContext } from 'react'
-import {category } from '../../public/data'
+import { category } from '../../public/data'
 import { IScholorType } from '@/utils/types'
 import { Helmet } from 'react-helmet';
 import apolloClient from '@/config/client'
@@ -34,13 +34,13 @@ export default function Home({ allposts, allCategories, allProgramsScheduling, S
     setVideoLink(link)
   }
 
-  const featuredCategories = allCategories.filter((item:any)=>item.categoryInfo.featured === true)
+  const featuredCategories = allCategories.filter((item: any) => item.categoryInfo.featured === true)
 
   return (
     <>
- 
-    <SeoMeta title="Paigham TV | Jo Badal De Zindagi" url="/" description="Paigham TV is an Islamic educational channel television network. The production of this channel is based on the teachings of Quran o Sunnah. " />
- 
+
+      <SeoMeta title="Paigham TV | Jo Badal De Zindagi" url="/" description="Paigham TV is an Islamic educational channel television network. The production of this channel is based on the teachings of Quran o Sunnah. " />
+
       <Main posts={allposts} />
       <TabsSection allposts={allposts} allCategories={allCategories} />
       <PaighamChannelPresents programs={allProgramsScheduling} OpenVideo={OpenVideo} />
@@ -55,14 +55,14 @@ export default function Home({ allposts, allCategories, allProgramsScheduling, S
           </Link>
         </div>
         <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4'>
-       {
+          {
             allCategories.map((item: any, idx: any) => (
               <CateCard key={idx} item={item} />
             ))
           }
         </div>
       </section>
-     
+
       <section className='container mx-auto mb-28 px-4'>
         <div className='flex justify-between items-center mt-20 mb-10 border-b-[3px] border-darkgray pb-5'>
           <h2 className='font-metapro text-3xl md:text-5xl text-darkgray font-bold'>Scholar</h2>
@@ -94,9 +94,9 @@ const TabsSection = ({ allposts }: any) => {
 
   const HandleVideosCategoryTabs = (slug: string) => {
     setActiveCategory(slug)
-    const p = slug === 'latest' ? 
-    allposts : 
-    allposts.filter((item: any) => item.categories.nodes.some((item: any) => item.slug === slug))
+    const p = slug === 'latest' ?
+      allposts :
+      allposts.filter((item: any) => item.categories.nodes.some((item: any) => item.slug === slug))
     setPost(p.slice(0, 6))
   }
   const { modalIsOpen, setModelIsOpen, setVideoLink } = useContext(SettingsContext)
@@ -104,28 +104,27 @@ const TabsSection = ({ allposts }: any) => {
     setModelIsOpen(true)
     setVideoLink(link)
   }
-  
+
   return (
     <section className="container mx-auto pt-20 px-4">
       {/* top header  */}
       <div className='flex justify-between item-center border-b-2 border-gray-500'>
-        <ul className='flex justify-between space-x-2 overflow-x-scroll xl:overflow-x-hidden font-metapro font-semibold  '>
+        <div className='flex justify-between space-x-2  font-metapro font-semibold  '>
           {
             tabData.map((item, idx) => (
-              <button key={idx} 
-                className={`${activeCategory === item.slug && 'bg-secondary px-4 py-2 text-primary '} flex-1 flex justify-center min-w-[180px] w-auto cursor-pointer  items-center`} 
+              <li key={idx}
+                className={`${activeCategory === item.slug && 'bg-secondary px-4 py-2 text-primary '} flex-1 flex justify-center min-w-[180px] w-auto cursor-pointer items-center`}
                 onClick={() => HandleVideosCategoryTabs(item.slug)}>{item.name}
-              </button>
+              </li>
             ))
           }
-        </ul>
+        </div>
         <Link href="#" className='uppercase hidden md:flex hover:text-orange items-center space-x-2 font-metapro text-xl tracking-widest font-semibold rtl:flex-row-reverse'>
           <span>View All</span>
           <HiOutlineArrowRight />
         </Link>
       </div>
       {/* articles  */}
-
       <div className='grid grid-cols-2 lg:grid-cols-3 mt-10 gap-2'>
         {
           posts?.map((item: any, idx: number) => (
@@ -163,7 +162,7 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
                   <li key={idx} className='flex md:flex-row flex-col items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5'>
                     <time className='font-medium text-xl whitespace-nowrap'>{item?.programInfo?.programTime || `0000`}</time>
                     <button className="bg-black/80 min-w-[240px] flex justify-center items-center min-h-[120px] group">
-                        <Image src="/images/ytbutton.png" alt="icon" onClick={() => OpenVideo(getVideoCode(item?.programInfo?.videoUrl))} width={80} height={40} className='group-hover:scale-105 transition-all duration-200 ease-linear'/>
+                      <Image src="/images/ytbutton.png" alt="icon" onClick={() => OpenVideo(getVideoCode(item?.programInfo?.videoUrl))} width={80} height={40} className='group-hover:scale-105 transition-all duration-200 ease-linear' />
                     </button>
                     <button onClick={() => handleLink(getVideoCode(item?.programInfo?.videoUrl))}>
                       <h6 className='text-secondary text-xl font-medium text-start -tracking-wide'>{item.title}</h6>
@@ -182,7 +181,7 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
 
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [postsResponse, categories, programs, Scholars_Res ] = await Promise.all([
+  const [postsResponse, categories, programs, Scholars_Res] = await Promise.all([
     apolloClient.query({ query: AllPosts }),
     apolloClient.query({ query: HomeCategories }),
     apolloClient.query({ query: programsScheduling }),
@@ -190,9 +189,9 @@ export const getStaticProps: GetStaticProps = async () => {
   ]);
 
   const allposts = postsResponse.data.posts.nodes;
-  const allCategories = categories.data.categories.nodes  
+  const allCategories = categories.data.categories.nodes
   const allProgramsScheduling = programs.data.programsScheduling.nodes
-  
+
   const Scholars = Scholars_Res.data.scholars.nodes
   return {
     props: {
