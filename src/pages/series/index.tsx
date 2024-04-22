@@ -13,7 +13,6 @@ export default function Series({ allCategories }: any) {
     return (
         <>
             <SeoMeta title="Series | Paigham TV" url="/series" description="Paigham TV is a satellite TV channel the objectives of which are preaching the true teachings of the Holy Quran and Sunnah " />
-
             <PageBanner title="Series" image="/images/banner-2.jpg" />
             <section className='container mx-auto mb-28 px-4 mt-20'>
                 {
