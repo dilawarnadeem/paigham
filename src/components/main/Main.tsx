@@ -17,27 +17,27 @@ const Main = ({ posts }: any) => {
   }
 
   return (
-    <main className='relative h-full md:h-[80vh]'>
+    <main className='relative h-[40vh] sm:h-[65vh] md:h-[80vh]'>
       <div className='hidden md:block'>
         <Slider ref={slider} {...settings} >
-          <div className='relative w-full bg-[url("/images/banner/banner1.jpg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+          <div className='relative w-full bg-[url("/images/banner/banner1.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
             </div>
           </div>
-          <div className='relative w-full bg-[url("/images/banner/banner2.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+          <div className='relative w-full bg-[url("/images/banner/banner2.jpeg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
             </div>
           </div>
-          <div className='relative w-full bg-[url("/images/banner/banner3.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+          <div className='relative w-full bg-[url("/images/banner/banner3.jpeg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
             </div>
           </div>
-          <div className='relative w-full bg-[url("/images/banner/banner4.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+          <div className='relative w-full bg-[url("/images/banner/banner4.jpeg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
             </div>
           </div>
-          <div className='relative w-full bg-[url("/images/banner/banner5.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+          <div className='relative w-full bg-[url("/images/banner/banner5.jpeg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
             </div>
           </div>
         </Slider>
@@ -45,16 +45,28 @@ const Main = ({ posts }: any) => {
       {/* For Mobile  */}
       <div className='md:hidden'>
         <Slider ref={slider} {...settings} >
-          <div className='relative w-full bg-[url("/images/banner/banner2.jpg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+          <div className='relative w-full bg-[url("/images/banner/mobile/1.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
             </div>
           </div>
-          <div className='relative w-full bg-[url("/images/banner/banner2.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+          <div className='relative w-full bg-[url("/images/banner/mobile/2.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
             </div>
           </div>
-          <div className='relative w-full bg-[url("/images/banner/banner2.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+          <div className='relative w-full bg-[url("/images/banner/mobile/3.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+            </div>
+          </div>
+          <div className='relative w-full bg-[url("/images/banner/mobile/4.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+            </div>
+          </div>
+          <div className='relative w-full bg-[url("/images/banner/mobile/5.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+            </div>
+          </div>
+          <div className='relative w-full bg-[url("/images/banner/mobile/6.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
             </div>
           </div>
         </Slider>
@@ -78,7 +90,7 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   arrows: false,
-  autoplay: true,
+  autoplay: false,
 };
 const SliderSlice = {
   dots: false,

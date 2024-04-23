@@ -106,14 +106,14 @@ const TabsSection = ({ allposts }: any) => {
   }
 
   return (
-    <section className="container mx-auto pt-20 px-4">
+    <section className="container mx-auto pt-36 sm:pt-20 px-2">
       {/* top header  */}
       <div className='flex justify-between item-center border-b-2 border-gray-500'>
-        <div className='flex flex-wrap justify-between space-x-2  font-metapro font-semibold  '>
+        <div className='grid grid-cols-4 sm:!flex flex-wrap justify-between space-x-2 w-full sm:w-auto font-metapro font-semibold  '>
           {
             tabData.map((item, idx) => (
               <li key={idx}
-                className={`${activeCategory === item.slug && 'bg-secondary px-4 py-2 text-primary '} flex-1 flex justify-center md:min-w-[180px] w-auto cursor-pointer items-center md:text-base text-sm`}
+                className={`${activeCategory === item.slug && 'bg-secondary px-1 sm:px-4 py-2 text-primary '} ${idx === 1 && ' col-span-2'} flex-1 flex justify-center md:min-w-[180px] w-auto cursor-pointer items-center md:text-base text-sm`}
                 onClick={() => HandleVideosCategoryTabs(item.slug)}>{item.name}
               </li>
             ))
@@ -152,7 +152,7 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
         <div className='md:flex mt-10 md:gap-x-10 '>
           <div className="md:w-full mt-5 md:mt-0">
             {/* top headings  */}
-            <div className='font-semibold flex justify-between text-xl tracking-widest item-center'>
+            <div className='font-semibold flex justify-between sm:text-xl tracking-widest item-center'>
               <h5>TODAY'S GUIDE</h5>
               <Link href="/program-scheduling"><h5 className='text-secondary'>FULL GUIDE</h5></Link>
             </div>
@@ -161,12 +161,12 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
                 programs.map((item: any, idx: number) => (
                   <li key={idx} className='flex md:flex-row flex-col items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5'>
                     <time className='font-medium text-xl whitespace-nowrap'>{item?.programInfo?.programTime || `0000`}</time>
-                    <button className="bg-black/80 min-w-[240px] flex justify-center items-center min-h-[120px] group">
+                    <button className="bg-black/80 w-full md:w-auto min-w-[240px] flex justify-center items-center h-[180px] sm:h-[220px] md:min-h-[120px] group">
                       <Image src="/images/ytbutton.png" alt="icon" onClick={() => OpenVideo(getVideoCode(item?.programInfo?.videoUrl))} width={80} height={40} className='group-hover:scale-105 transition-all duration-200 ease-linear' />
                     </button>
                     <button onClick={() => handleLink(getVideoCode(item?.programInfo?.videoUrl))}>
-                      <h6 className='text-secondary text-xl font-medium text-start -tracking-wide'>{item.title}</h6>
-                      <div className='text-start text-lg mt-2' dangerouslySetInnerHTML={{ __html: item?.excerpt }} />
+                      <h6 className='text-secondary sm:text-xl font-medium text-start -tracking-wide'>{item.title}</h6>
+                      <div className='text-start sm:text-lg mt-2' dangerouslySetInnerHTML={{ __html: item?.excerpt }} />
                     </button>
                   </li>
                 ))

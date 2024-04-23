@@ -33,7 +33,7 @@ const PaighamChannelPresents = ({ programs }: any) => {
                     </div>
                     <div className="md:w-[40%] mt-5 md:mt-0">
                         {/* top headings  */}
-                        <div className='font-semibold flex justify-between text-xl tracking-widest item-center'>
+                        <div className='font-semibold flex justify-between sm:text-xl tracking-widest item-center'>
                             <h5>TODAY'S GUIDE</h5>
                             <Link href="/program-scheduling"><h5 className='text-primary'>FULL GUIDE</h5></Link>
                         </div>
