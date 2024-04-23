@@ -1,4 +1,5 @@
 import { SettingsContext } from '@/context/setting-context';
+import { useRouter } from 'next/router';
 import React, { useContext, useState } from 'react'
 import { FiSearch } from 'react-icons/fi';
 import { MdOutlineClose } from 'react-icons/md';
@@ -10,6 +11,13 @@ const SearchModelBox = ({ setSearchModalIsOpen }: any) => {
      }
      const [openCategory, setOpenCategory] = useState(false)
      const {SetctedCategory, setCategory} = useContext(SettingsContext)
+     const [searchValue, setSearchValue] = useState()
+     const router = useRouter()
+
+     const handleSearch =()=>{
+          router.push(`/search?q=${searchValue}`)
+          closeModal()
+     }
 
      return (
           <div className='bg-black/90 fixed inset-0 z-50'>
@@ -25,8 +33,8 @@ const SearchModelBox = ({ setSearchModalIsOpen }: any) => {
                                    {openCategory && <SelectFilter setCategory={setCategory} setOpenCategory={setOpenCategory}/>}
                               </div>
                               <div className='flex item-center w-full'>
-                                   <input type="text" placeholder="Search here..." className='bg-transparent font-metapro text-lg p-3 px-6 outline-none w-full' />
-                                   <button className="bg-secondary text-2xl px-3.5 hover:bg-black hover:text-secondary rounded-full"><FiSearch /></button>
+                                   <input type="text" value={searchValue} onChange={(e:any)=>setSearchValue(e.target.value)} placeholder="Search here..." className='bg-transparent font-metapro text-lg p-3 px-6 outline-none w-full' />
+                                   <button onClick={handleSearch} className="bg-secondary text-2xl px-3.5 hover:bg-black hover:text-secondary rounded-full"><FiSearch /></button>
                               </div>
                          </div>
                     </div>

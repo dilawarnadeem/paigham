@@ -161,7 +161,7 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
                 programs.map((item: any, idx: number) => (
                   <li key={idx} className='flex md:flex-row flex-col items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5'>
                     <time className='font-medium text-xl whitespace-nowrap'>{item?.programInfo?.programTime || `0000`}</time>
-                    <button className="bg-black/80 w-full md:w-auto min-w-[240px] flex justify-center items-center h-[180px] sm:h-[220px] md:min-h-[120px] group">
+                    <button className="bg-black/80 w-full md:w-auto min-w-[240px] flex justify-center items-center min-h-[180px] sm:min-h-[220px] md:!min-h-[120px] group">
                       <Image src="/images/ytbutton.png" alt="icon" onClick={() => OpenVideo(getVideoCode(item?.programInfo?.videoUrl))} width={80} height={40} className='group-hover:scale-105 transition-all duration-200 ease-linear' />
                     </button>
                     <button onClick={() => handleLink(getVideoCode(item?.programInfo?.videoUrl))}>

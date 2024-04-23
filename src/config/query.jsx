@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const postsForListingPage = gql`
   query AllPosts($endCursor: String) {
@@ -59,9 +59,9 @@ export const AllPosts = gql`
 `;
 
 export const PostsByTags = gql`
-query PostByTags($slug: ID!) {
-  tag(id: $slug, idType: SLUG) {
-    name
+  query PostByTags($slug: ID!) {
+    tag(id: $slug, idType: SLUG) {
+      name
       slug
       description
       posts(first: 1000) {
@@ -84,19 +84,20 @@ query PostByTags($slug: ID!) {
           }
         }
       }
+    }
   }
-}
 `;
 
 export const AllTags = gql`
-query AllTags {
-  tags {
-    nodes {
-      slug
-      name
+  query AllTags {
+    tags {
+      nodes {
+        slug
+        name
+      }
     }
   }
-}`;
+`;
 
 // post by category pass category slug in qury
 export const PostsByCategory = gql`
@@ -175,24 +176,24 @@ export const Categories = gql`
   }
 `;
 export const HomeCategories = gql`
-query HomeCategories {
-  categories(first: 1000, where: { include: ["1","218", "213","210"] }) {
-    nodes {
-      name
-      slug
-      count
-      categoryInfo {
-        catImage {
-          mediaItemUrl
+  query HomeCategories {
+    categories(first: 1000, where: { include: ["1", "218", "213", "210"] }) {
+      nodes {
+        name
+        slug
+        count
+        categoryInfo {
+          catImage {
+            mediaItemUrl
+          }
+          categoryBanner {
+            mediaItemUrl
+          }
+          featured
         }
-        categoryBanner {
-          mediaItemUrl
-        }
-        featured
       }
     }
   }
-}
 `;
 
 export const programsScheduling = gql`
@@ -227,7 +228,6 @@ export const AllScholars = gql`
   }
 `;
 
-
 export const AllPlaylist = gql`
   query AllPlaylist {
     playLists {
@@ -254,6 +254,29 @@ export const PostsByScholar = gql`
       }
       first: 99
     ) {
+      nodes {
+        title
+        content
+        postInfo {
+          tmVideoUrl
+          urduTitle
+          arabicTitle
+        }
+        featuredImage {
+          node {
+            mediaItemUrl
+          }
+        }
+      }
+    }
+  }
+`;
+
+// search Post
+
+export const SearchPost = gql`
+  query PostsByScholar($search: String = "") {
+    posts(where: { search: $search }) {
       nodes {
         title
         content
