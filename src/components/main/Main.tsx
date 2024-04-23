@@ -15,43 +15,51 @@ const Main = ({ posts }: any) => {
     setModelIsOpen(true)
     setVideoLink(link)
   }
+
   return (
     <main className='relative h-full md:h-[80vh]'>
-      <Slider ref={slider} {...settings}>
-        <div className='relative w-full bg-[url("/images/banner/banner1.jpg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-          <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+      <div className='hidden md:block'>
+        <Slider ref={slider} {...settings} >
+          <div className='relative w-full bg-[url("/images/banner/banner1.jpg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+            </div>
           </div>
-        </div>
-        <div className='relative w-full bg-[url("/images/banner/banner2.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-          <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+          <div className='relative w-full bg-[url("/images/banner/banner2.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+            </div>
           </div>
-        </div>
-        <div className='relative w-full bg-[url("/images/banner/banner3.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-          <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+          <div className='relative w-full bg-[url("/images/banner/banner3.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+            </div>
           </div>
-        </div>
-        <div className='relative w-full bg-[url("/images/banner/banner4.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-          <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+          <div className='relative w-full bg-[url("/images/banner/banner4.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+            </div>
           </div>
-        </div>
-        <div className='relative w-full bg-[url("/images/banner/banner5.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-          <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+          <div className='relative w-full bg-[url("/images/banner/banner5.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+            </div>
           </div>
-        </div>
-      </Slider>
-      {/* <section className='sliceslider right-0 absolute bottom-5 2xl:bottom-10 w-full lg:w-[50%]'>
-        <Slider {...SliderSlice}>
-          {
-            posts.slice(10, 20).map((item: any, idx: number) => {
-              return (
-                <button onClick={() => OpenVideo(getVideoCode(item?.postInfo?.tmVideoUrl))} key={idx} className=''>
-                  <Image src={item.featuredImage.node.mediaItemUrl} alt="image" width={600} height={600} className='' />
-                </button>
-              )
-            })
-          }
         </Slider>
-      </section> */}
+      </div>
+      {/* For Mobile  */}
+      <div className='md:hidden'>
+        <Slider ref={slider} {...settings} >
+          <div className='relative w-full bg-[url("/images/banner/banner2.jpg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+            </div>
+          </div>
+          <div className='relative w-full bg-[url("/images/banner/banner2.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+            </div>
+          </div>
+          <div className='relative w-full bg-[url("/images/banner/banner2.jpeg")] p-2 h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+            </div>
+          </div>
+        </Slider>
+      </div>
+
       <ChannelLinks />
       <button className="absolute top-1/2 left-1 md:left-2 transform -translate-y-1/2 bg-dark-gray active:scale-105 text-yellow text-xl p-[6px] px-1.5 md:px-5 " onClick={() => slider?.current?.slickPrev()}><Image src="/svg/left-slider-arrow.svg" alt="arrow" width={60} height={60} className='w-7 md:w-16' /></button>
       <button className="absolute top-1/2 right-1 md:right-2 transform -translate-y-1/2 bg-dark-gray active:scale-105 text-yellow text-xl p-[6px] px-1.5 md:px-5 " onClick={() => slider?.current?.slickNext()}><Image src="/svg/right-slider-arrow.svg" alt="arrow" width={60} height={60} className='w-7 md:w-16' /></button>
