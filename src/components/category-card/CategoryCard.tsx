@@ -20,14 +20,14 @@ const CategoryCard = ({ items }: any) => {
 
   return (
     <>
-      <div className='flex justify-between items-center text-primary'>
-        <h4 className='font-bold md:text-4xl '>{items?.name}</h4>
-        <Link href={`/category/${items?.slug}`} className='font-semibold hover:underline md:text-2xl'> View All </Link>
+      <div className='flex justify-between px-10 pt-12 pb-6 items-center text-white'>
+        <h4 className='font-bold md:text-2xl'>{items?.name}</h4>
+        <Link href={`/category/${items?.slug}`} className='hover:underline md:text-xl'> View All </Link>
       </div>
-      <div className='pb-10 pt-5 relative'>
+      <div className='relative md:px-8'>
         <Slider {...sliderSettings} ref={slider}>
           {
-            items?.posts?.nodes?.slice(0, 20)?.reverse().map((item: any, idx: number) => {
+            items?.posts?.nodes?.slice(0, 20)?.reverse()?.map((item: any, idx: number) => {
               return (
                 <>
                   <div className='px-1'>
@@ -45,7 +45,7 @@ const CategoryCard = ({ items }: any) => {
                           }
                         </div>
                       </div>
-                      <h4 className='text-white md:text-lg font-medium md:px-2 text-center tracking-wide my-3 line-clamp-2'>{item?.title}</h4>
+                      <h4 className='text-white md:text-lg min-h-[56px] font-medium md:px-2 text-center tracking-wide my-3 line-clamp-2'>{item?.title}</h4>
                     </div>
                   </div>
                 </>
@@ -54,13 +54,13 @@ const CategoryCard = ({ items }: any) => {
           }
         </Slider>
         <div className={items?.posts?.nodes?.length > 4 ? '' : 'lg:hidden'}>
-            <button className='md:text-3xl text-xl text-gray-600 hover:text-primary absolute top-1/2 -mt-8 md:-left-8 -left-4' onClick={() => slider?.current?.slickPrev()}>
-              <MdArrowBackIosNew />
-            </button>
-            <button className='md:text-3xl text-xl text-gray-600 hover:text-primary absolute top-1/2 -mt-8 md:-right-8 -right-4' onClick={() => slider?.current?.slickNext()}>
-              <MdArrowForwardIos />
-            </button>
-          </div>
+          <button className='md:text-3xl text-xl text-white hover:text-primary bg-black/50 h-full absolute top-0 bottom-0 left-0 ' onClick={() => slider?.current?.slickPrev()}>
+            <MdArrowBackIosNew />
+          </button>
+          <button className='md:text-3xl text-xl text-white hover:text-primary bg-black/50 h-full absolute top-0 bottom-0 right-0' onClick={() => slider?.current?.slickNext()}>
+            <MdArrowForwardIos />
+          </button>
+        </div>
       </div>
     </>
   )

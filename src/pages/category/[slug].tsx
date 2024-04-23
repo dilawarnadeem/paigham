@@ -13,6 +13,7 @@ import Slider from 'react-slick'
 
 const Category = ({ posts, slug }: any) => {
   const { posts: { nodes } } = posts
+
   const { setModelIsOpen, setVideoLink } = useContext(SettingsContext)
   const OpenVideo = (link: string) => {
     setModelIsOpen(true)
@@ -22,7 +23,7 @@ const Category = ({ posts, slug }: any) => {
   const slider = React.useRef<any>(null);
 
   return (
-    <>
+    <section className="bg-[rgb(22,31,40)] pb-20">
       <SeoMeta title={`${slug}  | Paigham TV`} url={`/category/${slug}`} description="Paigham TV is a satellite TV channel the objectives of which are preaching the true teachings of the Holy Quran and Sunnah " />
 
       {
@@ -30,7 +31,13 @@ const Category = ({ posts, slug }: any) => {
           <Category_Banner key={idx} item={item} />
         ))
       }
-      <div className='container mx-auto my-20 px-4 relative'>
+      <div className="container px-4 mx-auto">
+        <div className=" mt-12 pb-8 border-b-[2px] border-gray-800">
+          <h4 className="text-white font-semibold text-3xl">{posts.name}</h4>
+          <p className="max-w-[800px] md:text-xl mt-4 text-gray-400 ">{posts?.description || "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"}</p>
+        </div>
+      </div>
+      <div className='md:px-8 mt-20 relative'>
         <Slider {...sliderSettings} ref={slider}>
           {
             nodes?.slice(0).reverse().map((item: IPost, idx: number) => (
@@ -39,15 +46,17 @@ const Category = ({ posts, slug }: any) => {
           }
         </Slider>
         <div className={nodes?.length > 4 ? '' : 'lg:hidden'}>
-            <button className='md:text-3xl text-xl text-gray-600 hover:text-primary absolute top-1/2 -mt-20 md:-left-8 -left-4' onClick={() => slider?.current?.slickPrev()}>
-              <MdArrowBackIosNew />
-            </button>
-            <button className='md:text-3xl text-xl text-gray-600 hover:text-primary absolute top-1/2 -mt-20 md:-right-8 -right-4' onClick={() => slider?.current?.slickNext()}>
-              <MdArrowForwardIos />
-            </button>
-          </div>
+          <button className='md:text-3xl text-xl text-white hover:text-primary bg-black/50 h-full absolute top-0 bottom-0 left-0 ' onClick={() => slider?.current?.slickPrev()}>
+            <MdArrowBackIosNew />
+          </button>
+          <button className='md:text-3xl text-xl text-white hover:text-primary bg-black/50 h-full absolute top-0 bottom-0 right-0' onClick={() => slider?.current?.slickNext()}>
+            <MdArrowForwardIos />
+          </button>
+        </div>
       </div>
-    </>
+
+      
+    </section>
   )
 }
 

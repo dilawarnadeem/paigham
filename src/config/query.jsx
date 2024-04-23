@@ -266,8 +266,6 @@ export const PostsByScholar = gql`
           node {
             mediaItemUrl
           }
-          
-          
         }
       }
     }

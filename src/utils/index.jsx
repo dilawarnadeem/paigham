@@ -24,6 +24,22 @@ export var sliderSettings = {
      slidesToScroll: 1,
      initialSlide: 0,
      responsive: [
+      {
+        breakpoint: 1520,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          infinite: true,
+        }
+      },
+      {
+        breakpoint: 1320,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+        }
+      },
        {
          breakpoint: 1024,
          settings: {

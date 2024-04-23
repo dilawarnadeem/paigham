@@ -20,31 +20,30 @@ const Category_Banner = ({ item }: any) => {
 
     return (
         <>
-            <section className='container mt-24 px-4 mx-auto'>
-                <div className="container flex mx-auto justify-center bg-black items-center">
-                    <div className={videoLink?.includes('facebook') ? 'iframe-container mb0 relative pt-[56.25%]' : 'iframe-container'}
-                    >
-                        {videoLink?.includes('facebook') ?
-                            <ReactPlayer
-                                url={link}
-                                playing={true}
-                                controls={true}
-                                width='100%'
-                                height='100%'
-                                style={{ position: 'absolute', top: 0, left: 0 }}
-                            /> :
-                            <iframe
-                                // width="100%"
-                                // height="100%"
-                                src={link}
-                                title="Embedded Video"
-                                allowFullScreen
-                            ></iframe>
-                        }
+            {
+                videoLink?.includes('facebook') ?
+                    <section className='bg-black'>
+                        <div className="container mx-auto flex justify-center bg-black items-center">
+                            <div className={'iframe-container mb0 relative pt-[40.25%]'}
+                            >
+                                {videoLink?.includes('facebook') &&
+                                    <ReactPlayer
+                                        url={link}
+                                        playing={true}
+                                        controls={true}
+                                        width='71.50%'
+                                        height='100%'
+                                        style={{ position: 'absolute', top: 0, right : '50%', transform: 'translateX(50%)' }}
+                                        className=""
+                                    />
+                                }
+                            </div>
+                        </div>
+                    </section> :
+                    <div className="aspect-w-16 aspect-h-6">
+                        <iframe src={link} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
-                </div>
-            </section>
-
+            }
         </>
     );
 }
