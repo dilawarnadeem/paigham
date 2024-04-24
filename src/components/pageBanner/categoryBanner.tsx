@@ -8,7 +8,7 @@ const Category_Banner = ({ item }: any) => {
     const [link, setLink] = useState<any>()
 
     useEffect(() => {
-        var link = videoLink?.link.length > 3 ? videoLink?.link : item.postInfo.tmVideoUrl
+        var link = videoLink?.link?.length > 3 ? videoLink?.link : item?.postInfo?.tmVideoUrl
         // Check if the link is a Facebook link
         if (videoLink?.type === 'facebook') {
             setLink(link)
@@ -16,7 +16,7 @@ const Category_Banner = ({ item }: any) => {
             const modifiedYtLink = videoLink?.replace(videoLink?.includes('https://youtu.be/') ? 'https://youtu.be/' : 'https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
             setLink(modifiedYtLink)
         }
-    }, [videoLink, link, item.postInfo.tmVideoUrl]);
+    }, [videoLink, link, item?.postInfo?.tmVideoUrl]);
 
     return (
         <>
@@ -26,17 +26,15 @@ const Category_Banner = ({ item }: any) => {
                         <div className="container mx-auto flex justify-center bg-black items-center">
                             <div className={'iframe-container mb0 relative pt-[40.25%]'}
                             >
-                                {videoLink?.includes('facebook') &&
-                                    <ReactPlayer
-                                        url={link}
-                                        playing={true}
-                                        controls={true}
-                                        width='71.50%'
-                                        height='100%'
-                                        style={{ position: 'absolute', top: 0, right : '50%', transform: 'translateX(50%)' }}
-                                        className=""
-                                    />
-                                }
+                                <ReactPlayer
+                                    url={link}
+                                    playing={true}
+                                    controls={true}
+                                    width='71.50%'
+                                    height='100%'
+                                    style={{ position: 'absolute', top: 0, right: '50%', transform: 'translateX(50%)' }}
+                                    className=""
+                                />
                             </div>
                         </div>
                     </section> :

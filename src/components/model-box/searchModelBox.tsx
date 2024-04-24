@@ -25,13 +25,13 @@ const SearchModelBox = ({ setSearchModalIsOpen }: any) => {
                     <button className="absolute top-6 right-6" onClick={closeModal}><MdOutlineClose size={35} color="white" /></button>
                     <div className='max-w-[850px] mx-auto h-full flex px-4 flex-col pt-32 '>
                          <div className='bg-white md:flex item-center md:rounded-full p-1'>
-                              <div className='relative p-3 font-metapro text-lg text-gray-600'>
+                              {/* <div className='relative p-3 font-metapro text-lg text-gray-600'>
                                    <button className='flex md:border-r-[2px] w-full border-gray-300 md:pr-6 items-center space-x-4 md:w-[150px] justify-between' onClick={() => setOpenCategory(!openCategory)}>
                                         {SetctedCategory}
                                         {openCategory ? <SlArrowUp /> : <SlArrowDown />}
                                    </button>
                                    {openCategory && <SelectFilter setCategory={setCategory} setOpenCategory={setOpenCategory}/>}
-                              </div>
+                              </div> */}
                               <div className='flex item-center w-full'>
                                    <input type="text" value={searchValue} onChange={(e:any)=>setSearchValue(e.target.value)} placeholder="Search here..." className='bg-transparent font-metapro text-lg p-3 px-6 outline-none w-full' />
                                    <button onClick={handleSearch} className="bg-secondary text-2xl px-3.5 hover:bg-black hover:text-secondary rounded-full"><FiSearch /></button>

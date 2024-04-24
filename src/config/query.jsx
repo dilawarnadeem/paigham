@@ -115,6 +115,7 @@ export const PostsByCategory = gql`
         nodes {
           title
           slug
+          excerpt
           featuredImage {
             node {
               mediaItemUrl
