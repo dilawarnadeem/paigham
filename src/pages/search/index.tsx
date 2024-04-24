@@ -31,10 +31,13 @@ const Search = ({ allPosts }: any) => {
                          Search:  <h4 className="font-semibold text-2xl capitalize">{q}</h4>
                     </div>
                     <div className='container px-3 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 gap-y-3'>
-                         {
+                         {    
+                              allPosts.length > 0 ? 
                               allPosts?.map((item: IPost, idx: number) => (
                                    <Card item={item} key={idx} OpenVideo={OpenVideo} slug />
-                              ))
+                              )) : <div>
+                                   <h2 className='text-xl text-gray-400'>Opps: <br/> Result Not Found.! Pease Search Again.</h2>
+                              </div>
                          }
                     </div>
                </section>
