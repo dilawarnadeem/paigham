@@ -18,7 +18,7 @@ const Category = ({ posts, slug }: any) => {
   const { posts: { nodes } } = posts
 
   const { setModelIsOpen, setVideoLink, videoLink } = useContext(SettingsContext)
-  console.log("🚀 ~ Category ~ videoLink:", videoLink)
+
   const [selectItem, setSelectedItem] = useState<any>()
 
   const OpenVideo = (link: string) => {
