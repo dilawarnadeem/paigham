@@ -178,7 +178,7 @@ export const Categories = gql`
 `;
 export const HomeCategories = gql`
   query HomeCategories {
-    categories(first: 1000, where: { include: ["1", "218", "213", "210"] }) {
+    categories(first: 1000, where: {include: ["1", "80", "123", "60"], order: DESC}) {
       nodes {
         name
         slug

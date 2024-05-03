@@ -29,25 +29,25 @@ export default ChannelLinks
 const navButons = [
   {
     name: 'TV Urdu',
-    link: 'http://live.paigham.tv',
+    link: '/channel/tv-urdu',
     icon: '/images/tv_icon.png',
     live: '/images/live.png'
   },
   {
     name: 'Quran TV',
-    link: 'http://buttflu.pointto.us:8032/pk/Qurantv/index.m3u8',
+    link: '/channel/quran-tv',
     icon: '/images/tv_icon.png',
     live: '/images/live.png'
   },
   {
     name: 'TV UK',
-    link: 'http://buttflu.pointto.us:8032/pk/paighamtv/video.m3u8',
+    link: '/channel/tv-uk',
     icon: '/images/tv_icon.png',
     live: '/images/live.png'
   },
   {
     name: 'TV Pashto',
-    link: 'http://buttflu.pointto.us:8032/paigham/pashto/video.m3u8',
+    link: '/channel/tv-pashto',
     icon: '/images/pashto_icon.png',
     live: '/images/live.png'
   }
