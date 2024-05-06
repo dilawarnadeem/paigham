@@ -20,12 +20,12 @@ export var sliderSettings = {
      infinite: false,
      arrows: false,
      speed: 500,
-     slidesToShow: 4,
+     slidesToShow: 6,
      slidesToScroll: 1,
      initialSlide: 0,
      responsive: [
       {
-        breakpoint: 1520,
+        breakpoint: 1880,
         settings: {
           slidesToShow: 5,
           slidesToScroll: 1,
@@ -33,7 +33,7 @@ export var sliderSettings = {
         }
       },
       {
-        breakpoint: 1320,
+        breakpoint: 1520,
         settings: {
           slidesToShow: 4,
           slidesToScroll: 1,
@@ -41,7 +41,7 @@ export var sliderSettings = {
         }
       },
        {
-         breakpoint: 1024,
+         breakpoint: 1124,
          settings: {
            slidesToShow: 3,
            slidesToScroll: 1,

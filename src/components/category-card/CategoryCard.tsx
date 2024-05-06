@@ -23,23 +23,23 @@ const CategoryCard = ({ items }: any) => {
         <h4 className='font-semibold md:text-xl'>{items?.name}</h4>
         <Link href={`/category/${items?.slug}`} className='hover:underline md:text-xl'> View All </Link>
       </div>
-      <div className='relative md:px-8'>
+      <div className='relative md:px-9'>
         <Slider {...sliderSettings} ref={slider}>
           {
             items?.posts?.nodes?.slice(0, 20)?.reverse()?.map((item: any, idx: number) => {
               return (
                 <>
-                  <div className='px-1 group'>
-                    <div className='bg-black' key={idx}>
+                  <div className='px-2 group '>
+                    <div className='bg-black !rounded-lg !overflow-hidden' key={idx}>
                       <div className='bg-red-300 relative cursor-pointer overflow-hidden' onClick={() => {
                               setVideoLink(item.postInfo?.tmVideoUrl)
                               router.push(`/category/${items?.slug}`)
                             }}>
-                        <Image src={item?.featuredImage?.node?.mediaItemUrl} alt="image" width={700} height={400} className=' w-full object-cover transition-all h-[220px] duration-200 ease-in-out group-hover:scale-105' />
+                        <Image src={item?.featuredImage?.node?.mediaItemUrl} alt="image" width={700} height={400} className=' w-full object-cover transition-all h-[220px] duration-200 ease-in-out' />
                         <div className=' group-hover:bg-black/40 absolute inset-0 p-3 md:p-6 flex flex-col justify-end font-metapro'/>
                       </div>
                     </div>
-                      <h4 className='text-white min-h-[56px] font-medium md:px-2 tracking-wide my-3 line-clamp-2'>{item?.title}</h4>
+                      <h4 className='text-white font-medium md:px-2 tracking-wide my-3 line-clamp-2'>{item?.title}</h4>
                   </div>
                 </>
               )
@@ -47,10 +47,10 @@ const CategoryCard = ({ items }: any) => {
           }
         </Slider>
         <div className={items?.posts?.nodes?.length > 4 ? '' : 'lg:hidden'}>
-          <button className='md:text-3xl text-xl text-white hover:text-primary bg-black/50 h-[73.5%] absolute top-0 bottom-0 left-0 ' onClick={() => slider?.current?.slickPrev()}>
+          <button className='md:text-3xl text-xl text-white hover:text-primary bg-black/50 h-[75%] absolute top-0 bottom-0 left-0 ' onClick={() => slider?.current?.slickPrev()}>
             <MdArrowBackIosNew />
           </button>
-          <button className='md:text-3xl text-xl text-white hover:text-primary bg-black/50 h-[73.5%] absolute top-0 bottom-0 right-0' onClick={() => slider?.current?.slickNext()}>
+          <button className='md:text-3xl text-xl text-white hover:text-primary bg-black/50 h-[75%] absolute top-0 bottom-0 right-0' onClick={() => slider?.current?.slickNext()}>
             <MdArrowForwardIos />
           </button>
         </div>
