@@ -23,6 +23,7 @@ export var sliderSettings = {
      slidesToShow: 6,
      slidesToScroll: 1,
      initialSlide: 0,
+     centerMode: true,
      responsive: [
       {
         breakpoint: 1880,

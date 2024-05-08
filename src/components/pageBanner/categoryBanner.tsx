@@ -38,7 +38,7 @@ const Category_Banner = ({ item }: any) => {
                             </div>
                         </div>
                     </section> :
-                    <div className="aspect-w-16 aspect-h-6">
+                    <div className="aspect-w-16 aspect-h-9 md:aspect-h-6">
                         <iframe src={link} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
             }

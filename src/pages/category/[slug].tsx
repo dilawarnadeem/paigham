@@ -92,11 +92,11 @@ const Category = ({ posts, slug, allCategories }: any) => {
               <h4 className="text-white max-w-[900px] font-semibold text-2xl md:text-3xl">
                 {selectItem?.title}
               </h4>
-              <h4 className="text-secondary font-semibold text-lg mt-1">
+              <h4 className="text-secondary text-lg my-2 md:mb-0">
                 {posts.name}
               </h4>
             </div>
-            <ul className="flex text-white items-center gap-3 text-2xl">
+            <ul className="flex text-white items-center gap-3 text-xl md:text-2xl">
               <li>Share: </li>
               <li className="hover:text-secondary cursor-pointer">
                 <Link
@@ -130,7 +130,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
           />
         </div>
       </div>
-      <div className="md:px-8 mt-20 relative">
+      <div className="md:px-2 mt-20 relative">
         <Slider {...sliderSettings} ref={slider}>
           {nodes
             ?.slice(0)
@@ -141,13 +141,13 @@ const Category = ({ posts, slug, allCategories }: any) => {
         </Slider>
         <div className={nodes?.length > 4 ? "" : "lg:hidden"}>
           <button
-            className="md:text-3xl text-xl text-white hover:text-primary bg-black/50 h-[73.5%] absolute top-0 bottom-0 left-0 "
+            className="md:text-2xl text-xl text-white hover:text-primary bg-black/50  absolute -top-4 px-1 md:px-1.5 bottom-0 left-0 "
             onClick={() => slider?.current?.slickPrev()}
           >
             <MdArrowBackIosNew />
           </button>
           <button
-            className="md:text-3xl text-xl text-white hover:text-primary bg-black/50 h-[73.5%] absolute top-0 bottom-0 right-0"
+            className="md:text-2xl text-xl text-white hover:text-primary bg-black/50  absolute -top-4 px-1 md:px-1.5 bottom-0 right-0"
             onClick={() => slider?.current?.slickNext()}
           >
             <MdArrowForwardIos />

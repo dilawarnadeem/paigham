@@ -26,7 +26,7 @@ const Search = ({ allPosts }: any) => {
                <section className='bg-[#161F28]'>
                     {videoLink?.length > 4 && <Category_Banner item={videoLink} />}
                </section>
-               <section className='pb-28 pt-20 bg-[#161F28] '>
+               <section className='pb-28 md:pt-20 bg-[#161F28] '>
                     <div className='container px-3 mx-auto mb-12 text-white'>
                          Search:  <h4 className="font-semibold text-2xl capitalize">{q}</h4>
                     </div>
