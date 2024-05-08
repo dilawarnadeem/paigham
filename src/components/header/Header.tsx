@@ -104,11 +104,11 @@ const Header = () => {
             </i>
             <i className='lg:hidden'><FiSearch size={24} onClick={() => OpenSearch()} /></i>
           </div>
-          <div className={`lg:flex items-center lg:space-x-3 ${isMobileNav ? 'block absolute top-[0px] p-6 pt-36 md:pt-40 pb-10 left-0 right-0 z-[1] bg-primary' : 'hidden'}`}>
+          <div className={`lg:flex items-center lg:space-x-3 ${isMobileNav ? 'block absolute top-[0px] p-6 pt-20 md:pt-40 pb-10 left-0 right-0 z-[1] bg-primary' : 'hidden'}`}>
             <ul className='lg:flex items-center text-white gap-8'>
               {
                 navList.map((item, idx) => (
-                  <li key={idx} className='font-metapro hover:text-secondary cursor-pointer tracking-wide font-semibold capitalize text-lg text-pure' onClick={() => NavController(item.link)}>{item.name}</li>
+                  <li key={idx} className='font-metapro hover:text-secondary cursor-pointer py-3 md:py-0 tracking-wide font-semibold capitalize text-lg text-pure' onClick={() => NavController(item.link)}>{item.name}</li>
                 ))
               }
               <li className="hidden cursor-pointer md:block"><HiMenu size={28} onClick={() => setLeftSideBar(true)} /></li>
