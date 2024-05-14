@@ -15,7 +15,7 @@ const SeoMeta = ({ title, description, url }: any) => {
             <meta property="og:site_name" content="paighamtv" />
             <meta property="article:publisher" content="https://www.facebook.com/paighamtv" />
             <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
-            <meta property="og:image" content="https://www.budgetrepaircenter.nz/logo.png" />
+            <meta property="og:image" content="https://paigham.tv/_next/image?url=%2Fimages%2Flogomain.png&w=1080&q=75" />
             <meta property="og:image:width" content="254" />
             <meta property="og:image:height" content="56" />
             <meta property="og:image:type" content="image/png" />
