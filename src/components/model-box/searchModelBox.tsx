@@ -19,6 +19,12 @@ const SearchModelBox = ({ setSearchModalIsOpen }: any) => {
           closeModal()
      }
 
+     const handleKeyDown = (event:any) => {
+          if (event.key === 'Enter') {
+            handleSearch();
+          }
+        };
+
      return (
           <div className='bg-black/90 fixed inset-0 z-50'>
                <div className='relative w-full h-full'>
@@ -33,7 +39,7 @@ const SearchModelBox = ({ setSearchModalIsOpen }: any) => {
                                    {openCategory && <SelectFilter setCategory={setCategory} setOpenCategory={setOpenCategory}/>}
                               </div> */}
                               <div className='flex item-center w-full'>
-                                   <input type="text" value={searchValue} onChange={(e:any)=>setSearchValue(e.target.value)} placeholder="Search here..." className='bg-transparent font-metapro text-lg p-3 px-6 outline-none w-full' />
+                                   <input type="text" value={searchValue} onKeyDown={handleKeyDown} onChange={(e:any)=>setSearchValue(e.target.value)} placeholder="Search here..." className='bg-transparent font-metapro text-lg p-3 px-6 outline-none w-full' />
                                    <button onClick={handleSearch} className="bg-secondary text-2xl px-3.5 hover:bg-black hover:text-secondary rounded-full"><FiSearch /></button>
                               </div>
                          </div>

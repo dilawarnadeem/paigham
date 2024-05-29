@@ -99,6 +99,7 @@ const TabsSection = ({ allposts }: any) => {
       allposts.filter((item: any) => item.categories.nodes.some((item: any) => item.slug === slug))
     setPost(p.slice(0, 8))
   }
+  
   const { modalIsOpen, setModelIsOpen, setVideoLink } = useContext(SettingsContext)
   const OpenVideo = (link: string) => {
     setModelIsOpen(true)
