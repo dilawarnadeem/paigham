@@ -212,8 +212,8 @@ const tabData = [
     slug: 'latest'
   },
   {
-    name: 'Ramzan Transmission',
-    slug: 'ramzan-podcast'
+    name: 'Hajj & Eid al Adha',
+    slug: 'hajj'
   },
   {
     name: 'Short Clips',
