@@ -12,7 +12,7 @@ const Card = ({ item, OpenVideo, slug, textColor }: any) => {
   } else if (language === "ur") {
     title = item.postInfo.urduTitle;
   }
-
+  
   const handlePlay = () => {
     slug ? playONTop() : OpenVideo(item?.postInfo?.tmVideoUrl)
   };

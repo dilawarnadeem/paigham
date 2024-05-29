@@ -5,7 +5,8 @@ import FacebookVideoPlayer from './FacebookPlayer';
 
 const VideoPlayer = ({ link }: any) => {
      const { videoLink } = useContext<any>(SettingsContext)
-
+     const trimVideoLink = videoLink?.type !== 'facebook' && videoLink?.replace('https://www.youtube.com/embed/', '')
+     
      const onPlayerReady: YouTubeProps['onReady'] = (event) => {
           event.target.pauseVideo();
      }
@@ -21,7 +22,7 @@ const VideoPlayer = ({ link }: any) => {
           <>
                {
                     videoLink?.type === 'facebook' ? <FacebookVideoPlayer /> : <YouTube
-                         videoId={videoLink}
+                         videoId={trimVideoLink}
                          opts={opts}
                          className={`videocontainer`}
                          iframeClassName={`responsive-iframe`}
