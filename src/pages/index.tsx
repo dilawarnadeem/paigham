@@ -89,7 +89,7 @@ export default function Home({ allposts, allCategories, allProgramsScheduling, S
 
 // Tabs section 
 const TabsSection = ({ allposts }: any) => {
-  const [posts, setPost] = useState<any>(allposts.slice(0, 4))
+  const [posts, setPost] = useState<any>(allposts.slice(0, 8))
   const [activeCategory, setActiveCategory] = useState('latest')
 
   const HandleVideosCategoryTabs = (slug: string) => {
@@ -100,7 +100,7 @@ const TabsSection = ({ allposts }: any) => {
     setPost(p.slice(0, 8))
   }
   
-  const { modalIsOpen, setModelIsOpen, setVideoLink } = useContext(SettingsContext)
+  const { setModelIsOpen, setVideoLink } = useContext(SettingsContext)
   const OpenVideo = (link: string) => {
     setModelIsOpen(true)
     setVideoLink(link)
@@ -129,7 +129,7 @@ const TabsSection = ({ allposts }: any) => {
       <div className='grid grid-cols-2 lg:grid-cols-4 mt-10 gap-2'>
         {
           posts?.map((item: any, idx: number) => (
-            <Card item={item} key={idx} OpenVideo={OpenVideo} textColor="text-black"/>
+            <Card item={item} key={idx} OpenVideo={OpenVideo} textColor="text-black" activeCategory={activeCategory}/>
           ))
         }
       </div>

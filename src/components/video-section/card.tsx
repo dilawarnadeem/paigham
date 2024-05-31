@@ -3,8 +3,11 @@ import React, { useContext } from "react";
 import { getVideoCode } from "@/utils";
 import { PiPlay } from "react-icons/pi";
 import { SettingsContext } from "@/context/setting-context";
+import { useRouter } from "next/router";
 
-const Card = ({ item, OpenVideo, slug, textColor }: any) => {
+const Card = ({ item, OpenVideo, slug, textColor, activeCategory }: any) => {
+  const router = useRouter()
+
   const { language, setVideoLink } = useContext(SettingsContext);
   var title = item.title;
   if (language === "ar") {
@@ -14,7 +17,7 @@ const Card = ({ item, OpenVideo, slug, textColor }: any) => {
   }
   
   const handlePlay = () => {
-    slug ? playONTop() : OpenVideo(item?.postInfo?.tmVideoUrl)
+    slug ? playONTop() : activeCategory === 'latest' ? OpenVideo(item?.postInfo?.tmVideoUrl) : VideoPl()
   };
 
   function playONTop(){
@@ -25,6 +28,11 @@ const Card = ({ item, OpenVideo, slug, textColor }: any) => {
     });
   }
 
+  function VideoPl (){
+    setVideoLink(item?.postInfo?.tmVideoUrl);
+    router.push(`/category/${activeCategory}`);
+  }
+  
 
   return (
     <div className="px-1 group">
