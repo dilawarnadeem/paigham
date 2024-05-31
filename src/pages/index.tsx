@@ -220,5 +220,13 @@ const tabData = [
     name: 'Short Clips',
     slug: 'short-videos'
   },
+  {
+    name: 'Khawabon Ki Tabeer',
+    slug: 'khawab-aur-tabeer'
+  },
+  {
+    name: 'Paigham QA',
+    slug: 'paigham-qa'
+  },
 ]
 
