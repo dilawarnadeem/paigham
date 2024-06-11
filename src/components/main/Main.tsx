@@ -42,7 +42,7 @@ const Main = ({posts}:any) => {
         </Slider>
       </div>
       {/* For Mobile  */}
-      {/* <div className='md:hidden'>
+       <div className='md:hidden'>
         <Slider ref={slider} {...settings} >
           <div className='relative w-full bg-[url("/images/banner/mobile/1.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
             <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
@@ -69,7 +69,7 @@ const Main = ({posts}:any) => {
             </div>
           </div>
         </Slider>
-      </div> */}
+      </div> 
 
       <ChannelLinks />
       <button className="absolute top-1/2 left-1 md:left-2 transform -translate-y-1/2 bg-dark-gray active:scale-105 text-yellow text-xl p-[6px] px-1.5 md:px-5 " onClick={prevSlide}><Image src="/svg/left-slider-arrow.svg" alt="arrow" width={60} height={60} className='w-7 md:w-16' /></button>
