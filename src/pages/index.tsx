@@ -120,7 +120,7 @@ const TabsSection = ({ allposts }: any) => {
             ))
           }
         </div>
-        <Link href="#" className='uppercase hidden md:flex hover:text-orange items-center space-x-2 font-metapro text-xl tracking-widest font-semibold rtl:flex-row-reverse'>
+        <Link href="/" className='uppercase hidden md:flex hover:text-orange items-center space-x-2 font-metapro text-xl tracking-widest font-semibold rtl:flex-row-reverse'>
           <span>View All</span>
           <HiOutlineArrowRight />
         </Link>
