@@ -18,6 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/context/setting-context.jsx", "src/components/video-player/FacebookPlayer.jsx", "src/pages/category/[slug].jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/context/setting-context.jsx", "src/components/video-player/FacebookPlayer.jsx", "src/pages/category/[slug].jsx", "src/pages/channel/quran-tv.jsx", "src/pages/channel/tv-urdu.jsx"],
   "exclude": ["node_modules"]
 }
