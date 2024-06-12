@@ -2,7 +2,7 @@ import React from 'react';
 
 const TVUrdu = () => {
   return (
-    <div className='h-screen text-center flex items-center justify-center'>
+    <div className='h-[280px] md:h-screen text-center flex items-center justify-center'>
       <iframe 
         width="100%" 
         height="100%" 

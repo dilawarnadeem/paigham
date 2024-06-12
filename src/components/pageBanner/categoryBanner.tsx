@@ -24,7 +24,7 @@ const Category_Banner = ({ item }: any) => {
                 videoLink?.includes('facebook') ?
                     <section className='bg-black'>
                         <div className="container mx-auto flex justify-center bg-black items-center">
-                            <div className={'iframe-container mb0 relative pt-[40.25%]'}
+                            <div className={'iframe-container mb0 relative pt-[56%] md:pt-[40.25%] fbVideo'}
                             >
                                 <ReactPlayer
                                     url={link}
@@ -33,7 +33,7 @@ const Category_Banner = ({ item }: any) => {
                                     width='71.50%'
                                     height='100%'
                                     style={{ position: 'absolute', top: 0, right: '50%', transform: 'translateX(50%)' }}
-                                    className=""
+                                    className="!w-full md:w-[71.50%]"
                                 />
                             </div>
                         </div>
@@ -47,3 +47,4 @@ const Category_Banner = ({ item }: any) => {
 }
 
 export default Category_Banner
+
