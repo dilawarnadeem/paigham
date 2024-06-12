@@ -12,14 +12,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { FaCirclePlay } from "react-icons/fa6";
 import Slider from "react-slick";
-import { HiOutlineArrowRight } from "react-icons/hi";
 import Link from "next/link";
 import CateCard from "@/components/cate-card/CatCard";
 import { useRouter } from "next/router";
 
 import { FaFacebook } from "react-icons/fa";
 import { BsTwitter } from "react-icons/bs";
-import { IoLogoWhatsapp } from "react-icons/io";
 import { FaLinkedinIn } from "react-icons/fa6";
 
 const Category = ({ posts, slug, allCategories }: any) => {
@@ -27,12 +25,17 @@ const Category = ({ posts, slug, allCategories }: any) => {
     posts: { nodes },
   } = posts;
 
+  const router = useRouter();
+
   const { setModelIsOpen, setVideoLink, videoLink } =
     useContext(SettingsContext);
 
   const [selectItem, setSelectedItem] = useState<any>();
-
-  const router = useRouter();
+  const [selectedValue, setSelectedValue] = useState('latest');
+  const handleChange = (event:any) => {
+    setSelectedValue(event.target.value);
+    router.push(`/category/${slug}?sort=${event.target.value}`)
+  };
 
   const OpenVideo = (link: string) => {
     setModelIsOpen(false);
@@ -50,6 +53,17 @@ const Category = ({ posts, slug, allCategories }: any) => {
 
   const hanldeVideoButton = () => {
     setVideoLink(nodes[0].postInfo.tmVideoUrl);
+  };
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(
+        `https://paigham.tv/category/${slug}`
+      );
+      alert("Text copied to clipboard!");
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+    }
   };
 
   return (
@@ -112,13 +126,25 @@ const Category = ({ posts, slug, allCategories }: any) => {
                   <BsTwitter />
                 </Link>
               </li>
-              
+
               <li className="hover:text-secondary cursor-pointer">
                 <Link
                   href={`https://www.linkedin.com/shareArticle?mini=true&url=https://paigham.tv/category/${posts.slug}`}
                 >
                   <FaLinkedinIn />
                 </Link>
+              </li>
+              <li onClick={handleCopy} className="cursor-pointer">
+                <svg width="1em" height="1em" viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                    d="M15.24 2h-3.894c-1.764 0-3.162 0-4.255.148c-1.126.152-2.037.472-2.755 1.193c-.719.721-1.038 1.636-1.189 2.766C3 7.205 3 8.608 3 10.379v5.838c0 1.508.92 2.8 2.227 3.342c-.067-.91-.067-2.185-.067-3.247v-5.01c0-1.281 0-2.386.118-3.27c.127-.948.413-1.856 1.147-2.593c.734-.737 1.639-1.024 2.583-1.152c.88-.118 1.98-.118 3.257-.118h3.07c1.276 0 2.374 0 3.255.118A3.601 3.601 0 0 0 15.24 2"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M6.6 11.397c0-2.726 0-4.089.844-4.936c.843-.847 2.2-.847 4.916-.847h2.88c2.715 0 4.073 0 4.917.847c.843.847.843 2.21.843 4.936v4.82c0 2.726 0 4.089-.843 4.936c-.844.847-2.202.847-4.917.847h-2.88c-2.715 0-4.073 0-4.916-.847c-.844-.847-.844-2.21-.844-4.936z"
+                  />
+                </svg>
               </li>
             </ul>
           </div>
@@ -130,12 +156,28 @@ const Category = ({ posts, slug, allCategories }: any) => {
           />
         </div>
       </div>
+      <div className="flex justify-end container mx-auto px-4">
+          <form className="max-w-sm flex items-center gap-2 mt-10">
+            <label
+              className="block text-sm font-medium whitespace-nowrap text-gray-900 dark:text-white"
+            >
+              Sorting
+            </label>
+            <select
+        id="countries"
+        className="bg-gray-50 border min-w-[160px] border-gray-300 text-gray-900 text-sm outline-none focus:none rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+        value={selectedValue} // Bind the value to state
+        onChange={handleChange} // Bind the change handler
+      >
+        <option value="ASC">Latest</option>
+        <option value="DESC">Old</option>
+      </select>
+          </form>
+        </div>
       <div className="md:px-2 mt-20 relative">
         <Slider {...sliderSettings} ref={slider}>
           {nodes
-            ?.slice(0)
-            .reverse()
-            .map((item: IPost, idx: number) => (
+            ?.map((item: IPost, idx: number) => (
               <Card item={item} key={idx} OpenVideo={OpenVideo} slug />
             ))}
         </Slider>
@@ -162,6 +204,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
             Top Categories
           </h2>
         </div>
+        
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {allCategories.map((item: any, idx: any) => (
             <CateCard key={idx} item={item} />
@@ -174,12 +217,15 @@ const Category = ({ posts, slug, allCategories }: any) => {
 
 export default Category;
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: any = async (context:any) => {
+  const queryParam = context?.query?.sort;
+
   const slug = context.params?.slug;
   const response = await apolloClient.query({
     query: PostsByCategory,
     variables: {
       slug,
+      order: queryParam
     },
   });
 
@@ -199,10 +245,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths: any = [];
-  return {
-    paths,
-    fallback: "blocking",
-  };
-};
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const paths: any = [];
+//   return {
+//     paths,
+//     fallback: "blocking",
+//   };
+// };

@@ -101,8 +101,8 @@ export const AllTags = gql`
 
 // post by category pass category slug in qury
 export const PostsByCategory = gql`
-  query PostsByCategory($slug: ID!) {
-    category(id: $slug, idType: SLUG) {
+query PostsByCategory($slug: ID!, $order: OrderEnum = DESC) {
+  category(id: $slug, idType: SLUG) {
       name
       slug
       description
@@ -111,7 +111,7 @@ export const PostsByCategory = gql`
           mediaItemUrl
         }
       }
-      posts(first: 1000) {
+      posts(first: 1000, where: {orderby: {field: DATE, order: $order}}) {
         nodes {
           title
           slug
