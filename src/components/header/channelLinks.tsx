@@ -39,12 +39,12 @@ const navButons = [
     icon: '/images/tv_icon.png',
     live: '/images/live.png'
   },
-  {
-    name: 'TV UK',
-    link: '/channel/tv-uk',
-    icon: '/images/tv_icon.png',
-    live: '/images/live.png'
-  },
+  // {
+  //   name: 'TV UK',
+  //   link: '/channel/tv-uk',
+  //   icon: '/images/tv_icon.png',
+  //   live: '/images/live.png'
+  // },
   {
     name: 'TV Pashto',
     link: '/channel/tv-pashto',
