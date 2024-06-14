@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/context/setting-context.jsx", "src/components/video-player/FacebookPlayer.jsx", "src/pages/category/[slug].jsx", "src/pages/channel/quran-tv.jsx", "src/pages/channel/tv-urdu.jsx"],
+  "exclude": ["node_modules"]
+}

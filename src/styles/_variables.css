@@ -1,0 +1,15 @@
+:root{
+     --primary: #031C56;
+     --secondary: #FFBA1B;
+     --orange: #FF881B;
+     --lightgray: #585858;
+     --pure: #fff;
+     --darkgray: #303030;
+     --blue: #0311C9;
+
+     /* fonts  */
+     --anton: Anton;
+     --metapro: metapro;
+     --montserrat: montserrat;
+     --mehr: mehr;
+}
