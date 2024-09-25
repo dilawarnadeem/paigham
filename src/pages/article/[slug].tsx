@@ -2,7 +2,7 @@ import Category_Banner from "@/components/pageBanner/categoryBanner";
 import SeoMeta from "@/components/seo";
 import Card from "@/components/video-section/card";
 import apolloClient from "@/config/client";
-import { HomeCategories, PostsByCategory } from "@/config/query";
+import { HomeCategories, PostsByCategory, SinglePost } from "@/config/query";
 import { SettingsContext } from "@/context/setting-context";
 import { sliderSettings } from "@/utils";
 import { IPost } from "@/utils/types";
@@ -16,78 +16,61 @@ import Link from "next/link";
 import CateCard from "@/components/cate-card/CatCard";
 import { useRouter } from "next/router";
 
-import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
 import { BsTwitter } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa6";
 
-const Category = ({ posts, slug, allCategories }: any) => {
-  console.log("🚀 ~ Category ~ posts:", posts)
-  const {
-    posts: { nodes },
-  } = posts;
-
-  const router = useRouter();
-
-  const { setModelIsOpen, setVideoLink, videoLink } =
-    useContext(SettingsContext);
-
+const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
+  const { setModelIsOpen, setVideoLink, videoLink } = useContext(SettingsContext);
   const [selectItem, setSelectedItem] = useState<any>();
   const [selectedValue, setSelectedValue] = useState("latest");
   const handleChange = (event: any) => {
     setSelectedValue(event.target.value);
-    router.push(`/category/${slug}?sort=${event.target.value}`);
+    router.push(`/article/${post?.slug}?sort=${event.target.value}`);
   };
+  const {
+    posts: { nodes },
+  } = relatedPost;
 
-  const OpenVideo = (link: string) => {
-    setModelIsOpen(false);
-    setVideoLink(link);
-  };
-
-  useEffect(() => {
-    const fItem = nodes?.find(
-      (item: any) => item?.postInfo?.tmVideoUrl === videoLink
-    );
-    setSelectedItem(fItem);
-  }, [videoLink, setVideoLink, nodes]);
-
+  const router = useRouter();
   const slider = React.useRef<any>(null);
-
-  const hanldeVideoButton = () => {
-    setVideoLink(nodes[0].postInfo.tmVideoUrl);
-  };
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(`https://paigham.tv/article/${selectItem?.slug}`);
+      await navigator.clipboard.writeText(
+        `https://paigham.tv/article/${post?.slug}`
+      );
       alert("Text copied to clipboard!");
     } catch (err) {
       console.error("Failed to copy text: ", err);
     }
   };
 
+  const hanldeVideoButton = () => {
+    setVideoLink(post.postInfo.tmVideoUrl);
+  };
+
+
   return (
     <section className="bg-[rgb(22,31,40)] pb-20">
       <SeoMeta
-        title={`${slug}  | Paigham TV`}
-        url={`/category/${slug}`}
+        title={`${post?.title}  | Paigham TV`}
+        url={`/article/${post?.slug}`}
         description="Paigham TV is a satellite TV channel the objectives of which are preaching the true teachings of the Holy Quran and Sunnah "
       />
+
       {videoLink ? (
-        nodes
-          ?.slice(0, 1)
-          .map((item: IPost, idx: number) => (
-            <Category_Banner key={idx} item={item} />
-          ))
+        <Category_Banner item={post} />
       ) : (
         <section className="relative">
           <Image
             src={
-              posts?.categoryInfo?.categoryBanner?.mediaItemUrl ||
+              post?.categoryInfo?.categoryBanner?.mediaItemUrl ||
               "/images/tafseer-ul-quran.jpeg"
             }
             width={1200}
             height={800}
-            alt={posts.name}
+            alt={post.name}
             className="h-[500px] w-full object-cover"
           />
           <div className="bg-gradient-to-t from-[#161F28] via-[#161F28]/60 absolute inset-0 to-black/0" />
@@ -103,41 +86,41 @@ const Category = ({ posts, slug, allCategories }: any) => {
           <div className="md:flex justify-between items-end mt-2 md:mt-0">
             <div>
               <h4 className="text-white max-w-[900px] font-semibold text-2xl md:text-3xl">
-                {selectItem?.title}
+                {post?.title}
               </h4>
               <h4 className="text-secondary text-lg my-2 md:mb-0">
-                {posts.name}
+                {post?.categories?.nodes?.[0]?.name}
               </h4>
             </div>
             <ul className="flex text-white items-center gap-3 text-xl md:text-2xl">
               <li>Share: </li>
               <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://api.whatsapp.com/send?text=https://paigham.tv/article/${selectItem.slug}`} >
+                <Link href={`https://api.whatsapp.com/send?text=https://paigham.tv/article/${post.slug}`} >
                   <FaWhatsapp size={25} />
                 </Link>
               </li>
               <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://www.facebook.com/sharer/sharer.php?u=https://paigham.tv/article/${selectItem.slug}`} >
+                <Link href={`https://www.facebook.com/sharer/sharer.php?u=https://paigham.tv/article/${post.slug}`} >
                   <FaFacebook />
                 </Link>
               </li>
               <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://www.instagram.com/?url=https://paigham.tv/article/${selectItem.slug}`} >
+                <Link href={`https://www.instagram.com/?url=https://paigham.tv/article/${post.slug}`} >
                   <FaInstagram />
                 </Link>
               </li>
               {/* <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://www.instagram.com/?url=https://paigham.tv/article/${selectItem.slug}`} >
+                <Link href={`https://www.instagram.com/?url=https://paigham.tv/article/${post.slug}`} >
                   <FaTiktok />
                 </Link>
               </li> */}
               <li className="hover:text-secondary cursor-pointer">
-                <Link  href={`https://twitter.com/intent/tweet?text=https://paigham.tv/article/${selectItem.slug}`} >
+                <Link  href={`https://twitter.com/intent/tweet?text=https://paigham.tv/article/${post.slug}`} >
                   <BsTwitter />
                 </Link>
               </li>
               <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://www.linkedin.com/shareArticle?mini=true&url=https://paigham.tv/article/${selectItem.slug}`} >
+                <Link href={`https://www.linkedin.com/shareArticle?mini=true&url=https://paigham.tv/article/${post.slug}`} >
                   <FaLinkedinIn />
                 </Link>
               </li>
@@ -158,7 +141,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
           <div
             className="max-w-[800px] md:text-xl mt-4 text-gray-400 "
             dangerouslySetInnerHTML={{
-              __html: selectItem?.excerpt || posts?.description,
+              __html: post?.excerpt || post?.description,
             }}
           />
         </div>
@@ -182,7 +165,25 @@ const Category = ({ posts, slug, allCategories }: any) => {
       <div className="md:px-2 mt-20 relative">
         <Slider {...sliderSettings} ref={slider}>
           {nodes?.map((item: IPost, idx: number) => (
-            <Card item={item} key={idx} OpenVideo={OpenVideo} slug />
+            <div className="px-1 group" key={idx}>
+              <div className="bg-black rounded-lg overflow-hidden">
+                <div className="bg-red-300 relative overflow-hidden ">
+                  <Link href={`/article/${item?.slug}`}>
+                    <Image
+                      src={item?.featuredImage?.node?.mediaItemUrl}
+                      alt="image"
+                      width={700}
+                      height={400}
+                      className=" w-full object-cover transition-all h-[150px] md:h-[170px] duration-200 ease-in-out"
+                    />
+                    <div className=" group-hover:bg-black/40 absolute inset-0 group-hover:cursor-pointer p-3 md:p-6 flex flex-col justify-end font-metapro " />
+                  </Link>
+                </div>
+              </div>
+              <h4 className={`${"text-white"} font-medium md:px-2 tracking-wide my-3 line-clamp-2`}>
+                <Link href={`/article/${item?.slug}`}>{item?.title}</Link>
+              </h4>
+            </div>
           ))}
         </Slider>
         <div className={nodes?.length > 4 ? "" : "lg:hidden"}>
@@ -219,16 +220,23 @@ const Category = ({ posts, slug, allCategories }: any) => {
   );
 };
 
-export default Category;
+export default SingleArticle;
 
 export const getServerSideProps: any = async (context: any) => {
   const queryParam = context?.query?.sort;
-
   const slug = context.params?.slug;
+
   const response = await apolloClient.query({
+    query: SinglePost,
+    variables: {
+      slug: context?.query?.slug,
+    },
+  });
+
+  const sameCategoriesResponse = await apolloClient.query({
     query: PostsByCategory,
     variables: {
-      slug,
+      slug: response.data.post?.categories?.nodes?.[0]?.slug,
       order: queryParam,
     },
   });
@@ -237,22 +245,15 @@ export const getServerSideProps: any = async (context: any) => {
     apolloClient.query({ query: HomeCategories }),
   ]);
 
-  const posts = response.data.category;
+  const post = response.data.post;
   const allCategories = categories.data.categories.nodes;
+  const relatedPost = sameCategoriesResponse?.data.category;
 
   return {
     props: {
-      posts,
-      slug,
+      post,
+      relatedPost,
       allCategories,
     },
   };
 };
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const paths: any = [];
-//   return {
-//     paths,
-//     fallback: "blocking",
-//   };
-// };

@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 
 const Card = ({ item, OpenVideo, slug, textColor, activeCategory }: any) => {
   const router = useRouter()
+  const isArticle =  router?.pathname.includes("article")
+  console.log("🚀 ~ Card ~ router:", router, isArticle)
 
   const { language, setVideoLink } = useContext(SettingsContext);
   var title = item.title;
@@ -30,7 +32,7 @@ const Card = ({ item, OpenVideo, slug, textColor, activeCategory }: any) => {
 
   function VideoPl (){
     setVideoLink(item?.postInfo?.tmVideoUrl);
-    router.push(`/category/${activeCategory}`);
+    router.push(`/${isArticle ? "article" : "category"}/${ isArticle ? slug : activeCategory}`);
   }
   
 

@@ -58,6 +58,31 @@ export const AllPosts = gql`
   }
 `;
 
+export const SinglePost = gql`
+  query SinglePost($slug: ID!) {
+    post(id: $slug, idType: SLUG) {
+      title
+      slug
+      featuredImage {
+        node {
+          mediaItemUrl
+        }
+      }
+      categories {
+        nodes {
+          slug
+          name
+        }
+      }
+      postInfo {
+        tmVideoUrl
+        urduTitle
+        arabicTitle
+      }
+    }
+  }
+`;
+
 export const PostsByTags = gql`
   query PostByTags($slug: ID!) {
     tag(id: $slug, idType: SLUG) {
@@ -101,8 +126,8 @@ export const AllTags = gql`
 
 // post by category pass category slug in qury
 export const PostsByCategory = gql`
-query PostsByCategory($slug: ID!, $order: OrderEnum = DESC) {
-  category(id: $slug, idType: SLUG) {
+  query PostsByCategory($slug: ID!, $order: OrderEnum = DESC) {
+    category(id: $slug, idType: SLUG) {
       name
       slug
       description
@@ -111,7 +136,7 @@ query PostsByCategory($slug: ID!, $order: OrderEnum = DESC) {
           mediaItemUrl
         }
       }
-      posts(first: 1000, where: {orderby: {field: DATE, order: $order}}) {
+      posts(first: 1000, where: { orderby: { field: DATE, order: $order } }) {
         nodes {
           title
           slug
@@ -178,7 +203,10 @@ export const Categories = gql`
 `;
 export const HomeCategories = gql`
   query HomeCategories {
-    categories(first: 1000, where: {include: ["1", "80", "123", "60"], order: DESC}) {
+    categories(
+      first: 1000
+      where: { include: ["1", "80", "123", "60"], order: DESC }
+    ) {
       nodes {
         name
         slug
