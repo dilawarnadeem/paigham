@@ -23,6 +23,7 @@ import {
   programsScheduling,
   AllScholars,
   HomeCategories,
+  NewsTickers,
 } from "@/config/query";
 import { GetStaticProps } from "next";
 import Card from "@/components/video-section/card";

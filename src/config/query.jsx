@@ -58,6 +58,20 @@ export const AllPosts = gql`
   }
 `;
 
+export const NewsTickers = gql`
+query NewQuery {
+  hadithBy(hadithId: 4299) {
+    title
+    news_tickers {
+      newsTicker {
+        title
+        info
+      }
+    }
+  }
+}
+`
+
 export const SinglePost = gql`
   query SinglePost($slug: ID!) {
     post(id: $slug, idType: SLUG) {
