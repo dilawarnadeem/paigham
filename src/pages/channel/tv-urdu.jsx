@@ -6,7 +6,7 @@ const TVUrdu = () => {
       <iframe
         width="100%"
         height="100%"
-        src="https://www.youtube.com/embed/6PqM5vszwmk?si=8L7kkYzZ22wykN58"
+        src="https://www.youtube.com/watch?v=11IDr_Iy7PU"
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -14,7 +14,7 @@ const TVUrdu = () => {
         allowfullscreen
       ></iframe>
       <a
-        href="https://sscsott.com/pk/paighamtv/index.m3u8"
+        href="https://sscsott.com/pk/paighamtv/embed.html"
         className="px-10 py-2 bg-blue text-white rounded  block my-10 "
       >
         Live URDU
