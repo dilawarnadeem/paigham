@@ -21,7 +21,6 @@ import { BsTwitter } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa6";
 
 const Category = ({ posts, slug, allCategories }: any) => {
-  console.log("🚀 ~ Category ~ posts:", posts)
   const {
     posts: { nodes },
   } = posts;

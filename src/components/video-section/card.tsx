@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 const Card = ({ item, OpenVideo, slug, textColor, activeCategory }: any) => {
   const router = useRouter()
   const isArticle =  router?.pathname.includes("article")
-  console.log("🚀 ~ Card ~ router:", router, isArticle)
 
   const { language, setVideoLink } = useContext(SettingsContext);
   var title = item.title;
