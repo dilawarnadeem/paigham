@@ -4,43 +4,20 @@ import { GetStaticProps } from "next";
 import apolloClient from "@/config/client";
 import { AllPosts, NewsTickers } from "@/config/query";
 
-const query = `
-  query NewQuery {
-    hadithBy(hadithId: 4299) {
-      title
-      news_tickers {
-        newsTicker {
-          title
-          info
-        }
-      }
-    }
-  }
-`;
-
 const TopBar = () => {
   const [hadith, setHadith] = useState<any>();
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch( "http://ant.a59.mywebsitetransfer.com/graphql", {
-            method: "POST",
-            mode: 'no-cors',
+        const response = await fetch( "http://localhost:3000/api/tickers", {
+            method: "GET",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-              query: query,
-            }),
           }
         );
-
-        // Check if the response is okay
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
         const { data } = await response.json();
+        console.log("🚀 ~ data:", data)
 
         setHadith(data?.hadithBy);
         return data;
