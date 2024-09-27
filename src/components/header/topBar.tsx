@@ -23,10 +23,9 @@ const TopBar = () => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch(
-          "http://ant.a59.mywebsitetransfer.com/graphql",
-          {
+        const response = await fetch( "http://ant.a59.mywebsitetransfer.com/graphql", {
             method: "POST",
+            mode: 'no-cors',
             headers: {
               "Content-Type": "application/json",
             },
@@ -42,6 +41,7 @@ const TopBar = () => {
         }
 
         const { data } = await response.json();
+
         setHadith(data?.hadithBy);
         return data;
       } catch (error) {
