@@ -1,26 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { headerSlider } from "../../../public/data";
-import { GetStaticProps } from "next";
-import apolloClient from "@/config/client";
-import { AllPosts, NewsTickers } from "@/config/query";
 
 const TopBar = () => {
   const [hadith, setHadith] = useState<any>();
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch( "http://localhost:3000/api/tickers", {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const { data } = await response.json();
-        console.log("🚀 ~ data:", data)
-
-        setHadith(data?.hadithBy);
-        return data;
+        const response = await fetch("/api/tickers",{
+          method: "GET",
+          mode: "no-cors"
+        });
+        const data = await response.json();
+        setHadith(data?.tickers?.hadithBy)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
