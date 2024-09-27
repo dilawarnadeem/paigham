@@ -33,13 +33,14 @@ const TopBar = () => {
                       }),
                     });
                     const {data} = await response.json();
+                    console.log("🚀 ~ data:", data)
                     setHadith(data?.hadithBy)
                     return data;
                   } catch (error) {
                     console.error('Error fetching data:', error);
                   }
           })()
-     },[])
+     },[hadith])
 
      return (
           <>
