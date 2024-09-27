@@ -58,7 +58,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(`https://paigham.tv/article/${selectItem?.slug}`);
-      alert("Text copied to clipboard!");
+      alert("Link copied to clipboard!");
     } catch (err) {
       console.error("Failed to copy text: ", err);
     }
@@ -111,32 +111,32 @@ const Category = ({ posts, slug, allCategories }: any) => {
             <ul className="flex text-white items-center gap-3 text-xl md:text-2xl">
               <li>Share: </li>
               <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://api.whatsapp.com/send?text=https://paigham.tv/article/${selectItem.slug}`} >
+                <Link href={`https://api.whatsapp.com/send?text=https://paigham.tv/article/${selectItem?.slug}`} >
                   <FaWhatsapp size={25} />
                 </Link>
               </li>
               <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://www.facebook.com/sharer/sharer.php?u=https://paigham.tv/article/${selectItem.slug}`} >
+                <Link href={`https://www.facebook.com/sharer/sharer.php?u=https://paigham.tv/article/${selectItem?.slug}`} >
                   <FaFacebook />
                 </Link>
               </li>
               <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://www.instagram.com/?url=https://paigham.tv/article/${selectItem.slug}`} >
+                <Link href={`https://www.instagram.com/?url=https://paigham.tv/article/${selectItem?.slug}`} >
                   <FaInstagram />
                 </Link>
               </li>
               {/* <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://www.instagram.com/?url=https://paigham.tv/article/${selectItem.slug}`} >
+                <Link href={`https://www.instagram.com/?url=https://paigham.tv/article/${selectItem?.slug}`} >
                   <FaTiktok />
                 </Link>
               </li> */}
               <li className="hover:text-secondary cursor-pointer">
-                <Link  href={`https://twitter.com/intent/tweet?text=https://paigham.tv/article/${selectItem.slug}`} >
+                <Link  href={`https://twitter.com/intent/tweet?text=https://paigham.tv/article/${selectItem?.slug}`} >
                   <BsTwitter />
                 </Link>
               </li>
               <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://www.linkedin.com/shareArticle?mini=true&url=https://paigham.tv/article/${selectItem.slug}`} >
+                <Link href={`https://www.linkedin.com/shareArticle?mini=true&url=https://paigham.tv/article/${selectItem?.slug}`} >
                   <FaLinkedinIn />
                 </Link>
               </li>
