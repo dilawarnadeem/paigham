@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div id="app">
       <SettingsProvider>
-        <Header />
+        {/* <Header /> */}
         <Component {...pageProps} />
         <Footer />
       </SettingsProvider>
