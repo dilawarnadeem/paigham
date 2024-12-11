@@ -176,44 +176,44 @@ export const PostsByCategory = gql`
 `;
 
 export const Categories = gql`
-  query Categories {
-    categories(first: 1000) {
-      nodes {
-        name
-        slug
-        count
-        categoryInfo {
-          catImage {
-            mediaItemUrl
-          }
-          categoryBanner {
-            mediaItemUrl
-          }
-          featured
+query Categories {
+  categories(first: 1000) {
+    nodes {
+      name
+      slug
+      count
+      categoryInfo {
+        catImage {
+          mediaItemUrl
         }
-        posts(first: 1000) {
-          nodes {
-            title
-            slug
-            featuredImage {
-              node {
-                mediaItemUrl
-              }
+        categoryBanner {
+          mediaItemUrl
+        }
+        featured
+      }
+      posts {
+        nodes {
+          title
+          status
+          featuredImage {
+            node {
+              mediaItemUrl
             }
-            categories {
-              nodes {
-                slug
-                name
-              }
+          }
+          categories {
+            nodes {
+              name
+              slug
             }
-            postInfo {
-              tmVideoUrl
-            }
+          }
+          postInfo {
+            tmVideoUrl
           }
         }
       }
     }
   }
+}
 `;
 export const HomeCategories = gql`
   query HomeCategories {
