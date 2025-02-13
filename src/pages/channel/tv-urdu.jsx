@@ -10,7 +10,7 @@ const TVUrdu = () => {
       <iframe
         width="100%"
         height="100%"
-        src="https://www.youtube.com/channel/UC7hyoc-WXYfxHRZQAMWRyYQ/live"
+        src="https://www.youtube.com/embed/skEy_MZ-rds?si=msQ2rGxUEhuM6_Di"
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
