@@ -1,7 +1,11 @@
+import SeoMeta from '@/components/seo';
 import React from 'react';
 
 const TVUrdu = () => {
   return (
+    <>
+    <SeoMeta title="Paigham TV Live | #Live #PaighamTV | Paigham TV" url="/contact-us" description="Contact Us for preaching the true teachings of the Holy Quran and Sunnah " />
+           
     <div className="h-screen text-center flex flex-col items-center justify-center">
       <iframe
         width="100%"
@@ -20,6 +24,7 @@ const TVUrdu = () => {
         Live URDU
       </a>
     </div>
+    </>
   );
 };
 
