@@ -15,7 +15,7 @@ export default function Donate_us() {
                 <div className=' justify-between items-center  mb-10  '>
 
                     <div className='pt-6'>
-                        <p> <strong> Account Title: </strong>   Zam Zam Welfare Trust</p>
+                        <p> <strong> Account Title: </strong>   Zam Zam Welfare Trus</p>
                         <p><strong>Account Number: </strong>    0709217001</p>
                         <p><strong>IBAN NO:</strong>   PK45DUIB0000000709217001</p>
                         <p> <strong>Branch Name: </strong>   Ravi Road Branch Lahore, Pakistan</p>
