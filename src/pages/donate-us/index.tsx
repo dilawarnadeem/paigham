@@ -5,7 +5,7 @@ import { request, gql } from "graphql-request";
 import PageBanner from "@/components/pageBanner/PageBanner";
 import SeoMeta from "@/components/seo";
 
-const WP_GRAPHQL_URI = "http://ant.a59.mywebsitetransfer.com/graphql";
+const WP_GRAPHQL_URI = "https://ant.a59.mywebsitetransfer.com/graphql";
 
 // Define form fields structure
 interface LeadFormData {
