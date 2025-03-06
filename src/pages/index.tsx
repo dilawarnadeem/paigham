@@ -288,7 +288,7 @@ const tabData = [
   // },
   {
     name: "Ramzan 1446/2025",
-    slug: "ramzan",
+    slug: "ramzan-1446-2025",
   },
   {
     name: "Short Clips",

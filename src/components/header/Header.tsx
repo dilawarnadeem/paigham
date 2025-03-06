@@ -110,7 +110,7 @@ const Header = () => {
                 navList.map((item, idx) => (
                   <li key={idx} className='font-metapro flex items-center gap-2 hover:text-secondary cursor-pointer py-3 md:py-0 tracking-wide font-semibold capitalize text-lg text-pure' onClick={() => NavController(item.link)}>
                     {item.name}
-                    {item?.icon && <img src={item?.icon} alt="TV Pashto" className="w-[32px] invert"/>}
+                    {item?.icon && <img src={item?.icon} alt="TV Pashto" className="w-[32px]"/>}
                   </li>
                 ))
               }
