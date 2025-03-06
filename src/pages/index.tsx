@@ -157,27 +157,23 @@ const TabsSection = ({ allposts }: any) => {
         {posts?.map((item: any, idx: number) => (
           <div className="px-1 group" key={idx}>
             <div className="bg-black rounded-lg overflow-hidden">
-              <div
-                className="bg-red-300 relative overflow-hidden "
-              >
+              <div className="bg-red-300 relative overflow-hidden ">
                 <Link href={`/article/${item.slug}`}>
-                <Image
-                  src={item?.featuredImage?.node?.mediaItemUrl}
-                  alt="image"
-                  width={700}
-                  height={400}
-                  className=" w-full object-cover transition-all h-[150px] md:h-[210px] duration-200 ease-in-out"
-                />
-                <div className=" group-hover:bg-black/40 absolute inset-0 group-hover:cursor-pointer p-3 md:p-6 flex flex-col justify-end font-metapro " />
+                  <Image
+                    src={item?.featuredImage?.node?.mediaItemUrl}
+                    alt="image"
+                    width={700}
+                    height={400}
+                    className=" w-full object-cover transition-all h-[150px] md:h-[210px] duration-200 ease-in-out"
+                  />
+                  <div className=" group-hover:bg-black/40 absolute inset-0 group-hover:cursor-pointer p-3 md:p-6 flex flex-col justify-end font-metapro " />
                 </Link>
               </div>
             </div>
             <h4
               className={`font-medium md:px-2 tracking-wide my-3 line-clamp-2`}
             >
-              <Link href={`/article/${item.slug}`}>
-              {item?.title}
-              </Link>
+              <Link href={`/article/${item.slug}`}>{item?.title}</Link>
             </h4>
           </div>
         ))}
@@ -215,9 +211,12 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
                   key={idx}
                   className="flex md:flex-row flex-col items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5"
                 >
-                  <time className="font-medium text-xl min-w-[120px] whitespace-nowrap">
-                    {item?.programInfo?.programTime || `0000`}
-                  </time>
+                  <div className="w-full max-w-[240px] lg:max-w-[280px]">
+                    <time className="font-medium text-xl">
+                      {item?.programInfo?.programTime || `0000`}
+                    </time>
+                  </div>
+
                   <button className="bg-black/80 w-full md:w-auto min-w-[240px] flex justify-center items-center min-h-[180px] sm:min-h-[220px] md:!min-h-[120px] group">
                     <Image
                       src="/images/ytbutton.png"
