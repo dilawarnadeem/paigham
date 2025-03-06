@@ -1,21 +1,14 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import Main from "@/components/main/Main";
 import Link from "next/link";
 import { HiOutlineArrowRight } from "react-icons/hi";
-import CategoryCard from "@/components/category-card/CategoryCard";
 import ScholarCard from "@/components/scholar-card/ScholarCard";
 import DonateNow from "@/components/donateNow/DonateNow";
-import VideoSection from "@/components/video-section/VideoSection";
 import { useState } from "react";
-import { PiPlay } from "react-icons/pi";
-import VideoPlayer from "@/components/video-player/VideoPlayer";
 import { getVideoCode } from "../utils";
 import { SettingsContext } from "@/context/setting-context";
 import React, { useContext } from "react";
-import { category } from "../../public/data";
 import { IScholorType } from "@/utils/types";
-import { Helmet } from "react-helmet";
 import apolloClient from "@/config/client";
 import {
   AllPosts,
@@ -26,8 +19,6 @@ import {
   NewsTickers,
 } from "@/config/query";
 import { GetStaticProps } from "next";
-import Card from "@/components/video-section/card";
-import FacebookVideoPlayer from "@/components/video-player/FacebookPlayer";
 import SeoMeta from "@/components/seo";
 import CateCard from "@/components/cate-card/CatCard";
 import { useRouter } from "next/router";
