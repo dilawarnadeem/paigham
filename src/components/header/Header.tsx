@@ -158,5 +158,9 @@ const navList = [
   {
     name: 'TV Guide',
     link: '/program-scheduling'
+  },
+  {
+    name: 'Live TV',
+    link: '/live'
   }
 ]
