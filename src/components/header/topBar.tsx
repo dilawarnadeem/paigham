@@ -8,7 +8,6 @@ const TopBar = () => {
         const response = await fetch("/api/tickers",{
           method: "GET",
           mode: "no-cors",
-          next: { revalidate: 60 }
         });
         const data = await response.json();
         setHadith(data?.tickers?.hadithBy)

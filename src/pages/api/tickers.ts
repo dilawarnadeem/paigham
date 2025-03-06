@@ -22,6 +22,8 @@ export default async function handler(
     const response = await fetch( "http://ant.a59.mywebsitetransfer.com/graphql", {
       method: "POST",
       mode: 'no-cors',
+      next: { revalidate: 60 },
+      cache: "no-store",
       headers: {
         "Content-Type": "application/json",
       },
