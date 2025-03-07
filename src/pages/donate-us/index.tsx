@@ -1,13 +1,9 @@
 "use client";
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { request, gql } from "graphql-request";
 import PageBanner from "@/components/pageBanner/PageBanner";
 import SeoMeta from "@/components/seo";
 
-const WP_GRAPHQL_URI = "https://ant.a59.mywebsitetransfer.com/graphql";
-
-// Define form fields structure
 interface LeadFormData {
   name: string;
   contactNumber: string;
@@ -20,25 +16,12 @@ interface LeadFormData {
   transactionId?: string;
 }
 
-// Define the response type for the GraphQL mutation
-interface CreateDonationLeadResponse {
-  createDonationLead: {
-    success: boolean;
-    message: string;
-    donationLead?: {
-      id: string;
-      title: string;
-      contactNumber: string;
-      email: string;
-      city: string;
-      purpose: string;
-      donationAmount: number;
-      personalMessage: string;
-    };
-  };
+interface ApiResponse {
+  message: string;
+  success: boolean;
 }
 
-export default function Donate_us() {
+export default function DonateUs() {
   const [formData, setFormData] = useState<LeadFormData>({
     name: "",
     contactNumber: "",
@@ -56,7 +39,6 @@ export default function Donate_us() {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [showThankYou, setShowThankYou] = useState<boolean>(false);
 
-  // Handle form input change
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
@@ -66,11 +48,9 @@ export default function Donate_us() {
       [name]:
         name === "donationAmount" ? (value ? parseFloat(value) : "") : value,
     }));
-    // Clear error when user starts typing
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
-  // Validate form fields
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
 
@@ -96,7 +76,6 @@ export default function Donate_us() {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Handle form submission
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -104,51 +83,31 @@ export default function Donate_us() {
     setLoading(true);
     setMessage(null);
 
-    const mutation = gql`
-      mutation CreateDonationLead($input: CreateDonationLeadInput!) {
-        createDonationLead(input: $input) {
-          success
-          message
-          donationLead {
-            id
-            title
-            contactNumber
-            email
-            city
-            purpose
-            donationAmount
-            personalMessage
-          }
-        }
-      }
-    `;
-
-    const variables = {
-      input: {
-        title: formData.name,
-        contactNumber: formData.contactNumber,
-        email: formData.email || null,
-        city: formData.city,
-        purpose: formData.purpose,
-        donationAmount: formData.donationAmount
-          ? Number(formData.donationAmount)
-          : 0,
-        personalMessage: formData.personalMessage || null,
-        paymentMethod: formData.paymentMethod,
-        transactionId: formData.transactionId || null,
-      },
-    };
-
     try {
-      const response = await request<CreateDonationLeadResponse>(
-        WP_GRAPHQL_URI,
-        mutation,
-        variables
-      );
+      const response = await fetch("/api/submitDonation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: formData.name,
+          contactNumber: formData.contactNumber,
+          email: formData.email || null,
+          city: formData.city,
+          purpose: formData.purpose,
+          donationAmount: formData.donationAmount
+            ? Number(formData.donationAmount)
+            : 0,
+          personalMessage: formData.personalMessage || null,
+          paymentMethod: formData.paymentMethod,
+          transactionId: formData.transactionId || null,
+        }),
+      });
 
-      setMessage(response.createDonationLead.message);
+      const result: ApiResponse = await response.json();
+      setMessage(result.message);
 
-      if (response.createDonationLead.success) {
+      if (result.success) {
         setShowThankYou(true);
       }
 
@@ -164,7 +123,7 @@ export default function Donate_us() {
         transactionId: "",
       });
     } catch (error) {
-      setMessage("Failed to submit lead. Please try again. " + error);
+      setMessage("Failed to submit lead. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -647,15 +606,32 @@ export default function Donate_us() {
       {/* Thank You Popup */}
       {showThankYou && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-            <h2 className="text-2xl font-semibold mb-4">Thank You!</h2>
-            <p>Your donation has been successfully submitted.</p>
-            <button
-              onClick={() => setShowThankYou(false)}
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-            >
-              Close
-            </button>
+          <div className="bg-white pt-2 p-6 rounded-lg shadow-lg text-center m-4 font-mehr">
+            <div className="ml-auto text-right">
+              <button onClick={() => setShowThankYou(false)}>❌</button>
+            </div>
+            <div className="text-center">
+              <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+                <p className="text-xl font-bold text-gray-800 mb-3 font-mehr">
+                  جزاکم اللہ خیراً! 🌸
+                </p>
+                <p className="text-lg text-gray-600 mb-3 ">
+                  اللہ تعالیٰ آپ کے اس صدقہ و خیرات کو قبول فرمائے اور آپ کو بے
+                  حساب برکتوں اور نعمتوں سے نوازے۔
+                </p>
+                <p className=" text-xl font-bold  text-gray-800 border-l-4 border-green-500 pl-3 mb-3">
+                  نبی کریم ﷺ نے فرمایا: "اللہ فرماتا ہے: اے ابن آدم! خرچ کرو،
+                  میں تم پر خرچ کروں گا۔"
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    (صحیح مسلم: 993)
+                  </span>
+                </p>
+                <p className="text-lg text-gray-600">
+                  آپ کی سخاوت دوسروں کے لیے روشنی اور رحمت کا ذریعہ بنے! 💖✨
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       )}
