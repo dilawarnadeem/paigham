@@ -37,7 +37,7 @@ export default function DonateUs() {
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string | null>(null);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [showThankYou, setShowThankYou] = useState<boolean>(true);
+  const [showThankYou, setShowThankYou] = useState<boolean>(false);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -606,20 +606,20 @@ export default function DonateUs() {
       {/* Thank You Popup */}
       {showThankYou && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white pt-2 p-6 rounded-lg shadow-lg text-center">
+          <div className="bg-white pt-2 p-6 rounded-lg shadow-lg text-center m-4 font-mehr">
             <div className="ml-auto text-right">
               <button onClick={() => setShowThankYou(false)}>❌</button>
             </div>
             <div className="text-center">
               <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
-                <p className="text-lg font-bold text-gray-800 mb-3">
+                <p className="text-xl font-bold text-gray-800 mb-3 font-mehr">
                   جزاکم اللہ خیراً! 🌸
                 </p>
-                <p className="text-base text-gray-600 mb-3">
+                <p className="text-lg text-gray-600 mb-3 ">
                   اللہ تعالیٰ آپ کے اس صدقہ و خیرات کو قبول فرمائے اور آپ کو بے
                   حساب برکتوں اور نعمتوں سے نوازے۔
                 </p>
-                <p className="text-base text-gray-700 italic border-l-4 border-green-500 pl-3 mb-3">
+                <p className=" text-xl font-bold  text-gray-800 border-l-4 border-green-500 pl-3 mb-3">
                   نبی کریم ﷺ نے فرمایا: "اللہ فرماتا ہے: اے ابن آدم! خرچ کرو،
                   میں تم پر خرچ کروں گا۔"
                   <span className="text-sm text-gray-500">
@@ -627,7 +627,7 @@ export default function DonateUs() {
                     (صحیح مسلم: 993)
                   </span>
                 </p>
-                <p className="text-base text-gray-600">
+                <p className="text-lg text-gray-600">
                   آپ کی سخاوت دوسروں کے لیے روشنی اور رحمت کا ذریعہ بنے! 💖✨
                 </p>
               </div>
