@@ -52,7 +52,7 @@ const PaighamChannelPresents = ({ programs }: any) => {
                       handleLink(getVideoCode(item?.programInfo?.videoUrl))
                     }
                   >
-                    <h6 className="text-primary font-semibold md:text-xl font-medium text-start -tracking-wide">
+                    <h6 className="text-primary font-semibold md:text-xl text-start -tracking-wide">
                       {item.title}
                     </h6>
                     <div
