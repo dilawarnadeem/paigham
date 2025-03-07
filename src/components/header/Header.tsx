@@ -108,7 +108,10 @@ const Header = () => {
             <ul className='lg:flex items-center text-white gap-8'>
               {
                 navList.map((item, idx) => (
-                  <li key={idx} className='font-metapro hover:text-secondary cursor-pointer py-3 md:py-0 tracking-wide font-semibold capitalize text-lg text-pure' onClick={() => NavController(item.link)}>{item.name}</li>
+                  <li key={idx} className='font-metapro flex items-center gap-2 hover:text-secondary cursor-pointer py-3 md:py-0 tracking-wide font-semibold capitalize text-lg text-pure' onClick={() => NavController(item.link)}>
+                    {item.name}
+                    {item?.icon && <img src={item?.icon} alt="TV Pashto" className="w-[32px]"/>}
+                  </li>
                 ))
               }
               <li className="hidden cursor-pointer md:block"><HiMenu size={28} onClick={() => setLeftSideBar(true)} /></li>
@@ -158,5 +161,10 @@ const navList = [
   {
     name: 'TV Guide',
     link: '/program-scheduling'
+  },
+  {
+    name: 'Live TV',
+    link: '/live',
+    icon: "/images/live.png"
   }
 ]

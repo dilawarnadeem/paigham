@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Marquee from "react-fast-marquee";
 
 const TopBar = () => {
   const [hadith, setHadith] = useState<any>();
@@ -7,7 +8,8 @@ const TopBar = () => {
       try {
         const response = await fetch("/api/tickers",{
           method: "GET",
-          mode: "no-cors"
+          mode: "no-cors",
+          next: { revalidate: 60 }
         });
         const data = await response.json();
         setHadith(data?.tickers?.hadithBy)
@@ -21,8 +23,9 @@ const TopBar = () => {
     <>
       {/* top bar with smooth scrolling  */}
       <div className="overflow-x-hidden bg-secondary">
-        <div className="py-2 animate-marquee_Ltr rtl:animate-marquee_Rtl whitespace-nowrap flex ">
-          {hadith?.news_tickers?.newsTicker.map((item: any, idx: any) => {
+        <div className="py-2">
+        <Marquee direction="right">
+          {hadith?.news_tickers?.newsTicker?.map((item: any, idx: any) => {
             return (
               <div className="flex items-center" key={idx}>
                 <div className="p-[2.5px] px-3 bg-blue" />
@@ -33,6 +36,7 @@ const TopBar = () => {
               </div>
             );
           })}
+        </Marquee>
         </div>
       </div>
     </>

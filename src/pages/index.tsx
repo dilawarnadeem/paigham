@@ -1,21 +1,14 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import Main from "@/components/main/Main";
 import Link from "next/link";
 import { HiOutlineArrowRight } from "react-icons/hi";
-import CategoryCard from "@/components/category-card/CategoryCard";
 import ScholarCard from "@/components/scholar-card/ScholarCard";
 import DonateNow from "@/components/donateNow/DonateNow";
-import VideoSection from "@/components/video-section/VideoSection";
 import { useState } from "react";
-import { PiPlay } from "react-icons/pi";
-import VideoPlayer from "@/components/video-player/VideoPlayer";
 import { getVideoCode } from "../utils";
 import { SettingsContext } from "@/context/setting-context";
 import React, { useContext } from "react";
-import { category } from "../../public/data";
 import { IScholorType } from "@/utils/types";
-import { Helmet } from "react-helmet";
 import apolloClient from "@/config/client";
 import {
   AllPosts,
@@ -26,8 +19,6 @@ import {
   NewsTickers,
 } from "@/config/query";
 import { GetStaticProps } from "next";
-import Card from "@/components/video-section/card";
-import FacebookVideoPlayer from "@/components/video-player/FacebookPlayer";
 import SeoMeta from "@/components/seo";
 import CateCard from "@/components/cate-card/CatCard";
 import { useRouter } from "next/router";
@@ -166,27 +157,23 @@ const TabsSection = ({ allposts }: any) => {
         {posts?.map((item: any, idx: number) => (
           <div className="px-1 group" key={idx}>
             <div className="bg-black rounded-lg overflow-hidden">
-              <div
-                className="bg-red-300 relative overflow-hidden "
-              >
+              <div className="bg-red-300 relative overflow-hidden ">
                 <Link href={`/article/${item.slug}`}>
-                <Image
-                  src={item?.featuredImage?.node?.mediaItemUrl}
-                  alt="image"
-                  width={700}
-                  height={400}
-                  className=" w-full object-cover transition-all h-[150px] md:h-[210px] duration-200 ease-in-out"
-                />
-                <div className=" group-hover:bg-black/40 absolute inset-0 group-hover:cursor-pointer p-3 md:p-6 flex flex-col justify-end font-metapro " />
+                  <Image
+                    src={item?.featuredImage?.node?.mediaItemUrl}
+                    alt="image"
+                    width={700}
+                    height={400}
+                    className=" w-full object-cover transition-all h-[150px] md:h-[210px] duration-200 ease-in-out"
+                  />
+                  <div className=" group-hover:bg-black/40 absolute inset-0 group-hover:cursor-pointer p-3 md:p-6 flex flex-col justify-end font-metapro " />
                 </Link>
               </div>
             </div>
             <h4
               className={`font-medium md:px-2 tracking-wide my-3 line-clamp-2`}
             >
-              <Link href={`/article/${item.slug}`}>
-              {item?.title}
-              </Link>
+              <Link href={`/article/${item.slug}`}>{item?.title}</Link>
             </h4>
           </div>
         ))}
@@ -224,9 +211,12 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
                   key={idx}
                   className="flex md:flex-row flex-col items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5"
                 >
-                  <time className="font-medium text-xl min-w-[120px] whitespace-nowrap">
-                    {item?.programInfo?.programTime || `0000`}
-                  </time>
+                  <div className="w-full max-w-[240px] lg:max-w-[280px]">
+                    <time className="font-medium text-xl">
+                      {item?.programInfo?.programTime || `0000`}
+                    </time>
+                  </div>
+
                   <button className="bg-black/80 w-full md:w-auto min-w-[240px] flex justify-center items-center min-h-[180px] sm:min-h-[220px] md:!min-h-[120px] group">
                     <Image
                       src="/images/ytbutton.png"
@@ -292,9 +282,13 @@ const tabData = [
     name: "Latest",
     slug: "latest",
   },
+  // {
+  //   name: "Hajj & Eid al Adha",
+  //   slug: "hajj",
+  // },
   {
-    name: "Hajj & Eid al Adha",
-    slug: "hajj",
+    name: "Ramzan 1446/2025",
+    slug: "ramzan-1446-2025",
   },
   {
     name: "Short Clips",
