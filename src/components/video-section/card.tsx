@@ -39,7 +39,7 @@ const Card = ({ item, OpenVideo, slug, textColor, activeCategory }: any) => {
     <div className="px-1 group">
       <div className="bg-black rounded-lg overflow-hidden">
         <div className="bg-red-300 relative overflow-hidden " onClick={handlePlay}>
-          <Image
+          <img
             src={item?.featuredImage?.node?.mediaItemUrl}
             alt="image"
             width={700}
