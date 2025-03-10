@@ -159,7 +159,7 @@ const TabsSection = ({ allposts }: any) => {
             <div className="bg-black rounded-lg overflow-hidden">
               <div className="bg-red-300 relative overflow-hidden ">
                 <Link href={`/article/${item.slug}`}>
-                  <Image
+                  <img
                     src={item?.featuredImage?.node?.mediaItemUrl}
                     alt="image"
                     width={700}
