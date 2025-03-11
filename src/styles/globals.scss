@@ -176,3 +176,8 @@ body {
  .slick-list {
      padding:0 20% 0 0 !important;
  }
+ .slick-dots{
+     bottom: 0;
+     left: 50% !important;
+     transform: translateX(-50%);
+ }
