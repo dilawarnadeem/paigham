@@ -19,23 +19,27 @@ const Main = ({posts}:any) => {
     <main className='relative h-[40vh] sm:h-[65vh] md:h-[80vh]'>
       <div className='hidden md:block'>
         <Slider ref={slider} {...settings} >
-          <div className='relative w-full bg-[url("/images/banner/banner1.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+          <div className='relative w-full bg-[url("/images/banner/slider1.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
             <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
             </div>
           </div>
-          <div className='relative w-full bg-[url("/images/banner/banner2.jpeg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+          <div className='relative w-full bg-[url("/images/banner/slider2.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
             <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
             </div>
           </div>
-          <div className='relative w-full bg-[url("/images/banner/banner3.jpeg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+          <div className='relative w-full bg-[url("/images/banner/slider3.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
             <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
             </div>
           </div>
-          <div className='relative w-full bg-[url("/images/banner/banner4.jpeg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+          <div className='relative w-full bg-[url("/images/banner/slider4.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
             <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
             </div>
           </div>
-          <div className='relative w-full bg-[url("/images/banner/banner5.jpeg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+          <div className='relative w-full bg-[url("/images/banner/slider5.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
+            <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
+            </div>
+          </div>
+          <div className='relative w-full bg-[url("/images/banner/slider6.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
             <div className='container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center'>
             </div>
           </div>
