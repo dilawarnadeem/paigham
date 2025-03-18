@@ -332,7 +332,7 @@ export default function DonateUs() {
                       className="mr-2"
                     />
                     Bank Transfer
-                  </label>
+                             {/*    </label>
                   <label className="flex items-center">
                     <input
                       type="radio"
@@ -354,7 +354,7 @@ export default function DonateUs() {
                       className="mr-2"
                     />
                     EasyPaisa
-                  </label>
+                  </label> */}
                 </div>
               </div>
 
