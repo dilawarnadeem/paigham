@@ -19,7 +19,7 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
   try {
-    const response = await fetch( "http://ant.a59.mywebsitetransfer.com/graphql", {
+    const response = await fetch( "https://zamzamwelfaretrust.com/graphql", {
       method: "POST",
       mode: 'no-cors',
       next: { revalidate: 60 },
