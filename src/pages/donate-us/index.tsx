@@ -321,7 +321,7 @@ export default function DonateUs() {
                   Select Payment Method:
                 </label>
                 <div className="flex items-center space-x-4">
-                  <label className="flex items-center">
+                  <label className="flex items-center" />
                     <input
                       type="radio"
                       name="paymentMethod"
