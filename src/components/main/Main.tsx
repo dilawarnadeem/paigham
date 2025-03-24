@@ -68,7 +68,7 @@ const Main = ({ posts }: any) => {
         className="absolute top-1/2 left-1 md:left-2 transform -translate-y-1/2 bg-dark-gray active:scale-105 text-yellow text-xl p-[6px] px-1.5 md:px-5"
         onClick={() => slider.current.slickPrev()} // Ensure slider exists
       >
-        <Image
+        <img
           src="/svg/left-slider-arrow.svg"
           alt="left arrow"
           width={60}
@@ -81,7 +81,7 @@ const Main = ({ posts }: any) => {
         className="absolute top-1/2 right-1 md:right-2 transform -translate-y-1/2 bg-dark-gray active:scale-105 text-yellow text-xl p-[6px] px-1.5 md:px-5"
         onClick={() => slider.current.slickNext()} // Ensure slider exists
       >
-        <Image
+        <img
           src="/svg/right-slider-arrow.svg"
           alt="right arrow"
           width={60}

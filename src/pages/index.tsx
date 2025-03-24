@@ -218,7 +218,7 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
                   </div>
 
                   <button className="bg-black/80 w-full md:w-auto min-w-[240px] flex justify-center items-center min-h-[180px] sm:min-h-[220px] md:!min-h-[120px] group">
-                    <Image
+                    <img
                       src="/images/ytbutton.png"
                       alt="icon"
                       onClick={() =>

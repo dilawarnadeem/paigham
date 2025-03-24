@@ -52,7 +52,7 @@ export default function About_us() {
                         <p> <span className='font-bold'>Downlink Freq:</span>  4093</p>
                         <p> <span className='font-bold'>Symbol Rate:</span>  2400</p>
                         <p> <span className='font-bold'>Polarity: </span>  Vertical</p>
-                        <Image src="/images/tv_banner.jpg" className='my-6' alt="" width="1000" height="666" />
+                        <img src="/images/tv_banner.jpg" className='my-6' alt="" width="1000" height="666" />
 
                     </div>
                 </div>
