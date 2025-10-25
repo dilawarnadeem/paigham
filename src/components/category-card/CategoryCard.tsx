@@ -39,7 +39,7 @@ const CategoryCard = ({ items }: any) => {
                         <div className=' group-hover:bg-black/40 absolute inset-0 p-3 md:p-6 flex flex-col justify-end font-metapro'/>
                       </div>
                     </div>
-                      <h4 className='text-white font-medium md:px-2 tracking-wide my-3 line-clamp-2'>{item?.title}</h4>
+                    <Link href={item.slug}><h4 className='text-white font-medium md:px-2 tracking-wide my-3 line-clamp-2'>{item?.title}</h4></Link> 
                   </div>
                 </>
               )

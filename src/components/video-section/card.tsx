@@ -4,10 +4,12 @@ import { getVideoCode } from "@/utils";
 import { PiPlay } from "react-icons/pi";
 import { SettingsContext } from "@/context/setting-context";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Card = ({ item, OpenVideo, slug, textColor, activeCategory }: any) => {
   const router = useRouter()
   const isArticle =  router?.pathname.includes("article")
+
 
   const { language, setVideoLink } = useContext(SettingsContext);
   var title = item.title;
@@ -38,20 +40,23 @@ const Card = ({ item, OpenVideo, slug, textColor, activeCategory }: any) => {
   return (
     <div className="px-1 group">
       <div className="bg-black rounded-lg overflow-hidden">
-        <div className="bg-red-300 relative overflow-hidden " onClick={handlePlay}>
+        <div className="bg-red-300 relative overflow-hidden">
+          <Link href={`/article/${item.slug}`}>
           <img
             src={item?.featuredImage?.node?.mediaItemUrl}
             alt="image"
             width={700}
             height={400}
             className=" w-full object-cover transition-all h-[150px] md:h-[170px] duration-200 ease-in-out"
-          />
+          /></Link>
           <div className=" group-hover:bg-black/40 absolute inset-0 group-hover:cursor-pointer p-3 md:p-6 flex flex-col justify-end font-metapro "/>
         </div>
       </div>
+      
       <h4 className={`${textColor ? textColor : 'text-white' } font-medium md:px-2 tracking-wide my-3 line-clamp-2`}>
-        {title}
+       <Link href={`/article/${item.slug}`}>{title}</Link>
       </h4>
+      
     </div>
   );
 };

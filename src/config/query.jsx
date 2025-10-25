@@ -299,6 +299,7 @@ export const PostsByScholar = gql`
     ) {
       nodes {
         title
+        slug
         content
         postInfo {
           tmVideoUrl
