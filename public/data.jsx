@@ -92,19 +92,19 @@ export const footerNav = [
     nav: [
       {
         name: 'Qari Sohaib Ahemd',
-        link: '/qari-sohaib-ahemd-meer-muhammadi?id=2712',
+        link: '/scholars/qari-sohaib-ahemd-meer-muhammadi?id=2712',
       },
       {
         name: 'Dr Hammad Lakhvi',
-        link: '/dr-hammad-lakhvi?id=220',
+        link: '/scholars/dr-hammad-lakhvi?id=220',
       },
       {
         name: 'Yousuf Siraj',
-        link: '/hafiz-m-yousuf-siraj?id=1337',
+        link: '/scholars/hafiz-m-yousuf-siraj?id=1337',
       },
       {
         name: 'Abdul Malik Mujahid',
-        link: '/abdul-malik-mujahid?id=2664',
+        link: '/scholars/abdul-malik-mujahid?id=2664',
       },
     ],
   },
