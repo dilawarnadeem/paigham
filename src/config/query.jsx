@@ -195,6 +195,7 @@ query Categories {
         nodes {
           title
           status
+          slug
           featuredImage {
             node {
               mediaItemUrl
@@ -244,6 +245,7 @@ export const programsScheduling = gql`
     programsScheduling(first: 3) {
       nodes {
         title
+        slug
         excerpt
         programInfo {
           videoUrl
