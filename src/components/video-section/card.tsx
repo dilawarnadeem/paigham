@@ -1,7 +1,4 @@
-import Image from "next/image";
 import React, { useContext } from "react";
-import { getVideoCode } from "@/utils";
-import { PiPlay } from "react-icons/pi";
 import { SettingsContext } from "@/context/setting-context";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -9,7 +6,6 @@ import Link from "next/link";
 const Card = ({ item, OpenVideo, slug, textColor, activeCategory }: any) => {
   const router = useRouter()
   const isArticle =  router?.pathname.includes("article")
-
 
   const { language, setVideoLink } = useContext(SettingsContext);
   var title = item.title;
