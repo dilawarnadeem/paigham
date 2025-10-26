@@ -7,12 +7,10 @@ import { SettingsContext } from "@/context/setting-context";
 import { useRouter } from "next/router";
 import Slider from "react-slick";
 import { sliderSettings } from "@/utils";
-
 const CategoryCard = ({ items }: any) => {
   const { setVideoLink } = useContext(SettingsContext);
   const router = useRouter();
   const slider = React.useRef<any>(null);
-
   return (
     <>
       <div className="flex justify-between container mx-auto px-2 pt-12 pb-6 items-center text-white">
