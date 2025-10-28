@@ -4,7 +4,6 @@ import Slider from "react-slick";
 import ChannelLinks from "../header/channelLinks";
 
 const Main = ({ posts }: any) => {
-
   console.log("Posts in Main:", posts);
   const slider = React.useRef<any>(null);
   const settings = {
@@ -19,15 +18,13 @@ const Main = ({ posts }: any) => {
 
   return (
     <main className="relative h-[40vh] sm:h-[65vh] md:h-[80vh]">
-      <div className="">
+      <div className="hidden md:block">
         <Slider ref={slider} {...settings}>
           {posts?.map((post: any, index: number) => {
             const image =
               post?.featuredImage?.node?.mediaItemUrl ||
               "/images/banner/slider1.jpg";
-            const mobileimage =
-              post?.slideInfo?.mobileImage?.mediaItemUrl ||
-              "/images/banner/2.jpg";
+
             return (
               <div
                 className="relative w-full   h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat"
@@ -38,14 +35,31 @@ const Main = ({ posts }: any) => {
                   width={1600}
                   height={583}
                   alt="Featured Image"
-                  className="absolute h-full w-full object-cover object-center md:block hidden"
+                  className="absolute h-full w-full object-cover object-center "
                 />
+              </div>
+            );
+          })}
+        </Slider>
+      </div>
+
+      <div className="block md:hidden">
+        <Slider ref={slider} {...settings}>
+          {posts?.map((post: any, index: number) => {
+            const mobileimage =
+              post?.slideInfo?.mobileImage?.mediaItemUrl ||
+              "/images/mobile/2.jpg";
+            return (
+              <div
+                className="relative w-full   h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat"
+                key={index}
+              >
                 <Image
                   src={mobileimage}
                   width={360}
                   height={460}
                   alt="Featured Image"
-                  className="absolute h-full w-full object-cover object-center md:hidden block"
+                  className="absolute h-full w-full object-cover object-center "
                 />
               </div>
             );
