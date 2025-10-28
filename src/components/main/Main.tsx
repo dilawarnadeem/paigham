@@ -27,7 +27,7 @@ const Main = ({ posts }: any) => {
 
             return (
               <div
-                className="relative w-full   h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat"
+                className="relative w-full h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat"
                 key={index}
               >
                 <Image
@@ -51,7 +51,7 @@ const Main = ({ posts }: any) => {
               "/images/mobile/2.jpg";
             return (
               <div
-                className="relative w-full   h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat"
+                className="relative w-full h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat"
                 key={index}
               >
                 <Image
