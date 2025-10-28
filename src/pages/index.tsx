@@ -17,6 +17,7 @@ import {
   AllScholars,
   HomeCategories,
   NewsTickers,
+  SlidesQuery,
 } from "@/config/query";
 import { GetStaticProps } from "next";
 import SeoMeta from "@/components/seo";
@@ -28,6 +29,7 @@ export default function Home({
   allCategories,
   allProgramsScheduling,
   Scholars,
+  Slider,
 }: any) {
   const { setModelIsOpen, setVideoLink } = useContext(SettingsContext);
   const OpenVideo = (link: string) => {
@@ -47,7 +49,7 @@ export default function Home({
         description="Paigham TV is an Islamic educational channel television network. The production of this channel is based on the teachings of Quran o Sunnah. "
       />
 
-      <Main posts={allposts} />
+      <Main posts={Slider} />
       <TabsSection allposts={allposts} allCategories={allCategories} />
       <PaighamChannelPresents
         programs={allProgramsScheduling}
@@ -253,12 +255,13 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [postsResponse, categories, programs, Scholars_Res] = await Promise.all(
+  const [postsResponse, categories, programs, Scholars_Res , Slider] = await Promise.all(
     [
       apolloClient.query({ query: AllPosts }),
       apolloClient.query({ query: HomeCategories }),
       apolloClient.query({ query: programsScheduling }),
       apolloClient.query({ query: AllScholars }),
+       apolloClient.query({ query: SlidesQuery }),
     ]
   );
 
@@ -267,12 +270,14 @@ export const getStaticProps: GetStaticProps = async () => {
   const allProgramsScheduling = programs.data.programsScheduling.nodes;
 
   const Scholars = Scholars_Res.data.scholars.nodes;
+  const sliderData = Slider.data.slides.nodes;
   return {
     props: {
       allposts,
       allCategories,
       allProgramsScheduling,
       Scholars,
+      Slider: sliderData,
     },
   };
 };

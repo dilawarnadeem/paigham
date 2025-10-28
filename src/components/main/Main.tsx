@@ -19,76 +19,38 @@ const Main = ({ posts }: any) => {
     <main className="relative h-[40vh] sm:h-[65vh] md:h-[80vh]">
       <div className="hidden md:block">
         <Slider ref={slider} {...settings}>
-          <div className='relative w-full bg-[url("/images/banner/slider1.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className="container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center"></div>
-          </div>
-          <div className='relative w-full bg-[url("/images/banner/slider2.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className="container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center"></div>
-          </div>
-          <div className='relative w-full bg-[url("/images/banner/slider3.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className="container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center"></div>
-          </div>
-          <div className='relative w-full bg-[url("/images/banner/slider4.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className="container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center"></div>
-          </div>
-          <div className='relative w-full bg-[url("/images/banner/slider5.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className="container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center"></div>
-          </div>
-          <div className='relative w-full bg-[url("/images/banner/slider6.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className="container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center"></div>
-          </div>
+          {posts?.map((post: any, index: number) => {
+            const image =
+              post?.featuredImage?.node?.mediaItemUrl ||
+              "/images/banner/slider1.jpg";
+            const mobileimage =
+              post?.slideInfo?.mobileImage?.mediaItemUrl ||
+              "/images/banner/slider1.jpg";
+            return (
+              <div
+                className="relative w-full   h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat"
+                key={index}
+              >
+                <Image
+                  src={image}
+                  width={1600}
+                  height={583}
+                  alt="Featured Image"
+                  className="absolute h-full w-full object-cover object-center md:block hidden"
+                />
+                <Image
+                  src={mobileimage}
+                  width={360}
+                  height={460}
+                  alt="Featured Image"
+                  className="absolute h-full w-full object-cover object-center md:hidden block"
+                />
+              </div>
+            );
+          })}
         </Slider>
       </div>
-      {/* For Mobile  */}
-      <div className="md:hidden">
-        <Slider ref={slider} {...settings}>
-          <div className='relative w-full bg-[url("/images/banner/mobile/1.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className="container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center"></div>
-          </div>
-          <div className='relative w-full bg-[url("/images/banner/mobile/2.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className="container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center"></div>
-          </div>
-          <div className='relative w-full bg-[url("/images/banner/mobile/3.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className="container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center"></div>
-          </div>
-          <div className='relative w-full bg-[url("/images/banner/mobile/4.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className="container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center"></div>
-          </div>
-          <div className='relative w-full bg-[url("/images/banner/mobile/5.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className="container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center"></div>
-          </div>
-          <div className='relative w-full bg-[url("/images/banner/mobile/6.jpg")]  h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat'>
-            <div className="container mx-auto text-white h-[40vh] sm:h-[65vh] md:h-[80vh] font-metapro lg:px-16 2xl:px-0 flex flex-col items-center md:items-start justify-center"></div>
-          </div>
-        </Slider>
-      </div>
-
       <ChannelLinks />
-      {/* <button
-        className="absolute top-1/2 left-1 md:left-2 transform -translate-y-1/2 bg-dark-gray active:scale-105 text-yellow text-xl p-[6px] px-1.5 md:px-5"
-        onClick={() => slider.current.slickPrev()} // Ensure slider exists
-      >
-        <img
-          src="/svg/left-slider-arrow.svg"
-          alt="left arrow"
-          width={60}
-          height={60}
-          className="w-7 md:w-16"
-        />
-      </button>
-
-      <button
-        className="absolute top-1/2 right-1 md:right-2 transform -translate-y-1/2 bg-dark-gray active:scale-105 text-yellow text-xl p-[6px] px-1.5 md:px-5"
-        onClick={() => slider.current.slickNext()} // Ensure slider exists
-      >
-        <img
-          src="/svg/right-slider-arrow.svg"
-          alt="right arrow"
-          width={60}
-          height={60}
-          className="w-7 md:w-16"
-        />
-      </button> */}
     </main>
   );
 };

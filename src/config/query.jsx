@@ -59,18 +59,18 @@ export const AllPosts = gql`
 `;
 
 export const NewsTickers = gql`
-query NewQuery {
-  hadithBy(hadithId: 4299) {
-    title
-    news_tickers {
-      newsTicker {
-        title
-        info
+  query NewQuery {
+    hadithBy(hadithId: 4299) {
+      title
+      news_tickers {
+        newsTicker {
+          title
+          info
+        }
       }
     }
   }
-}
-`
+`;
 
 export const SinglePost = gql`
   query SinglePost($slug: ID!) {
@@ -176,45 +176,45 @@ export const PostsByCategory = gql`
 `;
 
 export const Categories = gql`
-query Categories {
-  categories(first: 1000) {
-    nodes {
-      name
-      slug
-      count
-      categoryInfo {
-        catImage {
-          mediaItemUrl
-        }
-        categoryBanner {
-          mediaItemUrl
-        }
-        featured
-      }
-      posts {
-        nodes {
-          title
-          status
-          slug
-          featuredImage {
-            node {
-              mediaItemUrl
-            }
+  query Categories {
+    categories(first: 1000) {
+      nodes {
+        name
+        slug
+        count
+        categoryInfo {
+          catImage {
+            mediaItemUrl
           }
-          categories {
-            nodes {
-              name
-              slug
-            }
+          categoryBanner {
+            mediaItemUrl
           }
-          postInfo {
-            tmVideoUrl
+          featured
+        }
+        posts {
+          nodes {
+            title
+            status
+            slug
+            featuredImage {
+              node {
+                mediaItemUrl
+              }
+            }
+            categories {
+              nodes {
+                name
+                slug
+              }
+            }
+            postInfo {
+              tmVideoUrl
+            }
           }
         }
       }
     }
   }
-}
 `;
 export const HomeCategories = gql`
   query HomeCategories {
@@ -333,6 +333,26 @@ export const SearchPost = gql`
         }
         featuredImage {
           node {
+            mediaItemUrl
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const SlidesQuery = gql`
+  query Slides {
+    slides {
+      nodes {
+        title
+        featuredImage {
+          node {
+            mediaItemUrl
+          }
+        }
+        slideInfo {
+          mobileImage {
             mediaItemUrl
           }
         }
