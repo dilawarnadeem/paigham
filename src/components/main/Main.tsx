@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import ChannelLinks from "../header/channelLinks";
 
 const Main = ({ posts }: any) => {
+
+  console.log("Posts in Main:", posts);
   const slider = React.useRef<any>(null);
   const settings = {
     dots: true,
@@ -17,7 +19,7 @@ const Main = ({ posts }: any) => {
 
   return (
     <main className="relative h-[40vh] sm:h-[65vh] md:h-[80vh]">
-      <div className="hidden md:block">
+      <div className="">
         <Slider ref={slider} {...settings}>
           {posts?.map((post: any, index: number) => {
             const image =
@@ -25,7 +27,7 @@ const Main = ({ posts }: any) => {
               "/images/banner/slider1.jpg";
             const mobileimage =
               post?.slideInfo?.mobileImage?.mediaItemUrl ||
-              "/images/banner/slider1.jpg";
+              "/images/banner/2.jpg";
             return (
               <div
                 className="relative w-full   h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat"
