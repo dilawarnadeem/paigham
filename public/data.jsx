@@ -128,22 +128,34 @@ export const footerNav = [
         name: 'All Videos',
         link: '/videos',
       },
+      {
+        name: 'Privacy Policy',
+        link: '/privacy-policy',
+      },
+       {
+        name: 'Terms & Conditions',
+        link: '/terms-conditions',
+      },
     ],
   },
   {
     name: 'TAGS',
     nav: [
       {
-        name: 'Happy',
-        link: '/tags/happy',
+        name: 'Paigham TV',
+        link: '/tags/paigham-tv',
       },
       {
-        name: 'Motivated',
+        name: 'Islamic TV App',
         link: '/tags/motivated',
       },
       {
-        name: 'Sad',
-        link: '/tags/sad',
+        name: 'Online Quran Classes',
+        link: '/tags/online-quran-classes',
+      },
+      {
+        name: 'Muslim TV Channel',
+        link: '/tags/muslim-tv-channel',
       },
     ],
   },
