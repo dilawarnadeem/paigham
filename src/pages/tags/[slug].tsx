@@ -8,7 +8,14 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import React, { useContext, useEffect } from 'react'
 
 const Tags = ({ posts }: any) => {
+
+  
   const { name, posts: { nodes } } = posts
+
+  const postsList = nodes;
+
+
+
   const { setModelIsOpen, setVideoLink } = useContext(SettingsContext)
   const OpenVideo = (link: string) => {
     setModelIsOpen(true)
@@ -17,15 +24,11 @@ const Tags = ({ posts }: any) => {
   
   return (
     <>
-      {
-        nodes?.slice(0,1).map((item: IPost, idx: number) => (
-          <Category_Banner key={idx} item={item}/>
-        ))
-      }
+      
       <h2 className='container mx-auto text-3xl font-bold px-4 my-10'>{name}</h2>
       <div className='grid grid-cols-2 container mx-auto  px-4 lg:grid-cols-4 gap-4 mb-20'>
         {
-          nodes?.slice(1).map((item: IPost, idx: number) => (
+          postsList.map((item: IPost, idx: number) => (
             <Card item={item} key={idx} OpenVideo={OpenVideo} slug/>
           ))
         }
