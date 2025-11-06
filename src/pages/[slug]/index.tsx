@@ -32,7 +32,7 @@ export default function DynamicPage({ page }: PageProps) {
       />
       <PageBanner title={page.title} image={bannerImage} />
 
-      <section className="container mx-auto mb-28 px-4">
+      <section className="container mx-auto mb-28 px-4 page_content">
         {/* heading  */}
         <div className=" justify-between items-center mt-10 mb-10  ">
           <div

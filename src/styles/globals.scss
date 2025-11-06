@@ -6,178 +6,181 @@
 @tailwind utilities;
 
 @font-face {
-     font-family: Anton;
-     src: url("../../public/fonts/Anton-Regular.ttf");
-     font-weight: 700;
+  font-family: Anton;
+  src: url("../../public/fonts/Anton-Regular.ttf");
+  font-weight: 700;
 }
 @font-face {
-     font-family: metapro;
-     src: url("../../public/fonts/FFMetaProBold.TTF");
-     font-weight: 700;
+  font-family: metapro;
+  src: url("../../public/fonts/FFMetaProBold.TTF");
+  font-weight: 700;
 }
 @font-face {
-     font-family: metapro;
-     src: url("../../public/fonts/FFMetaProBook.TTF");
-     font-weight: 500;
+  font-family: metapro;
+  src: url("../../public/fonts/FFMetaProBook.TTF");
+  font-weight: 500;
 }
 @font-face {
-     font-family: metapro;
-     src: url("../../public/fonts/FFMetaProCondBd.TTF");
-     font-weight: 600;
+  font-family: metapro;
+  src: url("../../public/fonts/FFMetaProCondBd.TTF");
+  font-weight: 600;
 }
 @font-face {
-     font-family: metapro;
-     src: url("../../public/fonts/FFMetaProCondRg.TTF");
-     font-weight: 400;
+  font-family: metapro;
+  src: url("../../public/fonts/FFMetaProCondRg.TTF");
+  font-weight: 400;
 }
 @font-face {
-     font-family: metapro;
-     src: url("../../public/fonts/FFMetaProLight.TTF");
-     font-weight: 300;
+  font-family: metapro;
+  src: url("../../public/fonts/FFMetaProLight.TTF");
+  font-weight: 300;
 }
 
 @font-face {
-     font-family: 'montserrat';
-     font-style: normal;
-     font-weight: 400;
-     src: url('../../public/fonts/Montserrat-Regular.woff') format('woff2');
-   }
+  font-family: "montserrat";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../public/fonts/Montserrat-Regular.woff") format("woff2");
+}
 
-   @font-face {
-     font-family: 'mehr';
-     font-style: normal;
-     font-weight: 400;
-     src: url('../../public/fonts/MehrNastaliqWebRegular.ttf') format('woff2');
-   }
+@font-face {
+  font-family: "mehr";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../public/fonts/MehrNastaliqWebRegular.ttf") format("woff2");
+}
 
+@font-face {
+  font-family: "nafeesweb";
+  src: url("../../public/fonts/nafeesweb.woff") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
+@font-face {
+  font-family: "NotoNastaliqUrdu";
+  src: url("../../public/fonts/NotoNastaliqUrdu-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
-
-   @font-face {
-     font-family: 'nafeesweb';
-     src: url('../../public/fonts/nafeesweb.woff') format('truetype');
-     font-weight: normal;
-     font-style: normal;
-   }
-   
-   @font-face {
-     font-family: 'NotoNastaliqUrdu';
-     src: url('../../public/fonts/NotoNastaliqUrdu-Regular.ttf') format('truetype');
-     font-weight: normal;
-     font-style: normal;
-   }
-   
-   @font-face {
-     font-family: 'jameelnoori';
-     src: url('../../public/fonts/jameel-noori.ttf') format('truetype');
-     font-weight: normal;
-     font-style: normal;
-   }
-
+@font-face {
+  font-family: "jameelnoori";
+  src: url("../../public/fonts/jameel-noori.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
-     overflow-x: hidden;
+  overflow-x: hidden;
 }
-
 
 //slick slider custom dots
 .slick-dots {
-     bottom: 0.5rem !important;
+  bottom: 0.5rem !important;
 }
 .sliceslider .slick-slide img {
-     padding: 12px;
+  padding: 12px;
 }
 
 .slick-disabled {
-     display: none;
+  display: none;
 }
 
 .slick-dots {
-     li {
-          width: 40px !important;
-          height: 5px !important;
-          button:before {
-               background: var(--pure);
-               content: "" !important;
-               width: 40px !important;
-               height: 5px !important;
-          }
-     }
-     .slick-active {
-          button:before {
-               background: var(--secondary);
-          }
-     }
+  li {
+    width: 40px !important;
+    height: 5px !important;
+    button:before {
+      background: var(--pure);
+      content: "" !important;
+      width: 40px !important;
+      height: 5px !important;
+    }
+  }
+  .slick-active {
+    button:before {
+      background: var(--secondary);
+    }
+  }
 }
 
 @media (min-width: 768px) {
-     .slick-dots {
-          bottom: 2rem !important;
-          left: 7% !important;
-          display: inline-flex;
-          width: auto !important;
-     }
+  .slick-dots {
+    bottom: 2rem !important;
+    left: 7% !important;
+    display: inline-flex;
+    width: auto !important;
+  }
 }
 .ReactModal__Overlay {
-     background: rgba(0, 0, 0, 0.1) !important;
-     z-index: 100;
+  background: rgba(0, 0, 0, 0.1) !important;
+  z-index: 100;
 }
 .no-scroll {
-     overflow: hidden;
+  overflow: hidden;
 }
-.videocontainer{
-     position: relative;
-     width: 100%;
-     overflow: hidden;
-     padding-top: 56.25%;
+.videocontainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 56.25%;
 }
 .responsive-iframe {
-     position: absolute;
-     top: 0;
-     left: 0;
-     bottom: 0;
-     right: 0;
-     width: 100%;
-     height: 100%;
-     border: none;
-   }
-   
-.x78zum5.xdt5ytf.xl56j7k{
-     display: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.x78zum5.xdt5ytf.xl56j7k {
+  display: none !important;
 }
 
 .iframe-container {
-     position: relative;
-     width: 100%;
-     padding-bottom: 48%; /* 16:9 aspect ratio (9 / 16 * 100) */
-     overflow: hidden;
- }
- 
- /* Iframe within the container */
- .iframe-container iframe {
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
- }
- #u_0_4_am{
-     padding-bottom: 56.25% !important;
- }
- .mb0{
-     padding-bottom: 0 !important;
- }
+  position: relative;
+  width: 100%;
+  padding-bottom: 48%; /* 16:9 aspect ratio (9 / 16 * 100) */
+  overflow: hidden;
+}
 
- .iframe-container .fb-video{
-     display: flex;
-     justify-content: center;
- }
+/* Iframe within the container */
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#u_0_4_am {
+  padding-bottom: 56.25% !important;
+}
+.mb0 {
+  padding-bottom: 0 !important;
+}
 
- .slick-list {
-     padding:0 20% 0 0 !important;
- }
- .slick-dots{
-     bottom: 0;
-     left: 50% !important;
-     transform: translateX(-50%);
- }
+.iframe-container .fb-video {
+  display: flex;
+  justify-content: center;
+}
+
+.slick-list {
+  padding: 0 20% 0 0 !important;
+}
+.slick-dots {
+  bottom: 0;
+  left: 50% !important;
+  transform: translateX(-50%);
+}
+
+.page_content h2 {
+  @apply text-3xl  md:text-3xl font-bold mb-5;
+}
+
+.page_content p {
+  @apply text-base mb-4;
+}
