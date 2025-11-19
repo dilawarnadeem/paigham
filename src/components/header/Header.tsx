@@ -160,7 +160,7 @@ const navList = [
   },
   {
     name: 'TV Guide',
-    link: '/program-scheduling'
+    link: '/tv-guide'
   },
   {
     name: 'Live TV',

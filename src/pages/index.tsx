@@ -203,7 +203,7 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
             {/* top headings  */}
             <div className="font-semibold flex justify-between sm:text-xl tracking-widest item-center">
               <h5>TODAY'S GUIDE</h5>
-              <Link href="/program-scheduling">
+              <Link href="/tv-guide">
                 <h5 className="text-secondary">FULL GUIDE</h5>
               </Link>
             </div>

@@ -242,18 +242,21 @@ export const HomeCategories = gql`
 
 export const programsScheduling = gql`
   query programsScheduling {
-    programsScheduling(first: 3) {
-      nodes {
-        title
-        slug
-        excerpt
-        programInfo {
-          videoUrl
-          programTime
+  allDay {
+    edges {
+      node {
+        name
+        programsScheduling {
+          nodes {
+            programInfo {
+              programTime
+            }
+          }
         }
       }
     }
   }
+}
 `;
 
 export const AllScholars = gql`
@@ -360,3 +363,17 @@ export const SlidesQuery = gql`
     }
   }
 `;
+
+export const GET_LIVE = gql`
+  query LivePage {
+    page(id: "35", idType: DATABASE_ID) {
+      title
+      liveInfo {
+        quranTv
+        pashtoTv
+        liveLink
+      }
+    }
+  }
+`;
+

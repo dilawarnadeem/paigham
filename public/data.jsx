@@ -122,7 +122,7 @@ export const footerNav = [
       },
       {
         name: 'TV Guide',
-        link: '/program-scheduling',
+        link: '/tv-guide',
       },
       {
         name: 'All Videos',
