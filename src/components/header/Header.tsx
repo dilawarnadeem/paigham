@@ -115,7 +115,7 @@ const Header = () => {
                 ))
               }
               <li className="hidden cursor-pointer md:block"><HiMenu size={28} onClick={() => setLeftSideBar(true)} /></li>
-              <li className="hidden relative cursor-pointer md:block">
+              {/* <li className="hidden relative cursor-pointer md:block">
                 <MdLanguage size={28} onClick={()=>(setOpenLang(!openLang))} className={openLang ? 'text-orange' : 'text-white'} />
                 {
                   openLang && <div className="absolute pt-5 -right-[43px]">
@@ -128,7 +128,7 @@ const Header = () => {
                 </div>
                 }
                 
-              </li>
+              </li> */}
               <li className={`hidden cursor-pointer md:block pr-4 rtl:pr-0 ${documentDirection === 'rtl' && 'pl-4'}`}><i className=''><FiSearch size={24} onClick={() => OpenSearch()} /></i></li>
             </ul>
             <Link href="/donate-us" className='uppercase mt-5 lg:mt-0 text-base w-[200px] lg:w-auto hover:bg-orange inline-block text-center active:scale:105 hover:border-orange text-pure border px-5 py-[9.5px] font-anton tracking-widest border-pure'>Donate us</Link>
