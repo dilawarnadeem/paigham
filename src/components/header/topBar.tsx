@@ -29,9 +29,8 @@ const TopBar = () => {
             return (
               <div className="flex items-center" key={idx}>
                 <div className="p-[2.5px] px-3 bg-blue" />
-                <span className="mx-2 text-xl leading-9 -mt-1 font-mehr text-[#050007] ">
-                  {" "}
-                  {item.info}
+                <span className="mx-2 text-sm md:text-xl leading-9 -mt-1 font-mehr text-[#050007] ">
+                     {item.info}
                 </span>
               </div>
             );
