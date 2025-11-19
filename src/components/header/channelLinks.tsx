@@ -31,19 +31,19 @@ export default ChannelLinks;
 const navButons = [
   {
     name: "TV Urdu",
-    link: "/live",
+    link: "/live-tv",
     icon: "/images/tv_icon.png",
     live: "/images/live.png",
   },
   {
     name: "Quran TV",
-    link: "/live",
+    link: "/live-tv",
     icon: "/images/tv_icon.png",
     live: "/images/live.png",
   },
   {
     name: "TV Pashto",
-    link: "/live",
+    link: "/live-tv",
     icon: "/images/pashto_icon.png",
     live: "/images/live.png",
   },

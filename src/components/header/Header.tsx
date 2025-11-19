@@ -164,7 +164,7 @@ const navList = [
   },
   {
     name: 'Live TV',
-    link: '/live',
+    link: '/live-tv',
     icon: "/images/live.png"
   }
 ]
