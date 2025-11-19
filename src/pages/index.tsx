@@ -18,6 +18,7 @@ import {
   HomeCategories,
   NewsTickers,
   SlidesQuery,
+  ProgramsSchedulingByDay,
 } from "@/config/query";
 import { GetStaticProps } from "next";
 import SeoMeta from "@/components/seo";
@@ -185,18 +186,14 @@ const TabsSection = ({ allposts }: any) => {
 };
 
 // Paigham Channel Presents
-const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
-  const { setVideoLink } = useContext<any>(SettingsContext);
-
-  const handleLink = (link: string) => {
-    setVideoLink(link);
-  };
+const PaighamChannelPresents = ({ programs }: any) => {
+  console.log(programs);
 
   return (
     <section className="bg-primary mt-20">
       <div className="container font-metapro mx-auto px-4 text-white py-16">
         <h2 className=" text-3xl text-center md:text-5xl font-bold">
-          Paigham Channel Presents
+          Today On Paigham TV
         </h2>
         <div className="md:flex mt-10 md:gap-x-10 ">
           <div className="md:w-full mt-5 md:mt-0">
@@ -208,7 +205,7 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
               </Link>
             </div>
             <ul className="mt-5">
-              {programs.map((item: any, idx: number) => (
+              {programs?.map((item: any, idx: number) => (
                 <li
                   key={idx}
                   className="flex md:flex-row flex-col items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5"
@@ -219,23 +216,7 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
                     </time>
                   </div>
 
-                  <button className="bg-black/80 w-full md:w-auto min-w-[240px] flex justify-center items-center min-h-[180px] sm:min-h-[220px] md:!min-h-[120px] group">
-                    <img
-                      src="/images/ytbutton.png"
-                      alt="icon"
-                      onClick={() =>
-                        OpenVideo(getVideoCode(item?.programInfo?.videoUrl))
-                      }
-                      width={80}
-                      height={40}
-                      className="group-hover:scale-105 transition-all duration-200 ease-linear"
-                    />
-                  </button>
-                  <button
-                    onClick={() =>
-                      handleLink(getVideoCode(item?.programInfo?.videoUrl))
-                    }
-                  >
+                  <div>
                     <h6 className="text-secondary sm:text-xl font-medium text-start -tracking-wide">
                       {item.title}
                     </h6>
@@ -243,7 +224,7 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
                       className="text-start sm:text-lg mt-2"
                       dangerouslySetInnerHTML={{ __html: item?.excerpt }}
                     />
-                  </button>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -255,19 +236,19 @@ const PaighamChannelPresents = ({ programs, OpenVideo }: any) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [postsResponse, categories, programs, Scholars_Res , Slider] = await Promise.all(
-    [
+  const [postsResponse, categories, programs, Scholars_Res, Slider] =
+    await Promise.all([
       apolloClient.query({ query: AllPosts }),
       apolloClient.query({ query: HomeCategories }),
-      apolloClient.query({ query: programsScheduling }),
+      apolloClient.query({ query: ProgramsSchedulingByDay }),
       apolloClient.query({ query: AllScholars }),
-       apolloClient.query({ query: SlidesQuery }),
-    ]
-  );
+      apolloClient.query({ query: SlidesQuery }),
+    ]);
 
   const allposts = postsResponse.data.posts.nodes;
   const allCategories = categories.data.categories.nodes;
-  const allProgramsScheduling = programs.data.programsScheduling.nodes;
+  const allProgramsScheduling =
+    programs.data.singleDay.programsScheduling.nodes;
 
   const Scholars = Scholars_Res.data.scholars.nodes;
   const sliderData = Slider.data.slides.nodes;

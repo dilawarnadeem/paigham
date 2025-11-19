@@ -1,14 +1,8 @@
 import PageBanner from "@/components/pageBanner/PageBanner";
-
-import { Helmet } from "react-helmet";
 import apolloClient from "@/config/client";
 import { programsScheduling } from "@/config/query";
 import { GetStaticProps } from "next";
-import Link from "next/link";
-import { SettingsContext } from "@/context/setting-context";
 import React, { useContext } from "react";
-import VideoPlayer from "@/components/video-player/VideoPlayer";
-import { getVideoCode } from "../../utils";
 import SeoMeta from "@/components/seo";
 
 const PaighamChannelPresents = ({ programs }: any) => {

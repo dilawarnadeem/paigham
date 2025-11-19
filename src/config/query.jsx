@@ -259,6 +259,22 @@ export const programsScheduling = gql`
 }
 `;
 
+export const ProgramsSchedulingByDay = gql`
+query ProgramsSchedulingByDay {
+  singleDay(id: "monday", idType: SLUG) {
+    id
+    name
+    programsScheduling {
+      nodes {
+        title
+        programInfo {
+          programTime
+        }
+      }
+    }
+  }
+}`;
+
 export const AllScholars = gql`
   query AllScholars {
     scholars(first: 50, where: { orderby: { order: ASC, field: MENU_ORDER } }) {
