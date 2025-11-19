@@ -109,11 +109,11 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
                   <FaInstagram />
                 </Link>
               </li>
-              {/* <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://www.instagram.com/?url=https://paigham.tv/article/${post.slug}`} >
-                  <FaTiktok />
+              <li className="hover:text-secondary cursor-pointer">
+                <Link href={`https://www.tiktok.com/upload?url=https://paigham.tv/article/${post.slug}`} >
+                  <FaTiktok  />
                 </Link>
-              </li> */}
+              </li>
               <li className="hover:text-secondary cursor-pointer">
                 <Link  href={`https://twitter.com/intent/tweet?text=https://paigham.tv/article/${post.slug}`} >
                   <BsTwitter />
