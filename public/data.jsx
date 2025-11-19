@@ -117,16 +117,8 @@ export const footerNav = [
       },
 
       {
-        name: 'Contact',
+        name: 'Contact Us',
         link: '/contact-us',
-      },
-      {
-        name: 'TV Guide',
-        link: '/tv-guide',
-      },
-      {
-        name: 'All Videos',
-        link: '/videos',
       },
       {
         name: 'Privacy Policy',

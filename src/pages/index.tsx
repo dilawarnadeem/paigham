@@ -268,10 +268,6 @@ const tabData = [
     name: "Latest",
     slug: "latest",
   },
-  // {
-  //   name: "Hajj & Eid al Adha",
-  //   slug: "hajj",
-  // },
   {
     name: "Ramzan 1446/2025",
     slug: "ramzan-1446-2025",
