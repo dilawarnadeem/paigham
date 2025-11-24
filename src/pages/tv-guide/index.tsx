@@ -6,51 +6,69 @@ import React, { useContext } from "react";
 import SeoMeta from "@/components/seo";
 
 const PaighamChannelPresents = ({ programs }: any) => {
+  const [activeDay, setActiveDay] = React.useState(programs[0]?.node?.name);
+
+  const days = programs.map((d: any) => d.node.name);
+
+  const activePrograms = programs.find(
+    (d: any) => d.node.name === activeDay
+  )?.node.programsScheduling.nodes;
+
   return (
     <section className="bg-white">
       <div className="container font-metapro mx-auto px-4 text-primary py-16">
-        
-        <div className="md:flex mt-10 md:gap-x-10">
-          <div className="md:w-full mt-5 md:mt-0">
-            <ul className="mt-5">
-              
-              {programs.map((day: any, idx: number) => (
-                <li
-                  key={idx}
-                  className="border-t-[1px] border-gray-300 py-5"
-                >
-                  {/* === DAY NAME === */}
-                  <div className="font-semibold text-xl tracking-widest mb-2">
-                    {day.node.name}
-                  </div>
 
-                  {/* === PROGRAM TIMES === */}
-                  {day.node.programsScheduling.nodes.length === 0 ? (
-                    <p className="text-gray-400">No programs available</p>
-                  ) : (
-                    day.node.programsScheduling.nodes.map(
-                      (program: any, pIdx: number) => (
-                        <div
-                          key={pIdx}
-                          className="flex justify-between md:gap-x-8 py-2"
-                        >
-                          <time className="font-medium md:text-xl">
-                            {program.programInfo.programTime}
-                          </time>
-                        </div>
-                      )
-                    )
-                  )}
-                </li>
-              ))}
-
-            </ul>
-          </div>
+        {/* === TABS === */}
+        <div className="flex gap-3 overflow-x-auto border-b pb-4">
+          {days.map((day: string, idx: number) => (
+            <button
+              key={idx}
+              onClick={() => setActiveDay(day)}
+              className={`px-4 py-2 font-semibold whitespace-nowrap
+                ${
+                  activeDay === day
+                    ? "bg-primary text-white rounded-lg"
+                    : "bg-gray-200 text-primary rounded-lg"
+                }
+              `}
+            >
+              {day}
+            </button>
+          ))}
         </div>
+
+        {/* === PROGRAMS FOR ACTIVE DAY === */}
+        <ul className="mt-8">
+          {activePrograms?.length === 0 ? (
+            <p className="text-gray-400">No programs available</p>
+          ) : (
+            activePrograms?.map((program: any, idx: number) => (
+              <li
+                key={idx}
+                className="flex gap-6 border-t border-gray-300 py-4"
+              >
+                <time className="font-medium text-xl w-32">
+                  {program.programInfo.programTime}
+                </time>
+
+                <div className="flex-1">
+                  <h6 className="font-semibold text-lg">
+                    {program.title}
+                  </h6>
+                  <div
+                    className="text-gray-600 mt-1"
+                    dangerouslySetInnerHTML={{ __html: program.excerpt }}
+                  />
+                </div>
+              </li>
+            ))
+          )}
+        </ul>
       </div>
     </section>
   );
 };
+
 
 
 export default function Program_Scheduling({ allProgramsScheduling }: any) {

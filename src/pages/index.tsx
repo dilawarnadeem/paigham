@@ -32,7 +32,7 @@ export default function Home({
   allProgramsScheduling,
   Scholars,
   Slider,
-  OptionsData
+  OptionsData,
 }: any) {
   const { setModelIsOpen, setVideoLink } = useContext(SettingsContext);
   const OpenVideo = (link: string) => {
@@ -44,8 +44,14 @@ export default function Home({
     (item: any) => item.categoryInfo.featured === true
   );
 
+  // Replace (or extend) your tabData using ACF categories
+  const tabData =
+    OptionsData?.categories?.nodes?.map((cat: any) => ({
+      name: cat.name,
+      slug: cat.slug,
+    })) || []; // fallback if empty
+
   return (
-    console.log(OptionsData),
     <>
       <SeoMeta
         title="Paigham TV | Jo Badal De Zindagi"
@@ -54,7 +60,11 @@ export default function Home({
       />
 
       <Main posts={Slider} Options={OptionsData} />
-      <TabsSection allposts={allposts} allCategories={allCategories} />
+      <TabsSection
+        allposts={allposts}
+        allCategories={allCategories}
+        tabData={tabData}
+      />
       <PaighamChannelPresents
         programs={allProgramsScheduling}
         OpenVideo={OpenVideo}
@@ -107,49 +117,42 @@ export default function Home({
 }
 
 // Tabs section
-const TabsSection = ({ allposts }: any) => {
+const TabsSection = ({ allposts, tabData }: any) => {
   const [posts, setPost] = useState<any>(allposts.slice(0, 8));
   const [activeCategory, setActiveCategory] = useState("latest");
   const router = useRouter();
 
   const HandleVideosCategoryTabs = (slug: string) => {
     setActiveCategory(slug);
-    const p =
+    const filtered =
       slug === "latest"
         ? allposts
         : allposts.filter((item: any) =>
-            item.categories.nodes.some((item: any) => item.slug === slug)
+            item.categories.nodes.some((cat: any) => cat.slug === slug)
           );
-    setPost(p.slice(0, 8));
-  };
-
-  const { setModelIsOpen, setVideoLink } = useContext(SettingsContext);
-  const OpenVideo = (link: string) => {
-    // setModelIsOpen(true)
-    // setVideoLink(link)
-    router?.push(`/article/${link}`);
+    setPost(filtered.slice(0, 8));
   };
 
   return (
     <section className="container mx-auto pt-36 sm:pt-20 px-2">
-      {/* top header  */}
       <div className="flex justify-between item-center border-b-2 border-gray-500">
-        <div className="grid grid-cols-4 sm:!flex flex-wrap justify-between space-x-2 w-full sm:w-auto font-metapro font-semibold  ">
-          {tabData.map((item, idx) => (
+        <div className="grid grid-cols-4 sm:!flex flex-wrap justify-between space-x-2 w-full sm:w-auto font-metapro font-semibold">
+          {/* Dynamic Tabs working now */}
+          {tabData?.map((item: any, idx: number) => (
             <li
               key={idx}
               className={`${
-                activeCategory === item.slug &&
-                "bg-secondary px-1 sm:px-4 py-2 text-primary "
-              } ${
-                idx === 1 && " col-span-2"
-              } flex-1 flex justify-center md:min-w-[180px] w-auto cursor-pointer items-center md:text-base text-sm`}
+                activeCategory === item.slug
+                  ? "bg-secondary px-1 sm:px-4 py-2 text-primary"
+                  : ""
+              } flex-1 flex justify-center md:min-w-[180px] cursor-pointer items-center`}
               onClick={() => HandleVideosCategoryTabs(item.slug)}
             >
               {item.name}
             </li>
           ))}
         </div>
+
         <Link
           href="/"
           className="uppercase hidden md:flex hover:text-orange items-center space-x-2 font-metapro text-xl tracking-widest font-semibold rtl:flex-row-reverse"
@@ -158,28 +161,24 @@ const TabsSection = ({ allposts }: any) => {
           <HiOutlineArrowRight />
         </Link>
       </div>
-      {/* articles  */}
+
       <div className="grid grid-cols-2 lg:grid-cols-4 mt-10 gap-2">
         {posts?.map((item: any, idx: number) => (
-          <div className="px-1 group" key={idx}>
+          <div key={idx} className="px-1 group">
             <div className="bg-black rounded-lg overflow-hidden">
-              <div className="bg-red-300 relative overflow-hidden ">
-                <Link href={`/article/${item.slug}`}>
-                  <img
-                    src={item?.featuredImage?.node?.mediaItemUrl || "/images/default.jpg"}
-                    alt="image"
-                    width={700}
-                    height={400}
-                    className=" w-full object-cover transition-all h-[150px] md:h-[210px] duration-200 ease-in-out"
-                  />
-                  <div className=" group-hover:bg-black/40 absolute inset-0 group-hover:cursor-pointer p-3 md:p-6 flex flex-col justify-end font-metapro " />
-                </Link>
-              </div>
+              <Link href={`/article/${item.slug}`}>
+                <img
+                  src={
+                    item.featuredImage?.node?.mediaItemUrl ||
+                    "/images/default.jpg"
+                  }
+                  alt={item.title}
+                  className="w-full h-[150px] md:h-[210px] object-cover"
+                />
+              </Link>
             </div>
-            <h4
-              className={`font-medium md:px-2 tracking-wide my-3 line-clamp-2`}
-            >
-              <Link href={`/article/${item.slug}`}>{item?.title}</Link>
+            <h4 className="font-medium md:px-2 tracking-wide my-3 line-clamp-2">
+              <Link href={`/article/${item.slug}`}>{item.title}</Link>
             </h4>
           </div>
         ))}
@@ -190,8 +189,6 @@ const TabsSection = ({ allposts }: any) => {
 
 // Paigham Channel Presents
 const PaighamChannelPresents = ({ programs }: any) => {
-
-
   return (
     <section className="bg-primary mt-20">
       <div className="container font-metapro mx-auto px-4 text-white py-16">
@@ -239,17 +236,28 @@ const PaighamChannelPresents = ({ programs }: any) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [postsResponse, categories, programs, Scholars_Res, Slider,ThemeOptions] =
-    await Promise.all([
-      apolloClient.query({ query: AllPosts }),
-      apolloClient.query({ query: HomeCategories }),
-      apolloClient.query({ query: ProgramsSchedulingByDay }),
-      apolloClient.query({ query: AllScholars }),
-      apolloClient.query({ query: SlidesQuery }),
-        apolloClient.query({ query: ThemeOptionsQuery }),
-      
-      
-    ]);
+  const today = new Date()
+    .toLocaleDateString("en-US", { weekday: "long" })
+    .toLowerCase();
+  const [
+    postsResponse,
+    categories,
+    programs,
+    Scholars_Res,
+    Slider,
+    ThemeOptions,
+  ] = await Promise.all([
+    apolloClient.query({ query: AllPosts }),
+    apolloClient.query({ query: HomeCategories }),
+    apolloClient.query({
+      query: ProgramsSchedulingByDay,
+      variables: { id: today }, // ⭐ pass today dynamically
+      fetchPolicy: "no-cache",
+    }),
+    apolloClient.query({ query: AllScholars }),
+    apolloClient.query({ query: SlidesQuery }),
+    apolloClient.query({ query: ThemeOptionsQuery }),
+  ]);
 
   const allposts = postsResponse.data.posts.nodes;
   const allCategories = categories.data.categories.nodes;
@@ -258,7 +266,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const Scholars = Scholars_Res.data.scholars.nodes;
   const sliderData = Slider.data.slides.nodes;
-    const OptionsData = ThemeOptions.data.themeGeneralSettings.zamzamOptions;
+  const OptionsData = ThemeOptions.data.themeGeneralSettings.zamzamOptions;
   return {
     props: {
       allposts,
@@ -266,30 +274,7 @@ export const getStaticProps: GetStaticProps = async () => {
       allProgramsScheduling,
       Scholars,
       Slider: sliderData,
-      OptionsData
+      OptionsData,
     },
   };
 };
-
-const tabData = [
-  {
-    name: "Latest",
-    slug: "latest",
-  },
-  {
-    name: "Ramzan 1446/2025",
-    slug: "ramzan-1446-2025",
-  },
-  {
-    name: "Short Clips",
-    slug: "short-videos",
-  },
-  {
-    name: "Khawabon Ki Tabeer",
-    slug: "khawab-aur-tabeer",
-  },
-  {
-    name: "Paigham QA",
-    slug: "paigham-qa",
-  },
-];

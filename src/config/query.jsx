@@ -270,8 +270,8 @@ export const programsScheduling = gql`
 `;
 
 export const ProgramsSchedulingByDay = gql`
-  query ProgramsSchedulingByDay {
-    singleDay(id: "monday", idType: SLUG) {
+  query ProgramsSchedulingByDay($id: ID = "monday") {
+    singleDay(id: $id, idType: SLUG) {
       id
       name
       programsScheduling {
@@ -384,8 +384,8 @@ export const SlidesQuery = gql`
         slideInfo {
           mobileImage {
             node {
-            mediaItemUrl
-          }
+              mediaItemUrl
+            }
           }
         }
       }

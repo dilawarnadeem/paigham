@@ -66,3 +66,31 @@ export var sliderSettings = {
        }
      ]
    };
+
+
+   const reorderDays = (days) => {
+  const order = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  // Get today’s weekday
+  const todayIndex = new Date().getDay(); 
+  // JS: 0=Sun, 1=Mon...
+  const mappedToday = todayIndex === 0 ? 6 : todayIndex - 1; // convert so Monday=0
+
+  const todayName = order[mappedToday];
+
+  // Reorder: today → rest
+  const sorted = [
+    ...days.filter((d) => d.node.name === todayName),
+    ...days.filter((d) => d.node.name !== todayName),
+  ];
+
+  return { sorted, todayName };
+};
