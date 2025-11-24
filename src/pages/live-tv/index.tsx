@@ -37,6 +37,7 @@ const LivePage: React.FC<LivePageProps> = ({ pageData }) => {
 
   return (
     <>
+     <div className="container mx-auto text-white px-4 py-16">
       <div className="youtube-embed">
         <iframe
           src={pageData.liveLink}
@@ -112,6 +113,7 @@ const LivePage: React.FC<LivePageProps> = ({ pageData }) => {
           height: 100%;
         }
       `}</style>
+      </div>
     </>
   );
 };

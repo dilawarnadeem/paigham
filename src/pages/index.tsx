@@ -64,7 +64,7 @@ export default function Home({
             Categories
           </h2>
           <Link
-            href="/series"
+            href="/programs"
             className="uppercase flex hover:text-orange items-center gap-x-2 font-metapro text-xl tracking-widest font-semibold rtl:flex-row-reverse"
           >
             <span>View All</span>

@@ -222,7 +222,7 @@ const navList = [
 
   {
     name: "Programs",
-    link: "/series",
+    link: "/programs",
   },
   {
     name: "Scholars",

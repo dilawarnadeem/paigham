@@ -9,11 +9,11 @@ import { Categories } from '@/config/query'
 import SeoMeta from '@/components/seo';
 
 
-export default function Series({  allScholars }: any) {
+export default function SeriesPrograms({  allScholars }: any) {
     return (
         <>
-            <SeoMeta title="Series | Paigham TV" url="/series" description="Paigham TV is a satellite TV channel the objectives of which are preaching the true teachings of the Holy Quran and Sunnah " />
-            <PageBanner title="Series" image="/images/banner-2.jpg" />
+            <SeoMeta title="Programs | Paigham TV" url="/programs" description="Paigham TV is a satellite TV channel the objectives of which are preaching the true teachings of the Holy Quran and Sunnah " />
+            <PageBanner title="Programs" image="/images/banner-2.jpg" />
             <section className='pb-28 md:pt-20 bg-[#161F28]'>
                 {
                     allScholars?.map((item: any, idx: any) => (
