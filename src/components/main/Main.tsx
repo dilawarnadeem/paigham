@@ -3,8 +3,8 @@ import React from "react";
 import Slider from "react-slick";
 import ChannelLinks from "../header/channelLinks";
 
-const Main = ({ posts }: any) => {
-  console.log("Posts in Main:", posts);
+const Main = ({ posts , Options }: any) => {
+  console.log("Posts in Main:", Options);
   const slider = React.useRef<any>(null);
   const settings = {
     dots: true,
@@ -47,7 +47,7 @@ const Main = ({ posts }: any) => {
         <Slider ref={slider} {...settings}>
           {posts?.map((post: any, index: number) => {
             const mobileimage =
-              post?.slideInfo?.mobileImage?.mediaItemUrl ||
+              post?.slideInfo?.mobileImage?.node?.mediaItemUrl ||
               "/images/mobile/2.jpg";
             return (
               <div
@@ -66,7 +66,7 @@ const Main = ({ posts }: any) => {
           })}
         </Slider>
       </div>
-      <ChannelLinks />
+      <ChannelLinks Options={Options} />
     </main>
   );
 };

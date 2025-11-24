@@ -147,7 +147,9 @@ export const PostsByCategory = gql`
       description
       categoryInfo {
         categoryBanner {
-          mediaItemUrl
+          node {
+            mediaItemUrl
+          }
         }
       }
       posts(first: 1000, where: { orderby: { field: DATE, order: $order } }) {
@@ -184,10 +186,14 @@ export const Categories = gql`
         count
         categoryInfo {
           catImage {
-            mediaItemUrl
+            node {
+              mediaItemUrl
+            }
           }
           categoryBanner {
-            mediaItemUrl
+            node {
+              mediaItemUrl
+            }
           }
           featured
         }
@@ -228,10 +234,14 @@ export const HomeCategories = gql`
         count
         categoryInfo {
           catImage {
-            mediaItemUrl
+            node {
+              mediaItemUrl
+            }
           }
           categoryBanner {
-            mediaItemUrl
+            node {
+              mediaItemUrl
+            }
           }
           featured
         }
@@ -242,38 +252,39 @@ export const HomeCategories = gql`
 
 export const programsScheduling = gql`
   query programsScheduling {
-  allDay {
-    edges {
-      node {
-        name
-        programsScheduling {
-          nodes {
-            programInfo {
-              programTime
+    allDay {
+      edges {
+        node {
+          name
+          programsScheduling {
+            nodes {
+              programInfo {
+                programTime
+              }
             }
           }
         }
       }
     }
   }
-}
 `;
 
 export const ProgramsSchedulingByDay = gql`
-query ProgramsSchedulingByDay {
-  singleDay(id: "monday", idType: SLUG) {
-    id
-    name
-    programsScheduling {
-      nodes {
-        title
-        programInfo {
-          programTime
+  query ProgramsSchedulingByDay {
+    singleDay(id: "monday", idType: SLUG) {
+      id
+      name
+      programsScheduling {
+        nodes {
+          title
+          programInfo {
+            programTime
+          }
         }
       }
     }
   }
-}`;
+`;
 
 export const AllScholars = gql`
   query AllScholars {
@@ -372,7 +383,9 @@ export const SlidesQuery = gql`
         }
         slideInfo {
           mobileImage {
+            node {
             mediaItemUrl
+          }
           }
         }
       }
@@ -393,3 +406,24 @@ export const GET_LIVE = gql`
   }
 `;
 
+export const ThemeOptionsQuery = gql`
+  query ThemeOptions {
+    themeGeneralSettings {
+      zamzamOptions {
+        categories {
+          ...AcfTermNodeConnectionFragment
+        }
+        pashtoTv
+        quranTv
+        urduTv
+      }
+    }
+  }
+
+  fragment AcfTermNodeConnectionFragment on AcfTermNodeConnection {
+    nodes {
+      name
+      slug
+    }
+  }
+`;

@@ -8,7 +8,7 @@ import { SettingsContext } from '@/context/setting-context';
 const CateCard = ({ item }: any) => {
   const { setVideoLink } = useContext(SettingsContext)
 
-  const featued_image = item?.categoryInfo?.catImage?.mediaItemUrl;
+  const featued_image = item?.categoryInfo?.catImage?.node?.mediaItemUrl;
 
   const router = useRouter()
 

@@ -19,6 +19,7 @@ import {
   NewsTickers,
   SlidesQuery,
   ProgramsSchedulingByDay,
+  ThemeOptionsQuery,
 } from "@/config/query";
 import { GetStaticProps } from "next";
 import SeoMeta from "@/components/seo";
@@ -31,6 +32,7 @@ export default function Home({
   allProgramsScheduling,
   Scholars,
   Slider,
+  OptionsData
 }: any) {
   const { setModelIsOpen, setVideoLink } = useContext(SettingsContext);
   const OpenVideo = (link: string) => {
@@ -43,6 +45,7 @@ export default function Home({
   );
 
   return (
+    console.log(OptionsData),
     <>
       <SeoMeta
         title="Paigham TV | Jo Badal De Zindagi"
@@ -50,7 +53,7 @@ export default function Home({
         description="Paigham TV is an Islamic educational channel television network. The production of this channel is based on the teachings of Quran o Sunnah. "
       />
 
-      <Main posts={Slider} />
+      <Main posts={Slider} Options={OptionsData} />
       <TabsSection allposts={allposts} allCategories={allCategories} />
       <PaighamChannelPresents
         programs={allProgramsScheduling}
@@ -163,7 +166,7 @@ const TabsSection = ({ allposts }: any) => {
               <div className="bg-red-300 relative overflow-hidden ">
                 <Link href={`/article/${item.slug}`}>
                   <img
-                    src={item?.featuredImage?.node?.mediaItemUrl}
+                    src={item?.featuredImage?.node?.mediaItemUrl || "/images/default.jpg"}
                     alt="image"
                     width={700}
                     height={400}
@@ -187,7 +190,7 @@ const TabsSection = ({ allposts }: any) => {
 
 // Paigham Channel Presents
 const PaighamChannelPresents = ({ programs }: any) => {
-  console.log(programs);
+
 
   return (
     <section className="bg-primary mt-20">
@@ -236,13 +239,16 @@ const PaighamChannelPresents = ({ programs }: any) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [postsResponse, categories, programs, Scholars_Res, Slider] =
+  const [postsResponse, categories, programs, Scholars_Res, Slider,ThemeOptions] =
     await Promise.all([
       apolloClient.query({ query: AllPosts }),
       apolloClient.query({ query: HomeCategories }),
       apolloClient.query({ query: ProgramsSchedulingByDay }),
       apolloClient.query({ query: AllScholars }),
       apolloClient.query({ query: SlidesQuery }),
+        apolloClient.query({ query: ThemeOptionsQuery }),
+      
+      
     ]);
 
   const allposts = postsResponse.data.posts.nodes;
@@ -252,6 +258,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const Scholars = Scholars_Res.data.scholars.nodes;
   const sliderData = Slider.data.slides.nodes;
+    const OptionsData = ThemeOptions.data.themeGeneralSettings.zamzamOptions;
   return {
     props: {
       allposts,
@@ -259,6 +266,7 @@ export const getStaticProps: GetStaticProps = async () => {
       allProgramsScheduling,
       Scholars,
       Slider: sliderData,
+      OptionsData
     },
   };
 };

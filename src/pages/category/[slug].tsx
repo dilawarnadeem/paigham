@@ -83,7 +83,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
         <section className="relative">
           <img
             src={
-              posts?.categoryInfo?.categoryBanner?.mediaItemUrl ||
+              posts?.categoryInfo?.categoryBanner?.node.mediaItemUrl ||
               "/images/tafseer-ul-quran.jpeg"
             }
             width={1200}

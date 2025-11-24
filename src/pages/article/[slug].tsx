@@ -65,7 +65,7 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
         <section className="relative">
           <img
             src={
-              post?.categoryInfo?.categoryBanner?.mediaItemUrl ||
+              post?.categoryInfo?.categoryBanner?.node.mediaItemUrl ||
               "/images/tafseer-ul-quran.jpeg"
             }
             width={1200}
