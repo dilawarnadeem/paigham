@@ -80,7 +80,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
             <Category_Banner key={idx} item={item} />
           ))
       ) : (
-        <section className="relative">
+        <section className="relative container mx-auto ">
           <img
             src={
               posts?.categoryInfo?.categoryBanner?.node.mediaItemUrl ||

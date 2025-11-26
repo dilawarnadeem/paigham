@@ -23,6 +23,7 @@ const CateCard = ({ item }: any) => {
         <div className='bg-gradient-to-t from-primary absolute inset-0 p-6 flex flex-col justify-end font-metapro to-black/0'>
           <h4 className='text-white text-2xl font-semibold tracking-wide'>{item.name}</h4>
           <p className='text-orange font-medium text-lg'>{item.count} Shows</p>
+      
         </div>
       </button>
     </div>

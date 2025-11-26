@@ -62,7 +62,7 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
       {videoLink ? (
         <Category_Banner item={post} />
       ) : (
-        <section className="relative">
+        <section className="relative bg-red-900 container mx-auto ">
           <img
             src={
               post?.categoryInfo?.categoryBanner?.node.mediaItemUrl ||
