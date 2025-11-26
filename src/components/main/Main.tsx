@@ -21,8 +21,7 @@ const Main = ({ posts , Options }: any) => {
         <Slider ref={slider} {...settings}>
           {posts?.map((post: any, index: number) => {
             const image =
-              post?.featuredImage?.node?.mediaItemUrl ||
-              "/images/banner/slider1.jpg";
+              post?.featuredImage?.node?.mediaItemUrl ||"";
 
             return (
               <div

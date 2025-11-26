@@ -26,7 +26,7 @@ const ChannelLinks = ({ Options }: any) => {
   return (
     <>
       <div className="grid grid-cols-2 px-1.5 sm:flex sm:flex-col sm:absolute top-2 md:top-20 gap-1 right-0 sm:my-5 mb-5 md:my-0 md:mb-0 items-start lg:items-center rtl:right-auto rtl:left-0">
-        {navButtons.map((item, idx) => (
+        {/* {navButtons.map((item, idx) => (
           <Link
             href={item.link}
             key={idx}
@@ -39,7 +39,7 @@ const ChannelLinks = ({ Options }: any) => {
               <img src={item.live} alt={item.name} className="w-[32px]" />
             </div>
           </Link>
-        ))}
+        ))} */}
       </div>
     </>
   );
