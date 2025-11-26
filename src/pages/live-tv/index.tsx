@@ -28,30 +28,39 @@ interface LivePageProps {
   pageData: any; // You can replace 'any' with the actual type of your data (e.g., { liveLink: string; channelNavLinks: string[] })
 }
 
+const toEmbed = (url: string) => {
+  if (!url) return "";
+  // Convert normal YouTube URL to embed format
+  return url.replace("watch?v=", "embed/");
+};
+
 const LivePage: React.FC<LivePageProps> = ({ pageData }) => {
-  console.log(pageData);
+
 
   const TVUrdu = pageData.liveLink;
-  const TVQuran = pageData.pashtoTv;
-  const TVPashto = pageData.quranTv;
+  const AlterUrdu = pageData.alternateLink;
+  const TVQuran = pageData.quranTv;
+  const TVPashto = pageData.pashtoTv;
+
+  console.log("Live Page Data:", TVUrdu);
 
   return (
     <>
      <div className="container mx-auto text-white px-4 py-16">
       <div className="youtube-embed">
-        <iframe
-          src={pageData.liveLink}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        />
+      <iframe
+  width="560"
+  height="315"
+  src={toEmbed(TVUrdu)}
+  title="YouTube video player"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+></iframe>
+
       </div>
 
       <div className="flex md:flex-row sm:flex-col gap-5 px-4  w-auto mx-auto justify-center items-center my-5">
         <Link
-          href={TVUrdu}
+          href={AlterUrdu}
           target="_blank"
           className="font-montserrat sm:max-w-[220px] text-primary w-full font-normal group uppercase bg-secondary shadow-lg hover:bg-primary hover:text-white"
         >
@@ -61,7 +70,7 @@ const LivePage: React.FC<LivePageProps> = ({ pageData }) => {
               alt="{item.name}"
               className="w-[25px]"
             />
-            <p className="text-[14px] pt-1">TV Urdu</p>
+            <p className="text-[14px] pt-1">Alternate  Urdu</p>
             <img src="/images/live.png" alt="" className="w-[32px]" />
           </div>
         </Link>
