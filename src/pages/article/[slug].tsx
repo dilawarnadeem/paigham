@@ -19,9 +19,11 @@ import { useRouter } from "next/router";
 import { FaFacebook, FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
 import { BsTwitter } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa6";
+import YouTube from "react-youtube";
 
 const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
-  const { setModelIsOpen, setVideoLink, videoLink } = useContext(SettingsContext);
+  const { setModelIsOpen, setVideoLink, videoLink } =
+    useContext(SettingsContext);
   const [selectItem, setSelectedItem] = useState<any>();
   const [selectedValue, setSelectedValue] = useState("latest");
   const handleChange = (event: any) => {
@@ -50,7 +52,6 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
     setVideoLink(post.postInfo.tmVideoUrl);
   };
 
-
   return (
     <section className="bg-[rgb(22,31,40)] pb-20">
       <SeoMeta
@@ -62,23 +63,21 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
       {videoLink ? (
         <Category_Banner item={post} />
       ) : (
-        <section className="relative bg-red-900 container mx-auto ">
-          <img
-            src={
-              post?.categoryInfo?.categoryBanner?.node.mediaItemUrl ||
-              "/images/tafseer-ul-quran.jpeg"
-            }
-            width={1200}
-            height={800}
-            alt={post.name}
-            className="h-[500px] w-full object-cover"
-          />
-          <div className="bg-gradient-to-t from-[#161F28] via-[#161F28]/60 absolute inset-0 to-black/0" />
-          <FaCirclePlay
-            onClick={hanldeVideoButton}
-            className="text-5xl md:text-7xl animate-pulse cursor-pointer text-secondary absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2"
-          />
-        </section>
+        <YouTube
+          videoId={
+            post?.postInfo?.tmVideoUrl
+              ? post?.postInfo?.tmVideoUrl.split("v=")[1]
+              : ""
+          }
+          className="container mx-auto"
+          opts={{
+            width: "100%",
+            height: "650", // adjust as needed
+            playerVars: {
+              autoplay: 1,
+            },
+          }}
+        />
       )}
 
       <div className="container px-4 mx-auto">
@@ -95,32 +94,44 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
             <ul className="flex text-white items-center gap-3 text-xl md:text-2xl">
               <li>Share: </li>
               <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://api.whatsapp.com/send?text=https://paigham.tv/article/${post.slug}`} >
+                <Link
+                  href={`https://api.whatsapp.com/send?text=https://paigham.tv/article/${post.slug}`}
+                >
                   <FaWhatsapp size={25} />
                 </Link>
               </li>
               <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://www.facebook.com/sharer/sharer.php?u=https://paigham.tv/article/${post.slug}`} >
+                <Link
+                  href={`https://www.facebook.com/sharer/sharer.php?u=https://paigham.tv/article/${post.slug}`}
+                >
                   <FaFacebook />
                 </Link>
               </li>
               <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://www.instagram.com/?url=https://paigham.tv/article/${post.slug}`} >
+                <Link
+                  href={`https://www.instagram.com/?url=https://paigham.tv/article/${post.slug}`}
+                >
                   <FaInstagram />
                 </Link>
               </li>
               <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://www.tiktok.com/upload?url=https://paigham.tv/article/${post.slug}`} >
-                  <FaTiktok  />
+                <Link
+                  href={`https://www.tiktok.com/upload?url=https://paigham.tv/article/${post.slug}`}
+                >
+                  <FaTiktok />
                 </Link>
               </li>
               <li className="hover:text-secondary cursor-pointer">
-                <Link  href={`https://twitter.com/intent/tweet?text=https://paigham.tv/article/${post.slug}`} >
+                <Link
+                  href={`https://twitter.com/intent/tweet?text=https://paigham.tv/article/${post.slug}`}
+                >
                   <BsTwitter />
                 </Link>
               </li>
               <li className="hover:text-secondary cursor-pointer">
-                <Link href={`https://www.linkedin.com/shareArticle?mini=true&url=https://paigham.tv/article/${post.slug}`} >
+                <Link
+                  href={`https://www.linkedin.com/shareArticle?mini=true&url=https://paigham.tv/article/${post.slug}`}
+                >
                   <FaLinkedinIn />
                 </Link>
               </li>
@@ -180,7 +191,9 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
                   </Link>
                 </div>
               </div>
-              <h4 className={`${"text-white"} font-medium md:px-2 tracking-wide my-3 line-clamp-2`}>
+              <h4
+                className={`${"text-white"} font-medium md:px-2 tracking-wide my-3 line-clamp-2`}
+              >
                 <Link href={`/article/${item?.slug}`}>{item?.title}</Link>
               </h4>
             </div>
