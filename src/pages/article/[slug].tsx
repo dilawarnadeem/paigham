@@ -63,21 +63,28 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
       {videoLink ? (
         <Category_Banner item={post} />
       ) : (
-        <YouTube
-          videoId={
-            post?.postInfo?.tmVideoUrl
-              ? post?.postInfo?.tmVideoUrl.split("v=")[1]
-              : ""
-          }
-          className="container mx-auto"
-          opts={{
-            width: "100%",
-            height: "650", // adjust as needed
-            playerVars: {
-              autoplay: 1,
-            },
-          }}
-        />
+       <div className="container mx-auto">
+  <div className="relative w-full pb-[56.25%]"> 
+    <div className="absolute inset-0">
+      <YouTube
+        videoId={
+          post?.postInfo?.tmVideoUrl
+            ? post?.postInfo?.tmVideoUrl.split("v=")[1]
+            : ""
+        }
+        opts={{
+          width: "100%",
+          height: "100%",
+          playerVars: {
+            autoplay: 1,
+          },
+        }}
+        className="w-full h-full"
+      />
+    </div>
+  </div>
+</div>
+
       )}
 
       <div className="container px-4 mx-auto">
