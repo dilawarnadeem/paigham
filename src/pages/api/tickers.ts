@@ -1,17 +1,17 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const query = `
-  query NewQuery {
-    hadithBy(hadithId: 4299) {
-      title
-      news_tickers {
-        newsTicker {
-          title
-          info
-        }
+ query NewQuery {
+  newsTicker(id: "4299", idType: DATABASE_ID) {
+    title
+    newsTickers {
+      newsTicker {
+        info
+        title
       }
     }
   }
+}
 `;
 
 export default async function handler(

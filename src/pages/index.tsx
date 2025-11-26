@@ -12,8 +12,6 @@ import { IScholorType } from "@/utils/types";
 import apolloClient from "@/config/client";
 import {
   AllPosts,
-  Categories,
-  programsScheduling,
   AllScholars,
   HomeCategories,
   NewsTickers,
@@ -58,6 +56,7 @@ export default function Home({
         url="/"
         description="Paigham TV is an Islamic educational channel television network. The production of this channel is based on the teachings of Quran o Sunnah. "
       />
+      
 
       <Main posts={Slider} Options={OptionsData} />
       <TabsSection

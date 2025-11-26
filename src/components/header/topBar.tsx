@@ -11,8 +11,8 @@ const TopBar = () => {
           mode: "no-cors",
           next: { revalidate: 60 }
         });
-        const data = await response.json();
-        setHadith(data?.tickers?.hadithBy)
+        const data = await response.json();       
+        setHadith(data?.tickers?.newsTicker)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -20,12 +20,13 @@ const TopBar = () => {
   }, []);
 
   return (
+    
     <>
       {/* top bar with smooth scrolling  */}
       <div className="overflow-x-hidden bg-secondary">
         <div className="py-2">
         <Marquee direction="right">
-          {hadith?.news_tickers?.newsTicker?.map((item: any, idx: any) => {
+          {hadith?.newsTickers?.newsTicker?.map((item: any, idx: any) => {
             return (
               <div className="flex items-center" key={idx}>
                 <div className="p-[2.5px] px-3 bg-blue" />

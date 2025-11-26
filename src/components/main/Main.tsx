@@ -4,7 +4,6 @@ import Slider from "react-slick";
 import ChannelLinks from "../header/channelLinks";
 
 const Main = ({ posts , Options }: any) => {
-  console.log("Posts in Main:", Options);
   const slider = React.useRef<any>(null);
   const settings = {
     dots: true,

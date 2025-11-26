@@ -80,6 +80,7 @@ const Header = () => {
   return (
     <>
       <TopBar />
+
       <header className="sticky top-0 z-[50]">
         {/* main nav   */}
         <nav
