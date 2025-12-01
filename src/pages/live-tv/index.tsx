@@ -1,26 +1,30 @@
+import ChannelsLinks from "@/components/channels/ChannelsLinks";
 import apolloClient from "@/config/client";
 import { GET_LIVE } from "@/config/query";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import React from "react";
-import QuranTV from "../channel/quran-tv";
+
 
 const navButons = [
   {
     name: "TV Urdu",
     icon: "/images/tv_icon.png",
     live: "/images/live.png",
+    link: "/channel/live-tv",
   },
   {
     name: "Quran TV",
     icon: "/images/tv_icon.png",
     live: "/images/live.png",
+       link: "/channel/quran-tv", 
   },
   {
     name: "TV Pashto",
-    link: "/channel/tv-pashto", // Note: Keeping this as fallback; remove if fully dynamic
+    link: "/channel/pashto-tv", 
     icon: "/images/pashto_icon.png",
     live: "/images/live.png",
+
   },
 ];
 
@@ -58,53 +62,7 @@ const LivePage: React.FC<LivePageProps> = ({ pageData }) => {
 
       </div>
 
-      <div className="flex md:flex-row sm:flex-col gap-5 px-4  w-auto mx-auto justify-center items-center my-5">
-        <Link
-          href={AlterUrdu}
-          target="_blank"
-          className="font-montserrat sm:max-w-[220px] text-primary w-full font-normal group uppercase bg-secondary shadow-lg hover:bg-primary hover:text-white"
-        >
-          <div className="px-2 py-2.5 flex items-center gap-1.5 lg:gap-x-1 justify-start">
-            <img
-              src="/images/tv_icon.png"
-              alt="{item.name}"
-              className="w-[25px]"
-            />
-            <p className="text-[14px] pt-1">Alternate  Urdu</p>
-            <img src="/images/live.png" alt="" className="w-[32px]" />
-          </div>
-        </Link>
-        <Link
-          href={TVQuran}
-          target="_blank"
-          className="font-montserrat sm:max-w-[220px] text-primary w-full font-normal group uppercase bg-secondary shadow-lg hover:bg-primary hover:text-white"
-        >
-          <div className="px-2 py-2.5 flex items-center gap-1.5 lg:gap-x-1 justify-start">
-            <img
-              src="/images/tv_icon.png"
-              alt="{item.name}"
-              className="w-[25px]"
-            />
-            <p className="text-[14px] pt-1">Quran TV</p>
-            <img src="/images/live.png" alt="" className="w-[32px]" />
-          </div>
-        </Link>
-        <Link
-          href={TVPashto}
-          target="_blank"
-          className="font-montserrat sm:max-w-[220px] text-primary w-full font-normal group uppercase bg-secondary shadow-lg hover:bg-primary hover:text-white"
-        >
-          <div className="px-2 py-2.5 flex items-center gap-1.5 lg:gap-x-1 justify-start">
-            <img
-              src="/images/tv_icon.png"
-              alt="{item.name}"
-              className="w-[25px]"
-            />
-            <p className="text-[14px] pt-1">Pashto Urdu</p>
-            <img src="/images/live.png" alt="" className="w-[32px]" />
-          </div>
-        </Link>
-      </div>
+       <ChannelsLinks />
 
       <style jsx>{`
         .youtube-embed {
