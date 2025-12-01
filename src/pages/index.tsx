@@ -1,11 +1,9 @@
-import Image from "next/image";
 import Main from "@/components/main/Main";
 import Link from "next/link";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import ScholarCard from "@/components/scholar-card/ScholarCard";
 import DonateNow from "@/components/donateNow/DonateNow";
 import { useState } from "react";
-import { getVideoCode } from "../utils";
 import { SettingsContext } from "@/context/setting-context";
 import React, { useContext } from "react";
 import { IScholorType } from "@/utils/types";
@@ -204,7 +202,7 @@ const PaighamChannelPresents = ({ programs }: any) => {
               </Link>
             </div>
             <ul className="mt-5 grid grid-cols-2">
-              {programs?.map((item: any, idx: number) => (
+              {/* {programs?.map((item: any, idx: number) => (
                 <li
                   key={idx}
                   className="flex md:flex-row flex-col items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5"
@@ -225,7 +223,7 @@ const PaighamChannelPresents = ({ programs }: any) => {
                     />
                   </div>
                 </li>
-              ))}
+              ))} */}
             </ul>
           </div>
         </div>

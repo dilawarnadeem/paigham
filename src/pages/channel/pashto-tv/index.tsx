@@ -5,14 +5,10 @@ import React from "react";
 import ChannelsLinks from "@/components/channels/ChannelsLinks";
 
 interface LivePageProps {
-  pageData: any; // You can replace 'any' with the actual type of your data (e.g., { liveLink: string; channelNavLinks: string[] })
+  pageData: any; 
 }
 
-const toEmbed = (url: string) => {
-  if (!url) return "";
-  // Convert normal YouTube URL to embed format
-  return url.replace("watch?v=", "embed/");
-};
+
 
 const PashtoTVPage: React.FC<LivePageProps> = ({ pageData }) => {
   const TVQuran = pageData.quranTv;
