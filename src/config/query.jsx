@@ -258,8 +258,8 @@ export const programsScheduling = gql`
           name
           programsScheduling {
             nodes {
-            title
-            excerpt
+              title
+              excerpt
               programInfo {
                 programTime
               }
@@ -397,16 +397,16 @@ export const SlidesQuery = gql`
 
 export const GET_LIVE = gql`
   query LivePage {
-  page(id: "35", idType: DATABASE_ID) {
-    title
-    liveInfo {
-      quranTv
-      pashtoTv
-      liveLink
-      alternateLink
+    page(id: "35", idType: DATABASE_ID) {
+      title
+      liveInfo {
+        quranTv
+        pashtoTv
+        liveLink
+        alternateLink
+      }
     }
   }
-}
 `;
 
 export const ThemeOptionsQuery = gql`
