@@ -25,7 +25,7 @@ import React from "react";
 const ChannelsLinks = () => {
   return (
     <div>
-      <div className="flex md:flex-row sm:flex-col gap-5 px-4  w-auto mx-auto justify-center items-center my-5">
+      <div className="flex md:flex-row flex-col gap-3 px-4  w-auto mx-auto justify-center items-center my-5">
         <Link
           href="/channel/urdu-tv"
           className="font-montserrat sm:max-w-[220px] text-primary w-full font-normal group uppercase bg-secondary shadow-lg hover:bg-primary hover:text-white"
