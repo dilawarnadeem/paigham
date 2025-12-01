@@ -258,6 +258,8 @@ export const programsScheduling = gql`
           name
           programsScheduling {
             nodes {
+            title
+            excerpt
               programInfo {
                 programTime
               }

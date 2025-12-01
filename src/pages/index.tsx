@@ -203,7 +203,7 @@ const PaighamChannelPresents = ({ programs }: any) => {
                 <h5 className="text-secondary">FULL GUIDE</h5>
               </Link>
             </div>
-            <ul className="mt-5">
+            <ul className="mt-5 grid grid-cols-2">
               {programs?.map((item: any, idx: number) => (
                 <li
                   key={idx}

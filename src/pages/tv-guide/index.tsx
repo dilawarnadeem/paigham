@@ -8,6 +8,8 @@ import SeoMeta from "@/components/seo";
 const PaighamChannelPresents = ({ programs }: any) => {
   const [activeDay, setActiveDay] = React.useState(programs[0]?.node?.name);
 
+
+
   const days = programs.map((d: any) => d.node.name);
 
   const activePrograms = programs.find(
@@ -19,7 +21,7 @@ const PaighamChannelPresents = ({ programs }: any) => {
       <div className="container font-metapro mx-auto px-4 text-primary py-16">
 
         {/* === TABS === */}
-        <div className="flex gap-3 overflow-x-auto border-b pb-4">
+        <div className="flex gap-3 overflow-x-auto  pb-4">
           {days.map((day: string, idx: number) => (
             <button
               key={idx}
@@ -38,28 +40,36 @@ const PaighamChannelPresents = ({ programs }: any) => {
         </div>
 
         {/* === PROGRAMS FOR ACTIVE DAY === */}
-        <ul className="mt-8">
+
+        
+        <ul className="mt-8 grid grid-cols-2 gap-6">
           {activePrograms?.length === 0 ? (
             <p className="text-gray-400">No programs available</p>
           ) : (
             activePrograms?.map((program: any, idx: number) => (
-              <li
-                key={idx}
-                className="flex gap-6 border-t border-gray-300 py-4"
-              >
-                <time className="font-medium text-xl w-32">
-                  {program.programInfo.programTime}
-                </time>
+               <li
+                  key={idx}
+                  className="flex md:flex-row flex-col items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5"
+                >
+                    <div className="w-full max-w-[240px] lg:max-w-[280px]">
+                    <time className="font-medium text-xl">
+                      {program?.programInfo?.programTime || `0000`}
+                    </time>
+                  </div>
 
-                <div className="flex-1">
-                  <h6 className="font-semibold text-lg">
-                    {program.title}
-                  </h6>
-                  <div
-                    className="text-gray-600 mt-1"
-                    dangerouslySetInnerHTML={{ __html: program.excerpt }}
-                  />
-                </div>
+                  <div>
+                    <h6 className="text-secondary sm:text-xl font-medium text-start -tracking-wide">
+                      {program.title}
+                    </h6>
+                    <div
+                      className="text-start sm:text-lg mt-2"
+                      dangerouslySetInnerHTML={{ __html: program?.excerpt }}
+                    />
+                  </div>
+
+
+
+               
               </li>
             ))
           )}
