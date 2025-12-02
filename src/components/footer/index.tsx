@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   FaFacebookF,
   FaInstagram,
@@ -8,77 +8,39 @@ import {
   FaTiktok,
 } from "react-icons/fa";
 import { HiOutlineArrowRight } from "react-icons/hi";
-import Logo from "../logo/Logo";
 import { footerNav } from "../../../public/data";
-import apolloClient from "@/config/client";
-import { AllTags } from "@/config/query";
-import { useQuery } from "@apollo/client";
-import { graphql } from "graphql";
 
-const Footer = () => {
+// ------------------------------
+// WhatsApp Subscribe Handler
+// ------------------------------
+function WhatsAppSubscribe() {
+  const handleSubscribe = () => {
+    const channelUrl =
+      "https://whatsapp.com/channel/0029Va8MnujGufIrphvESZ3w";
+
+    window.open(channelUrl, "_blank");
+  };
+
   return (
-    <footer className="bg-primary">
-      <div className="container mx-auto text-white px-4 py-16">
-        <div className="sm:flex justify-between items-center">
-          <Socials />
-          <div>
-            <div className="bg-[#27396C] flex items-center mt-6 sm:mt-0">
-              <input
-                className="bg-transparent w-full p-4 placeholder:font-metapro md:w-[400px] outline-none placeholder:font-normal placeholder:tracking-wider"
-                placeholder="SUBCRIBE OUR NEWSLETTER"
-              />
-              <button className="bg-secondary h-full p-4 px-6 active:scale-105">
-                <HiOutlineArrowRight size="30" />
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-5 font-metapro gap-6 mt-16 pt-12 border-t-[1px] border-gray-500">
-          <Link href="/" className="">
-            <img
-              src="/images/logomain.png"
-              alt="logo"
-              width={440}
-              height={440}
-              className="z-10 hidden md:block w-14 md:w-[120px] lg:w-[160px] relative"
-            />
-            <img
-              src="/images/logo-white.png"
-              alt="logo"
-              width={440}
-              height={440}
-              className="z-10 md:hidden w-14 md:w-[120px] lg:w-[160px] relative"
-            />
-
-            <p>©2025 All Rights Reserved</p>
-          </Link>
-          {footerNav.map((item, idx) => {
-            return (
-              <div key={idx}>
-                <h6 className="text-lg font-medium tracking-widest uppercase">
-                  {item.name}
-                </h6>
-                <ul className="mt-4">
-                  {item.nav.map((nav, id) => (
-                    <li
-                      className="text-lg mt-2 hover:text-secondary font-light text-gray-300 tracking-wider"
-                      key={id}
-                    >
-                      <Link href={nav.link}>{nav.name}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </footer>
+    <div className="bg-[#27396C] flex items-center mt-6 sm:mt-0">
+      <input
+        className="bg-transparent w-full p-4 placeholder:font-metapro md:w-[400px] outline-none placeholder:font-normal placeholder:tracking-wider"
+        placeholder="Enter your mobile number"
+        type="tel"
+      />
+      <button
+        onClick={handleSubscribe}
+        className="bg-secondary h-full p-4 px-6 active:scale-105"
+      >
+        <HiOutlineArrowRight size="30" />
+      </button>
+    </div>
   );
-};
+}
 
-export default Footer;
-
+// ------------------------------
+// Social Icons
+// ------------------------------
 export const Socials = () => {
   return (
     <div className="flex justify-center sm:justify-start gap-5 text-2xl ">
@@ -120,3 +82,58 @@ export const Socials = () => {
     </div>
   );
 };
+
+// ------------------------------
+// Main Footer Component
+// ------------------------------
+export default function Footer() {
+  return (
+    <footer className="bg-primary">
+      <div className="container mx-auto text-white px-4 py-16">
+        <div className="sm:flex justify-between items-center">
+          <Socials />
+          <WhatsAppSubscribe />
+        </div>
+
+        {/* Navigation Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-5 font-metapro gap-6 mt-16 pt-12 border-t border-gray-500">
+          <Link href="/">
+            <img
+              src="/images/logomain.png"
+              alt="logo"
+              width={440}
+              height={440}
+              className="hidden md:block w-14 md:w-[120px] lg:w-[160px]"
+            />
+            <img
+              src="/images/logo-white.png"
+              alt="logo"
+              width={440}
+              height={440}
+              className="md:hidden w-14 md:w-[120px] lg:w-[160px]"
+            />
+            <p>©2025 All Rights Reserved</p>
+          </Link>
+
+          {footerNav.map((item, idx) => (
+            <div key={idx}>
+              <h6 className="text-lg font-medium tracking-widest uppercase">
+                {item.name}
+              </h6>
+              <ul className="mt-4">
+                {item.nav.map((nav, id) => (
+                  <li
+                    key={id}
+                    className="text-lg mt-2 hover:text-secondary font-light text-gray-300 tracking-wider"
+                  >
+                    <Link href={nav.link}>{nav.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </footer>
+  );
+}
