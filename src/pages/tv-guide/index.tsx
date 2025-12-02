@@ -39,23 +39,23 @@ const PaighamChannelPresents = ({ programs }: any) => {
 
         {/* === PROGRAMS FOR ACTIVE DAY === */}
 
-        <ul className="mt-8 grid grid-cols-2 gap-6">
+        <ul className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-1">
           {activePrograms?.length === 0 ? (
             <p className="text-gray-400">No programs available</p>
           ) : (
             activePrograms?.map((program: any, idx: number) => (
               <li
                 key={idx}
-                className="flex md:flex-row flex-col items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5"
+                className="flex md:flex-row flex-col-1 items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5"
               >
                 <div className="w-full max-w-[240px] lg:max-w-[280px]">
-                  <time className="font-medium text-xl">
+                  <time className="font-medium font-sm md:text-xl">
                     {program?.programInfo?.programTime || `0000`}
                   </time>
                 </div>
 
                 <div>
-                  <h6 className="text-secondary sm:text-xl font-medium text-start -tracking-wide">
+                  <h6 className="text-primary sm:text-xl font-medium text-start -tracking-wide">
                     {program.title}
                   </h6>
                   <div
