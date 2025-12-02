@@ -133,22 +133,35 @@ const TabsSection = ({ allposts, tabData }: any) => {
   return (
     <section className="container mx-auto pt-36 sm:pt-20 px-2">
       <div className="flex justify-between item-center border-b-2 border-gray-500">
-        <div className="grid grid-cols-4 sm:!flex flex-wrap justify-between space-x-2 w-full sm:w-auto font-metapro font-semibold">
-          {/* Dynamic Tabs working now */}
-          {tabData?.map((item: any, idx: number) => (
-            <li
-              key={idx}
-              className={`${
-                activeCategory === item.slug
-                  ? "bg-secondary px-1 sm:px-4 py-2 text-primary"
-                  : ""
-              } flex-1 flex justify-center md:min-w-[180px] cursor-pointer items-center`}
-              onClick={() => HandleVideosCategoryTabs(item.slug)}
-            >
-              {item.name}
-            </li>
-          ))}
-        </div>
+      <div className="hidden sm:grid grid-cols-4 sm:!flex flex-wrap justify-between space-x-2 w-full sm:w-auto font-metapro font-semibold">
+  {tabData?.map((item: any, idx: number) => (
+    <li
+      key={idx}
+      className={`${
+        activeCategory === item.slug
+          ? "bg-secondary px-1 sm:px-4 py-2 text-primary"
+          : ""
+      } flex-1 flex justify-center md:min-w-[180px] cursor-pointer items-center`}
+      onClick={() => HandleVideosCategoryTabs(item.slug)}
+    >
+      {item.name}
+    </li>
+  ))}
+</div>
+<div className="block sm:hidden w-full">
+  <select
+    className="w-full border p-2 rounded font-metapro"
+    value={activeCategory}
+    onChange={(e) => HandleVideosCategoryTabs(e.target.value)}
+  >
+    {tabData?.map((item: any, idx: number) => (
+      <option key={idx} value={item.slug}>
+        {item.name}
+      </option>
+    ))}
+  </select>
+</div>
+
 
         <Link
           href="/"
@@ -159,7 +172,7 @@ const TabsSection = ({ allposts, tabData }: any) => {
         </Link>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 mt-10 gap-2">
+      <div className="grid grid-cols-1 lg:grid-cols-4 mt-10 gap-2">
         {posts?.map((item: any, idx: number) => (
           <div key={idx} className="px-1 group">
             <div className="bg-black rounded-lg overflow-hidden">
@@ -170,7 +183,7 @@ const TabsSection = ({ allposts, tabData }: any) => {
                     "/images/default.jpg"
                   }
                   alt={item.title}
-                  className="w-full h-[150px] md:h-[210px] object-cover"
+                  className="w-full h-auto md:h-[210px] object-cover"
                 />
               </Link>
             </div>
