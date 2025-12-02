@@ -215,7 +215,7 @@ const PaighamChannelPresents = ({ programs }: any) => {
               </Link>
             </div>
             <ul className="mt-5 grid grid-cols-2">
-              {/* {programs?.map((item: any, idx: number) => (
+              {programs?.map((item: any, idx: number) => (
                 <li
                   key={idx}
                   className="flex md:flex-row flex-col items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5"
@@ -236,7 +236,7 @@ const PaighamChannelPresents = ({ programs }: any) => {
                     />
                   </div>
                 </li>
-              ))} */}
+              ))}
             </ul>
           </div>
         </div>
