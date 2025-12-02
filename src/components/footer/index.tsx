@@ -99,10 +99,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-5 font-metapro gap-6 mt-16 pt-12 border-t border-gray-500">
           <Link href="/">
             <img
-              src="/images/logomain.png"
+              src="/images/logo_gold.png"
               alt="logo"
-              width={440}
-              height={440}
+              width={160}
+              height={189}
               className="hidden md:block w-14 md:w-[120px] lg:w-[160px]"
             />
             <img
@@ -112,7 +112,7 @@ export default function Footer() {
               height={440}
               className="md:hidden w-14 md:w-[120px] lg:w-[160px]"
             />
-            <p>©2025 All Rights Reserved</p>
+            <p className="mt-3">©2025 All Rights Reserved</p>
           </Link>
 
           {footerNav.map((item, idx) => (
