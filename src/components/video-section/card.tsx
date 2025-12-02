@@ -43,7 +43,7 @@ const Card = ({ item, OpenVideo, slug, textColor, activeCategory }: any) => {
             alt="image"
             width={1280}
             height={720}
-            className=" w-full object-cover transition-all h-auto duration-200 ease-in-out"
+            className=" w-full object-cover transition-all h-auto max-h-[200px]  duration-200 ease-in-out"
           /></Link>
           <div className=" group-hover:bg-black/40 absolute inset-0 group-hover:cursor-pointer p-3 md:p-6 flex flex-col justify-end font-metapro "/>
         </div>

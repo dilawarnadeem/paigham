@@ -29,8 +29,8 @@ const TopBar = () => {
           {hadith?.newsTickers?.newsTicker?.map((item: any, idx: any) => {
             return (
               <div className="flex items-center" key={idx}>
-                <div className="p-[2.5px] px-3 bg-blue" />
-                <span className="mx-2 text-sm md:text-xl leading-9 -mt-1 font-mehr text-[#050007] ">
+                <div className="p-[2px] px-3 bg-blue" />
+                <span className="mx-2 text-sm md:text-lg leading-loose font-mehr text-[#050007] ">
                      {item.info}
                 </span>
               </div>
