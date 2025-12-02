@@ -14,7 +14,7 @@ const Scholar = ({ allScholars }: any) => {
         url="/scholars"
         description="Paigham TV is a satellite TV channel the objectives of which are preaching the true teachings of the Holy Quran and Sunnah "
       />
-      <PageBanner title="Scholar" image="/images/scholar.jpg" />
+      <PageBanner title="" image="/images/scholar.jpg" />
       <div className="grid container mx-auto my-20 grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 px-4 ">
         {allScholars.map((item: any, idx: number) => (
           <ScholarCard key={idx} item={item} />

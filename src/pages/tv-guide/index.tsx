@@ -14,6 +14,8 @@ const PaighamChannelPresents = ({ programs }: any) => {
     ?.node.programsScheduling.nodes;
 
   return (
+
+
     <section className="bg-white">
       <div className="container font-metapro mx-auto px-4 text-primary py-16">
         {/* === TABS === */}
@@ -78,7 +80,7 @@ export default function Program_Scheduling({ allProgramsScheduling }: any) {
         url="/tv-guide"
         description="Paigham TV is a satellite TV channel the objectives of which are preaching the true teachings of the Holy Quran and Sunnah"
       />
-      <PageBanner title="Program Scheduling" image="/images/banner2.jpg" />
+      <PageBanner title="" image="/images/program.jpg" />
 
       <PaighamChannelPresents programs={allProgramsScheduling} />
     </>
