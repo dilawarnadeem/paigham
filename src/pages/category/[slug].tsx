@@ -186,7 +186,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
             onChange={handleChange}
           >
             <option value="ASC">Latest</option>
-            <option value="DESC">Old</option>
+            <option value="DESC">Oldest</option>
           </select>
         </form>
       </div>

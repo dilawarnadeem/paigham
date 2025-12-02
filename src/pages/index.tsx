@@ -130,7 +130,7 @@ const TabsSection = ({ allposts, tabData }: any) => {
   };
 
   return (
-    <section className="container mx-auto pt-36 sm:pt-20 px-2">
+    <section className="container mx-auto pt-10 md:pt-20  px-2">
       <div className="flex justify-between item-center border-b-2 border-gray-500">
         <div className="hidden sm:grid grid-cols-4 sm:!flex flex-wrap justify-between space-x-2 w-full sm:w-auto font-metapro font-semibold">
           {tabData?.map((item: any, idx: number) => (
