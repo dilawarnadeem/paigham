@@ -35,7 +35,7 @@ const SingleScholar = ({ posts, slug }: any) => {
         <h6 className='uppercase text-xl text-secondary font-medium'>scholar:</h6>
         <h2 className="text-white mt-2 capitalize text-2xl md:text-3xl font-semibold">{qParams?.replace(/-/g, ' ')}</h2>
       </div>
-      <div className='grid grid-cols-2 container mx-auto py-20 px-4 lg:grid-cols-4 gap-4 '>
+      <div className='grid grid-cols-1 container mx-auto py-20 px-4 lg:grid-cols-4 gap-4 '>
         {
           posts?.map((item: IPost, idx: number) => (
             <Card item={item} key={idx} OpenVideo={OpenVideo} />
