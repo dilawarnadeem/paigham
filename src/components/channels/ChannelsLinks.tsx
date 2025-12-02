@@ -64,7 +64,7 @@ const ChannelsLinks = () => {
               alt="{item.name}"
               className="w-[25px]"
             />
-            <p className="text-[14px] pt-1">Pashto Urdu</p>
+            <p className="text-[14px] pt-1">Pashto TV</p>
             <img src="/images/live.png" alt="" className="w-[32px]" />
           </div>
         </Link>
