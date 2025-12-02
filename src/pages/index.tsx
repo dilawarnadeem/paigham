@@ -54,7 +54,6 @@ export default function Home({
         url="/"
         description="Paigham TV is an Islamic educational channel television network. The production of this channel is based on the teachings of Quran o Sunnah. "
       />
-      
 
       <Main posts={Slider} Options={OptionsData} />
       <TabsSection
@@ -133,35 +132,34 @@ const TabsSection = ({ allposts, tabData }: any) => {
   return (
     <section className="container mx-auto pt-36 sm:pt-20 px-2">
       <div className="flex justify-between item-center border-b-2 border-gray-500">
-      <div className="hidden sm:grid grid-cols-4 sm:!flex flex-wrap justify-between space-x-2 w-full sm:w-auto font-metapro font-semibold">
-  {tabData?.map((item: any, idx: number) => (
-    <li
-      key={idx}
-      className={`${
-        activeCategory === item.slug
-          ? "bg-secondary px-1 sm:px-4 py-2 text-primary"
-          : ""
-      } flex-1 flex justify-center md:min-w-[180px] cursor-pointer items-center`}
-      onClick={() => HandleVideosCategoryTabs(item.slug)}
-    >
-      {item.name}
-    </li>
-  ))}
-</div>
-<div className="block sm:hidden w-full">
-  <select
-    className="w-full border p-2 rounded font-metapro"
-    value={activeCategory}
-    onChange={(e) => HandleVideosCategoryTabs(e.target.value)}
-  >
-    {tabData?.map((item: any, idx: number) => (
-      <option key={idx} value={item.slug}>
-        {item.name}
-      </option>
-    ))}
-  </select>
-</div>
-
+        <div className="hidden sm:grid grid-cols-4 sm:!flex flex-wrap justify-between space-x-2 w-full sm:w-auto font-metapro font-semibold">
+          {tabData?.map((item: any, idx: number) => (
+            <li
+              key={idx}
+              className={`${
+                activeCategory === item.slug
+                  ? "bg-secondary px-1 sm:px-4 py-2 text-primary"
+                  : ""
+              } flex-1 flex justify-center md:min-w-[180px] cursor-pointer items-center`}
+              onClick={() => HandleVideosCategoryTabs(item.slug)}
+            >
+              {item.name}
+            </li>
+          ))}
+        </div>
+        <div className="block sm:hidden w-full">
+          <select
+            className="w-full border p-2 rounded font-metapro"
+            value={activeCategory}
+            onChange={(e) => HandleVideosCategoryTabs(e.target.value)}
+          >
+            {tabData?.map((item: any, idx: number) => (
+              <option key={idx} value={item.slug}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+        </div>
 
         <Link
           href="/"
@@ -218,9 +216,9 @@ const PaighamChannelPresents = ({ programs }: any) => {
               {programs?.map((item: any, idx: number) => (
                 <li
                   key={idx}
-                  className="flex md:flex-row  items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5"
+                  className="flex flex-row items-center gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5"
                 >
-                  <div className="w-full max-w-[240px] lg:max-w-[280px]">
+                  <div className="w-full max-w-[170px] lg:max-w-[280px]">
                     <time className="font-medium text-sm">
                       {item?.programInfo?.programTime || `0000`}
                     </time>

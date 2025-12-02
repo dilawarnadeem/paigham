@@ -48,7 +48,7 @@ const PaighamChannelPresents = ({ programs }: any) => {
                 key={idx}
                 className="flex md:flex-row flex-col-1 items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5"
               >
-                <div className="w-full max-w-[240px] lg:max-w-[280px]">
+                <div className="w-full max-w-[200px] lg:max-w-[280px]">
                   <time className="font-medium font-sm md:text-xl">
                     {program?.programInfo?.programTime || `0000`}
                   </time>
