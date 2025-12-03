@@ -431,3 +431,12 @@ export const ThemeOptionsQuery = gql`
     }
   }
 `;
+
+export const Get_Scholar_By_ID = gql`
+query GetScholar {
+  scholar(id: "2712", idType: DATABASE_ID) {
+    content
+    title
+  }
+}
+`;
