@@ -152,7 +152,7 @@ export const PostsByCategory = gql`
           }
         }
       }
-      posts(first: 1000, where: { orderby: { field: DATE, order: $order } }) {
+      posts(first: 12, where: { orderby: { field: DATE, order: $order } }) {
         nodes {
           title
           slug
@@ -358,6 +358,7 @@ export const SearchPost = gql`
       nodes {
         title
         content
+        slug
         postInfo {
           tmVideoUrl
           urduTitle
