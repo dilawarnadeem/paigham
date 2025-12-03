@@ -276,7 +276,7 @@ export const ProgramsSchedulingByDay = gql`
     singleDay(id: $id, idType: SLUG) {
       id
       name
-      programsScheduling {
+      programsScheduling(where: {orderby: {field: MENU_ORDER, order: ASC}}) {
         nodes {
           title
           programInfo {
