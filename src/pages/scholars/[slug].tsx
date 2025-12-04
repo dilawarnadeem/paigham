@@ -13,6 +13,8 @@ import React, { useContext, useState } from 'react'
 const SingleScholar = ({ posts, slug,scholar }: any) => {
   // const { name, posts: { nodes } } = posts
   const router:any =  useRouter()
+
+  console.log(scholar);
   
 
   const { setModelIsOpen, setVideoLink } = useContext(SettingsContext)
