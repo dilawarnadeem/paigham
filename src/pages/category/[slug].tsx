@@ -80,7 +80,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
       {videoLink ? (
         selectItem && <Category_Banner item={selectItem} />
       ) : (
-        <section className="relative container mx-auto ">
+        <section className="relative ">
           <img
             src={
               posts?.categoryInfo?.categoryBanner?.node.mediaItemUrl ||
