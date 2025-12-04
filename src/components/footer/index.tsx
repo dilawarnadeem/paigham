@@ -99,7 +99,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-5 font-metapro gap-6 mt-16 pt-12 border-t border-gray-500">
           <Link href="/">
             <img
-              src="/images/logo_gold.png"
+              src="/images/Logo_gold.png"
               alt="logo"
               width={160}
               height={189}
