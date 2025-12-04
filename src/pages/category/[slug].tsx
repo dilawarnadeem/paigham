@@ -92,10 +92,12 @@ const Category = ({ posts, slug, allCategories }: any) => {
             className="h-[500px] w-full object-cover"
           />
           <div className="bg-gradient-to-t from-[#161F28] via-[#161F28]/60 absolute inset-0 to-black/0" />
+          <Link href={`/article/${selectItem?.slug}`} className="absolute inset-0 flex justify-center">
           <FaCirclePlay
-            onClick={hanldeVideoButton}
+            
             className="text-5xl md:text-7xl animate-pulse cursor-pointer text-secondary absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2"
           />
+        </Link>
         </section>
       )}
 
