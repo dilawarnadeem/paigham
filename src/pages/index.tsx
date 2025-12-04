@@ -132,7 +132,17 @@ const TabsSection = ({ allposts, tabData }: any) => {
   return (
     <section className="container mx-auto pt-10 md:pt-20  px-2">
       <div className="flex justify-between item-center border-b-2 border-gray-500">
-        <div className="hidden sm:grid grid-cols-4 sm:!flex flex-wrap justify-between space-x-2 w-full sm:w-auto font-metapro font-semibold">
+        <ul className="hidden sm:grid grid-cols-4 sm:!flex flex-wrap justify-between space-x-2 w-full sm:w-auto font-metapro font-semibold">
+          <li
+            className={`${
+              activeCategory === "latest"
+                ? "bg-secondary px-1 sm:px-4 py-2 text-primary"
+                : ""
+            } flex-1 flex justify-center md:min-w-[180px] cursor-pointer items-center`}
+            onClick={() => HandleVideosCategoryTabs("latest")}
+          >
+            Latest
+          </li>
           {tabData?.map((item: any, idx: number) => (
             <li
               key={idx}
@@ -146,7 +156,7 @@ const TabsSection = ({ allposts, tabData }: any) => {
               {item.name}
             </li>
           ))}
-        </div>
+        </ul>
         <div className="block sm:hidden w-full">
           <select
             className="w-full border p-2 rounded font-metapro"
