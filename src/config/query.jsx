@@ -256,7 +256,7 @@ export const programsScheduling = gql`
       edges {
         node {
           name
-          programsScheduling {
+           programsScheduling(where: {orderby: {field: MENU_ORDER, order: ASC}}) {
             nodes {
               title
               excerpt
