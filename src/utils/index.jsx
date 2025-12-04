@@ -14,6 +14,33 @@ export const getVideoCode=(link) => {
 
 }
 
+export const extractYoutubeID = (url) => {
+  if (!url) return null;
+
+  // Normalize URL
+  url = url.trim();
+
+  // Case 1: youtu.be short links
+  if (url.includes("youtu.be/")) {
+    const id = url.split("youtu.be/")[1].split(/[?&]/)[0];
+    return id;
+  }
+
+  // Case 2: normal youtube watch URL
+  if (url.includes("watch?v=")) {
+    const id = url.split("watch?v=")[1].split("&")[0];
+    return id;
+  }
+
+  // Case 3: shorts URL
+  if (url.includes("youtube.com/shorts/")) {
+    const id = url.split("youtube.com/shorts/")[1].split(/[?&]/)[0];
+    return id;
+  }
+
+  return null;
+};
+
 
 export var sliderSettings = {
      dots: false,

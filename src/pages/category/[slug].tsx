@@ -17,6 +17,8 @@ import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { BsTwitter } from "react-icons/bs";
 import { GetStaticPaths } from "next";
 
+
+
 const Category = ({ posts, slug, allCategories }: any) => {
   const {
     posts: { nodes },
@@ -74,7 +76,6 @@ const Category = ({ posts, slug, allCategories }: any) => {
         url={`/category/${slug}`}
         description="Paigham TV is a satellite TV channel the objectives of which are preaching the true teachings of the Holy Quran and Sunnah "
       />
-      
 
       {/* Banner Video or Image */}
       {videoLink ? (
@@ -92,12 +93,12 @@ const Category = ({ posts, slug, allCategories }: any) => {
             className="h-[500px] w-full object-cover"
           />
           <div className="bg-gradient-to-t from-[#161F28] via-[#161F28]/60 absolute inset-0 to-black/0" />
-          <Link href={`/article/${selectItem?.slug}`} className="absolute inset-0 flex justify-center">
-          <FaCirclePlay
-            
-            className="text-5xl md:text-7xl animate-pulse cursor-pointer text-secondary absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2"
-          />
-        </Link>
+          <Link
+            href={`/article/${selectItem?.slug}`}
+            className="absolute inset-0 flex justify-center"
+          >
+            <FaCirclePlay className="text-5xl md:text-7xl animate-pulse cursor-pointer text-secondary absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2" />
+          </Link>
         </section>
       )}
 
