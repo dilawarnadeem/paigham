@@ -1,43 +1,67 @@
 import SeoMeta from "@/components/seo";
 import apolloClient from "@/config/client";
 import { Get_Scholar_By_ID, PostsByScholar } from "@/config/query";
-import { extractYoutubeID } from "@/utils";
+import { extractVideoInfo } from "@/utils";
 import { IPost } from "@/utils/types";
 import { GetServerSideProps } from "next";
 import React, { useState } from "react";
 
 const SingleScholar = ({ posts, slug, scholar }: any) => {
-
   const firstVideo = posts?.[0]?.postInfo?.tmVideoUrl || "";
 
   // State for current video being played
   const [currentVideo, setCurrentVideo] = useState(firstVideo);
 
   const [visibleCount, setVisibleCount] = useState(8);
-  const loadMore = () => setVisibleCount(prev => prev + 8);
-
-
+  const loadMore = () => setVisibleCount((prev) => prev + 8);
 
   return (
     <div className="bg-[#161F28]">
       <SeoMeta title={`${slug} | Paigham TV`} url={`/scholars/${slug}`} />
 
-     {/* ------ VIDEO PLAYER AFTER HEADER ------ */}
+      {/* VIDEO PLAYER AFTER HEADER */}
       <div className="container mx-auto px-4 pt-10" id="videoplayer">
-        {currentVideo && (
-          <div className="w-full h-[620px] aspect-video rounded-xl overflow-hidden mb-10">
-            <iframe
-              width="100%"
-              height="100%"
-              src={`https://www.youtube.com/embed/${extractYoutubeID(currentVideo)}`}
-              allowFullScreen
-            ></iframe>
-          </div>
-        )}
+        {currentVideo &&
+          (() => {
+            const video = extractVideoInfo(currentVideo);
+
+            if (!video) return null;
+
+            // YOUTUBE PLAYER
+            if (video.type === "youtube") {
+              return (
+                <iframe
+                  width="100%"
+                  height="100%"
+                  className="w-full h-[620px] rounded-xl overflow-hidden mb-10"
+                  src={`https://www.youtube.com/embed/${video.id}`}
+                  allowFullScreen
+                ></iframe>
+              );
+            }
+
+            // FACEBOOK PLAYER
+            if (video.type === "facebook") {
+              return (
+                <iframe
+                  className="w-full h-[620px] rounded-xl overflow-hidden mb-10"
+                  src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
+                    video.url
+                  )}&show_text=false&width=800`}
+                  scrolling="no"
+                  frameBorder="0"
+                  allow="encrypted-media; autoplay; clipboard-write"
+                  allowFullScreen
+                ></iframe>
+              );
+            }
+          })()}
       </div>
 
       <div className="container mx-auto px-4 pt-14">
-        <h6 className="uppercase text-xl text-secondary font-medium">Scholar:</h6>
+        <h6 className="uppercase text-xl text-secondary font-medium">
+          Scholar:
+        </h6>
 
         <h2 className="text-white mt-2 capitalize text-2xl md:text-3xl font-semibold">
           {scholar.title}
@@ -49,20 +73,19 @@ const SingleScholar = ({ posts, slug, scholar }: any) => {
         ></div>
       </div>
 
-     
       {/* ------ VIDEO GRID ------ */}
       <div className="grid grid-cols-1 container mx-auto py-20 px-4 lg:grid-cols-4 gap-4">
         {posts?.slice(0, visibleCount).map((item: IPost, idx: number) => (
-         <div
-  key={idx}
-  className="px-1 group cursor-pointer"
-  onClick={() => {
-    setCurrentVideo(item.postInfo.tmVideoUrl);
-    document.getElementById("videoplayer")?.scrollIntoView({ 
-      behavior: "smooth" 
-    });
-  }}
->
+          <div
+            key={idx}
+            className="px-1 group cursor-pointer"
+            onClick={() => {
+              setCurrentVideo(item.postInfo.tmVideoUrl);
+              document.getElementById("videoplayer")?.scrollIntoView({
+                behavior: "smooth",
+              });
+            }}
+          >
             <div className="bg-black rounded-lg overflow-hidden">
               <img
                 src={item?.featuredImage?.node?.mediaItemUrl}

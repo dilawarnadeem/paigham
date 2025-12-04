@@ -13,33 +13,48 @@ export const getVideoCode=(link) => {
      }
 
 }
-
-export const extractYoutubeID = (url) => {
+export const extractVideoInfo = (url) => {
   if (!url) return null;
 
-  // Normalize URL
   url = url.trim();
 
-  // Case 1: youtu.be short links
+  // ====================
+  //   YOUTUBE
+  // ====================
   if (url.includes("youtu.be/")) {
-    const id = url.split("youtu.be/")[1].split(/[?&]/)[0];
-    return id;
+    return {
+      type: "youtube",
+      id: url.split("youtu.be/")[1].split(/[?&]/)[0]
+    };
   }
 
-  // Case 2: normal youtube watch URL
   if (url.includes("watch?v=")) {
-    const id = url.split("watch?v=")[1].split("&")[0];
-    return id;
+    return {
+      type: "youtube",
+      id: url.split("watch?v=")[1].split("&")[0]
+    };
   }
 
-  // Case 3: shorts URL
   if (url.includes("youtube.com/shorts/")) {
-    const id = url.split("youtube.com/shorts/")[1].split(/[?&]/)[0];
-    return id;
+    return {
+      type: "youtube",
+      id: url.split("youtube.com/shorts/")[1].split(/[?&]/)[0]
+    };
+  }
+
+  // ====================
+  //   FACEBOOK
+  // ====================
+  if (url.includes("facebook.com") || url.includes("fb.watch")) {
+    return {
+      type: "facebook",
+      url // FB player needs full original URL
+    };
   }
 
   return null;
 };
+
 
 
 export var sliderSettings = {
