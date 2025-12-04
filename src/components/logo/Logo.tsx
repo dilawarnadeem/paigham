@@ -5,14 +5,14 @@ import React from "react";
 const Logo = () => {
   return (
     <Link href="/" className="">
-      <img
+      <Image
         src="/images/logo_gold.png"
         alt="logo"
         width={160}
         height={189}
         className="z-10 hidden md:block w-14 md:w-[120px]  relative"
       />
-      <img
+      <Image
         src="/images/logo-white.png"
         alt="logo"
         width={160}
