@@ -4,20 +4,16 @@ import Card from "@/components/video-section/card";
 import apolloClient from "@/config/client";
 import { HomeCategories, PostsByCategory } from "@/config/query";
 import { SettingsContext } from "@/context/setting-context";
-import { sliderSettings } from "@/utils";
+import { extractVideoInfo } from "@/utils";
 import { IPost } from "@/utils/types";
 import React, { useContext, useEffect, useState } from "react";
-import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { FaCirclePlay, FaLinkedinIn } from "react-icons/fa6";
-import Slider from "react-slick";
 import Link from "next/link";
 import CateCard from "@/components/cate-card/CatCard";
 import { useRouter } from "next/router";
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { BsTwitter } from "react-icons/bs";
-import { GetStaticPaths } from "next";
-
-
+import ShareButtons from "@/components/share-buttons/ShareButtons";
 
 const Category = ({ posts, slug, allCategories }: any) => {
   const {
@@ -26,62 +22,97 @@ const Category = ({ posts, slug, allCategories }: any) => {
 
   const router = useRouter();
 
+  // ❗ Show video only when user clicks play on banner or card
+  const [currentVideo, setCurrentVideo] = useState<string | null>(null);
+
+  const [visibleCount, setVisibleCount] = useState(8);
+  const loadMore = () => setVisibleCount((prev) => prev + 8);
+
   const { setModelIsOpen, setVideoLink, videoLink } =
     useContext(SettingsContext);
 
   const [selectItem, setSelectedItem] = useState<any>();
-  const [selectedValue, setSelectedValue] = useState("latest");
 
-  const handleChange = (event: any) => {
-    const value = event.target.value;
-    setSelectedValue(value);
-    router.push(`/category/${slug}?sort=${value}`);
-  };
-
-  const OpenVideo = (link: string, item: any) => {
-    setModelIsOpen(false);
-    setVideoLink(link);
-    setSelectedItem(item); // 👈 force update selected video
-  };
-  useEffect(() => {
-    const fItem = nodes?.find(
-      (item: any) => item?.postInfo?.tmVideoUrl === videoLink
-    );
-    setSelectedItem(fItem || nodes?.[0]);
-  }, [videoLink, nodes]);
-
-  const slider = React.useRef<any>(null);
-
-  const hanldeVideoButton = () => {
+  // PLAY FIRST VIDEO WHEN USER CLICKS BANNER PLAY BUTTON
+  const handlePlayBanner = () => {
     if (nodes?.[0]) {
-      setVideoLink(nodes[0].postInfo.tmVideoUrl);
+      const firstItem = nodes[0];
+      setCurrentVideo(firstItem.postInfo.tmVideoUrl);
+      setVideoLink(firstItem.postInfo.tmVideoUrl);
+      setSelectedItem(firstItem);
     }
   };
+
+  // OPEN VIDEO FROM CARD CLICK
+  const OpenVideo = (link: string, item: any) => {
+    setVideoLink(link);
+    setCurrentVideo(link);
+    setSelectedItem(item);
+  };
+
+  // Sync selectedItem when videoLink changes
+  useEffect(() => {
+    const matched = nodes?.find(
+      (x: any) => x?.postInfo?.tmVideoUrl === videoLink
+    );
+    if (matched) setSelectedItem(matched);
+  }, [videoLink, nodes]);
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(
         `https://paigham.tv/article/${selectItem?.slug}`
       );
-      alert("Link copied to clipboard!");
+      alert("Link copied!");
     } catch (err) {
-      console.error("Failed to copy text: ", err);
+      console.error("Failed to copy", err);
     }
   };
 
   return (
     <section className="bg-[rgb(22,31,40)] pb-20">
       <SeoMeta
-        title={`${slug}  | Paigham TV`}
+        title={`${slug} | Paigham TV`}
         url={`/category/${slug}`}
-        description="Paigham TV is a satellite TV channel the objectives of which are preaching the true teachings of the Holy Quran and Sunnah "
+        description="Paigham TV is a satellite TV channel the objectives of which are preaching the Holy Quran and Sunnah."
       />
 
-      {/* Banner Video or Image */}
-      {videoLink ? (
-        selectItem && <Category_Banner item={selectItem} />
+      {/* ----------------- SHOW VIDEO PLAYER ----------------- */}
+      {currentVideo ? (
+        <div className="container mx-auto px-4 pt-10" id="videoplayer">
+          {(() => {
+            const video = extractVideoInfo(currentVideo);
+            if (!video) return null;
+
+            if (video.type === "youtube") {
+              return (
+                <iframe
+                  className="w-full h-[620px] rounded-xl mb-10"
+                  src={`https://www.youtube.com/embed/${video.id}`}
+                  allowFullScreen
+                ></iframe>
+              );
+            }
+
+            if (video.type === "facebook") {
+              return (
+                <iframe
+                  className="w-full h-[620px] rounded-xl mb-10"
+                  src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
+                    video.url
+                  )}&show_text=false&width=800`}
+                  allow="encrypted-media; autoplay; clipboard-write"
+                  allowFullScreen
+                ></iframe>
+              );
+            }
+
+            return null;
+          })()}
+        </div>
       ) : (
-        <section className="relative ">
+        /* ----------------- SHOW BANNER ----------------- */
+        <section className="relative">
           <img
             src={
               posts?.categoryInfo?.categoryBanner?.node.mediaItemUrl ||
@@ -92,79 +123,30 @@ const Category = ({ posts, slug, allCategories }: any) => {
             alt={posts.name}
             className="h-[500px] w-full object-cover"
           />
-          <div className="bg-gradient-to-t from-[#161F28] via-[#161F28]/60 absolute inset-0 to-black/0" />
-          <Link
-            href={`/article/${selectItem?.slug}`}
-            className="absolute inset-0 flex justify-center"
+
+          <div className="absolute inset-0 bg-gradient-to-t from-[#161F28] via-[#161F28]/60 to-black/0" />
+
+          <div
+            onClick={handlePlayBanner}
+            className="absolute inset-0 flex justify-center cursor-pointer"
           >
-            <FaCirclePlay className="text-5xl md:text-7xl animate-pulse cursor-pointer text-secondary absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2" />
-          </Link>
+            <FaCirclePlay className="text-5xl md:text-7xl animate-pulse text-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+          </div>
         </section>
       )}
 
-      {/* Content */}
+      {/* ----------------- SELECTED ITEM HEADER ----------------- */}
       <div className="container px-4 mx-auto">
         <div className="mt-12 pb-8 border-b-[2px] border-gray-800">
-          <div className="md:flex justify-between items-end mt-2 md:mt-0">
+          <div className="md:flex justify-between items-end">
             <div>
               <h4 className="text-white font-semibold text-2xl md:text-3xl">
                 {selectItem?.title}
               </h4>
-              <h4 className="text-secondary text-lg my-2 md:mb-0">
-                {posts.name}
-              </h4>
+              <h4 className="text-secondary text-lg my-2">{posts.name}</h4>
             </div>
 
-            {/* Share Icons */}
-            <ul className="flex text-white items-center gap-3 text-xl md:text-2xl">
-              <li>Share:</li>
-
-              <li className="hover:text-secondary">
-                <Link
-                  href={`https://api.whatsapp.com/send?text=https://paigham.tv/article/${selectItem?.slug}`}
-                >
-                  <FaWhatsapp size={25} />
-                </Link>
-              </li>
-
-              <li className="hover:text-secondary">
-                <Link
-                  href={`https://www.facebook.com/sharer/sharer.php?u=https://paigham.tv/article/${selectItem?.slug}`}
-                >
-                  <FaFacebook />
-                </Link>
-              </li>
-
-              <li className="hover:text-secondary">
-                <Link
-                  href={`https://www.instagram.com/?url=https://paigham.tv/article/${selectItem?.slug}`}
-                >
-                  <FaInstagram />
-                </Link>
-              </li>
-
-              <li className="hover:text-secondary">
-                <Link
-                  href={`https://twitter.com/intent/tweet?text=https://paigham.tv/article/${selectItem?.slug}`}
-                >
-                  <BsTwitter />
-                </Link>
-              </li>
-
-              <li className="hover:text-secondary">
-                <Link
-                  href={`https://www.linkedin.com/shareArticle?mini=true&url=https://paigham.tv/article/${selectItem?.slug}`}
-                >
-                  <FaLinkedinIn />
-                </Link>
-              </li>
-
-              <li onClick={handleCopy} className="cursor-pointer">
-                <svg width="1em" height="1em" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M15.24 2h-3.894..." />
-                </svg>
-              </li>
-            </ul>
+            <ShareButtons slug={selectItem?.slug} onCopy={handleCopy} />
           </div>
 
           <div
@@ -176,58 +158,35 @@ const Category = ({ posts, slug, allCategories }: any) => {
         </div>
       </div>
 
-      {/* Sorting */}
-      <div className="flex justify-end container mx-auto px-4">
-        <form className="max-w-sm flex items-center gap-2 mt-10">
-          <label className="block text-sm font-medium text-white">
-            Sorting
-          </label>
-
-          <select
-            className="bg-gray-50 min-w-[160px] border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-            value={selectedValue}
-            onChange={handleChange}
-          >
-            <option value="ASC">Latest</option>
-            <option value="DESC">Oldest</option>
-          </select>
-        </form>
-      </div>
-
-      {/* Slider */}
-      <div className="md:px-2 mt-20 relative">
-        <Slider {...sliderSettings} ref={slider}>
-          {nodes?.map((item: IPost, idx: number) => (
+      {/* ----------------- VIDEO CARDS LIST ----------------- */}
+      <div className="md:px-2">
+        <div className="grid grid-cols-1 container mx-auto py-20 px-4 lg:grid-cols-4 gap-4">
+          {nodes?.slice(0, visibleCount).map((item: IPost, idx: number) => (
             <Card
               key={idx}
               item={item}
-              OpenVideo={() => OpenVideo(item.postInfo.tmVideoUrl, item)}
-              slug
+              OpenVideo={OpenVideo}
+              slug={slug}
+              CurrentVideo={setCurrentVideo}
             />
           ))}
-        </Slider>
 
-        {/* Slider Buttons */}
-        <div className={nodes?.length > 4 ? "" : "lg:hidden"}>
-          <button
-            className="md:text-2xl text-xl text-white hover:text-primary bg-black/50 absolute -top-4 left-0 px-1 md:px-1.5"
-            onClick={() => slider?.current?.slickPrev()}
-          >
-            <MdArrowBackIosNew />
-          </button>
-
-          <button
-            className="md:text-2xl text-xl text-white hover:text-primary bg-black/50 absolute -top-4 right-0 px-1 md:px-1.5"
-            onClick={() => slider?.current?.slickNext()}
-          >
-            <MdArrowForwardIos />
-          </button>
+          {visibleCount < nodes.length && (
+            <div className="text-center mt-8 md:col-span-4">
+              <button
+                onClick={loadMore}
+                className="px-6 py-2 bg-secondary text-white rounded-lg hover:bg-secondary/80 transition"
+              >
+                Load More
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Top Categories */}
+      {/* ----------------- TOP CATEGORIES ----------------- */}
       <section className="container mx-auto mb-28 px-4">
-        <h2 className="font-metapro text-xl text-white font-semibold mt-20 mb-6">
+        <h2 className="text-xl text-white font-semibold mt-20 mb-6">
           Top Categories
         </h2>
 
@@ -243,9 +202,6 @@ const Category = ({ posts, slug, allCategories }: any) => {
 
 export default Category;
 
-/* -----------------------------------
-   Server-Side Data Fetching
------------------------------------- */
 export const getServerSideProps = async (context: any) => {
   const queryParam = context?.query?.sort || "ASC";
   const slug = context.params?.slug;

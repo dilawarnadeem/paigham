@@ -163,6 +163,9 @@ const TabsSection = ({ allposts, tabData }: any) => {
             value={activeCategory}
             onChange={(e) => HandleVideosCategoryTabs(e.target.value)}
           >
+             <option value="latest">
+                Latest
+              </option>
             {tabData?.map((item: any, idx: number) => (
               <option key={idx} value={item.slug}>
                 {item.name}
@@ -172,7 +175,7 @@ const TabsSection = ({ allposts, tabData }: any) => {
         </div>
 
         <Link
-          href="/"
+          href="/programs"
           className="uppercase hidden md:flex hover:text-orange items-center space-x-2 font-metapro text-xl tracking-widest font-semibold rtl:flex-row-reverse"
         >
           <span>View All</span>

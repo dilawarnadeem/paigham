@@ -152,7 +152,7 @@ export const PostsByCategory = gql`
           }
         }
       }
-      posts(first: 12, where: { orderby: { field: DATE, order: $order } }) {
+      posts(first: 60, where: { orderby: { field: DATE, order: $order } }) {
         nodes {
           title
           slug
