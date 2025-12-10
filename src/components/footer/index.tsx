@@ -25,7 +25,7 @@ function WhatsAppSubscribe() {
     <div className="bg-[#27396C] flex items-center mt-6 sm:mt-0">
       <input
         className="bg-transparent w-full p-4 placeholder:font-metapro md:w-[400px] outline-none placeholder:font-normal placeholder:tracking-wider"
-        placeholder="Enter your mobile number"
+        placeholder="Join our Whatsapp channel"
         type="tel"
       />
       <button
