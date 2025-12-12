@@ -33,7 +33,7 @@ const SingleScholar = ({ posts, slug, scholar }: any) => {
                 <iframe
                   width="100%"
                   height="100%"
-                  className="w-full h-[620px] rounded-xl overflow-hidden mb-10"
+                  className="w-full md:h-[620px] h-[280px]  aspect-video  rounded-xl overflow-hidden mb-10"
                   src={`https://www.youtube.com/embed/${video.id}`}
                   allowFullScreen
                 ></iframe>
@@ -44,7 +44,7 @@ const SingleScholar = ({ posts, slug, scholar }: any) => {
             if (video.type === "facebook") {
               return (
                 <iframe
-                  className="w-full h-[620px] rounded-xl overflow-hidden mb-10"
+                  className="w-full md:h-[620px] h-[280px]  aspect-video  rounded-xl overflow-hidden mb-10"
                   src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
                     video.url
                   )}&show_text=false&width=800`}
