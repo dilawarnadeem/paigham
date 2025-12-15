@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { FaWhatsapp, FaFacebook, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaWhatsapp, FaFacebook, FaInstagram, FaLinkedinIn, FaRegCopy } from "react-icons/fa";
 import { BsTwitter } from "react-icons/bs";
 
 const ShareButtons = ({ slug, onCopy }: { slug: string; onCopy: () => void }) => {
@@ -46,13 +46,8 @@ const ShareButtons = ({ slug, onCopy }: { slug: string; onCopy: () => void }) =>
         </Link>
       </li>
 
-      <li onClick={onCopy} className="cursor-pointer">
-        <svg width="1em" height="1em" viewBox="0 0 24 24">
-          <path
-            fill="currentColor"
-            d="M15.24 2h-3.894..."
-          />
-        </svg>
+      <li onClick={onCopy} className="cursor-pointer text-white">
+       <FaRegCopy size={24} />
       </li>
     </ul>
   );

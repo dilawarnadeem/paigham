@@ -2,11 +2,7 @@ import SeoMeta from "@/components/seo";
 import CateCard from "@/components/cate-card/CatCard";
 import ShareButtons from "@/components/share-buttons/ShareButtons";
 import apolloClient from "@/config/client";
-import {
-  HomeCategories,
-  PostsByCategory,
-  SinglePost,
-} from "@/config/query";
+import { HomeCategories, PostsByCategory, SinglePost } from "@/config/query";
 import { SettingsContext } from "@/context/setting-context";
 import { extractVideoInfo } from "@/utils";
 import { IPost } from "@/utils/types";
@@ -19,6 +15,8 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
 
   const [currentVideo, setCurrentVideo] = useState<string | null>(null);
   const [selectItem, setSelectedItem] = useState<any>(post);
+
+
 
   // ---------------- PLAY VIDEO ----------------
   const handlePlay = () => {
@@ -120,14 +118,15 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
           <div className="md:flex justify-between items-end">
             <div>
               <h4 className="text-white font-semibold text-2xl md:text-3xl">
-                {post?.title}
+                {selectItem?.title}
               </h4>
+
               <h4 className="text-secondary text-lg my-2">
-                {post?.categories?.nodes?.[0]?.name}
+                {selectItem?.categories?.nodes?.[0]?.name}
               </h4>
             </div>
 
-            <ShareButtons slug={post?.slug} onCopy={handleCopy} />
+            <ShareButtons slug={selectItem?.slug} onCopy={handleCopy} />
           </div>
 
           <div
