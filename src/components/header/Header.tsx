@@ -14,15 +14,12 @@ import { Socials } from "../footer";
 import TopBar from "./topBar";
 import useWindowScroll from "@/hooks/useWindowScroll";
 import useWindowScreen from "@/hooks/useWindowScreen";
-import { MdLanguage } from "react-icons/md";
 
 const Header = () => {
   const [isMobileNav, setIsMobileNav] = useState(false);
   const [leftSidebar, setLeftSideBar] = useState(false);
   const { isScrolled } = useWindowScroll();
   const { dimensions } = useWindowScreen();
-  const [openLang, setOpenLang] = useState(false);
-
   const router = useRouter();
   const {
     SearchModalIsOpen,
@@ -30,9 +27,7 @@ const Header = () => {
     modalIsOpen,
     setModelIsOpen,
     documentDirection,
-    setDocumentDirection,
     language,
-    setLanguage,
   } = useContext(SettingsContext);
 
   const OpenSearch = () => {
@@ -46,24 +41,7 @@ const Header = () => {
     }
   };
 
-  const toggleLanguageAndDirection = (l: string) => {
-    const d = l === "en" ? "ltr" : l === "ur" ? "rtl" : "rtl";
-    sessionStorage.setItem("direction", d);
-    sessionStorage.setItem("language", l);
-    if (l === "en") {
-      setDocumentDirection("ltr");
-      setLanguage("en");
-    } else if (l === "ur") {
-      setDocumentDirection("rtl");
-      setLanguage("ur");
-    } else {
-      setDocumentDirection("rtl");
-      setLanguage("ar");
-    }
-    document.documentElement.dir = d;
-    document.documentElement.lang = l;
-    setOpenLang(false);
-  };
+
 
   useEffect(() => {
     // Update the document's direction and language when the state changes
@@ -104,38 +82,7 @@ const Header = () => {
                 <RiMenu5Fill size={32} className="text-white" />
               )}
             </button>
-            <i className="lg:hidden relative">
-              <MdLanguage
-                size={28}
-                onClick={() => setOpenLang(!openLang)}
-                className={openLang ? "text-orange" : "text-white"}
-              />
-              {openLang && (
-                <div className="absolute pt-5 -right-[43px]">
-                  <div className=" flex relative bg-gradient-to-l from-orange to-secondary flex-col ">
-                    <button
-                      className="p-2 text-lg hover:bg-primary px-7 border-b-[1px] border-orange"
-                      onClick={() => toggleLanguageAndDirection("en")}
-                    >
-                      English
-                    </button>
-                    <button
-                      className="p-2 text-lg hover:bg-primary px-7 border-b-[1px] border-orange"
-                      onClick={() => toggleLanguageAndDirection("ur")}
-                    >
-                      اردو
-                    </button>
-                    <button
-                      className="p-2 text-lg hover:bg-primary px-7"
-                      onClick={() => toggleLanguageAndDirection("ar")}
-                    >
-                      عربی
-                    </button>
-                    <div className="p-2 bg-gradient-to-l from-orange to-secondary absolute right-1/2 transform -top-2 rotate-45 z-[-1] translate-x-1/2" />
-                  </div>
-                </div>
-              )}
-            </i>
+           
             <i className="lg:hidden">
               <FiSearch size={24} onClick={() => OpenSearch()} />
             </i>
