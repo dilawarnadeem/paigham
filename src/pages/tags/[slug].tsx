@@ -1,4 +1,5 @@
 import Category_Banner from "@/components/pageBanner/categoryBanner";
+import SeoMeta from "@/components/seo";
 import Card from "@/components/video-section/card";
 import apolloClient from "@/config/client";
 import { PostsByTags } from "@/config/query";
@@ -9,7 +10,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import React, { useContext, useEffect, useState } from "react";
 import { FaCirclePlay } from "react-icons/fa6";
 
-const Tags = ({ posts }: any) => {
+const Tags = ({ posts,slug }: any) => {
   const {
     name,
     posts: { nodes },
@@ -45,7 +46,12 @@ const Tags = ({ posts }: any) => {
     };
 
   return (
-    <>
+    <section className="bg-[rgb(22,31,40)] pb-20">
+      <SeoMeta
+        title={`${name} | Paigham TV`}
+        url={`/tags/${slug}`}
+        description="Paigham TV is a satellite TV channel the objectives of which are preaching the Holy Quran and Sunnah."
+      />
 
      {/* ----------------- SHOW VIDEO PLAYER ----------------- */}
           {currentVideo ? (
@@ -104,7 +110,7 @@ const Tags = ({ posts }: any) => {
               </div>
             </section>
           )}
-      <h2 className="container mx-auto text-3xl font-bold px-4 my-10">
+      <h2 className="container mx-auto text-3xl text-white font-bold px-4 my-10">
         {name}
       </h2>
       <div className="grid grid-cols-2 container mx-auto  px-4 lg:grid-cols-4 gap-4 mb-20">
@@ -129,7 +135,7 @@ const Tags = ({ posts }: any) => {
             </div>
           )}
       </div>
-    </>
+    </section>
   );
 };
 
