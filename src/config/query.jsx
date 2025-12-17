@@ -140,7 +140,7 @@ export const AllTags = gql`
 
 // post by category pass category slug in qury
 export const PostsByCategory = gql`
-  query PostsByCategory($slug: ID!, $order: OrderEnum = DESC) {
+  query PostsByCategory($slug: ID!, $order: OrderEnum = ASC) {
     category(id: $slug, idType: SLUG) {
       name
       slug
@@ -152,7 +152,7 @@ export const PostsByCategory = gql`
           }
         }
       }
-      posts(first: 60, where: { orderby: { field: DATE, order: $order } }) {
+      posts(first: 60, where: { orderby: { field: MENU_ORDER, order: $order } }) {
         nodes {
           title
           slug
