@@ -87,7 +87,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
             if (video.type === "youtube") {
               return (
                 <iframe
-                  className="w-full md:h-[620px] h-[280px]  aspect-video  rounded-xl mb-10"
+                  className="w-full md:h-[720px] h-[280px] aspect-video   rounded-xl mb-10"
                   src={`https://www.youtube.com/embed/${video.id}`}
                   allowFullScreen
                 ></iframe>
@@ -97,7 +97,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
             if (video.type === "facebook") {
               return (
                 <iframe
-                  className="w-full md:h-[620px]  h-[280px] aspect-video  rounded-xl mb-10"
+                  className="w-full md:h-[720px]  h-[280px] aspect-video  rounded-xl mb-10"
                   src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
                     video.url
                   )}&show_text=false&width=800`}
