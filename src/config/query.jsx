@@ -225,8 +225,7 @@ export const Categories = gql`
 export const HomeCategories = gql`
   query HomeCategories {
     categories(
-      first: 4
-      where: {  order: ASC }
+      first: 4, where: {order: ASC, orderby: TERM_ORDER}
     ) {
       nodes {
         name
