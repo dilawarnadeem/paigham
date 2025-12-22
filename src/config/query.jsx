@@ -225,8 +225,8 @@ export const Categories = gql`
 export const HomeCategories = gql`
   query HomeCategories {
     categories(
-      first: 1000
-      where: { include: ["1", "80", "123", "60"], order: DESC }
+      first: 4
+      where: {  order: ASC }
     ) {
       nodes {
         name
