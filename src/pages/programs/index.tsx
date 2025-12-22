@@ -14,7 +14,7 @@ export default function SeriesPrograms({ allCategories }: any) {
         url="/programs"
         description="Paigham TV is a satellite TV channel the objectives of which are preaching the true teachings of the Holy Quran and Sunnah "
       />
-      <PageBanner title="" image="/images/program.jpg" />
+      <PageBanner title="" image="/images/program.jpg" mobile="/images/program_mobile.jpg" />
       {/* <section className="pb-28 md:pt-20 bg-[#161F28]">
         {allScholars?.map((item: any, idx: any) => (
           <CategoryCard key={idx} items={item} />
