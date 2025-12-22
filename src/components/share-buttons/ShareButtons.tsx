@@ -9,6 +9,9 @@ const ShareButtons = ({ slug, onCopy }: { slug: string; onCopy: () => void }) =>
   return (
     <ul className="flex text-white items-center gap-3 text-xl">
       <li className="text-white">Share:</li>
+       <li onClick={onCopy} className="cursor-pointer text-white">
+       <FaRegCopy size={24} />
+      </li>
 
       <li>
         <Link href={`https://api.whatsapp.com/send?text=${url}`} target="_blank">
@@ -46,9 +49,7 @@ const ShareButtons = ({ slug, onCopy }: { slug: string; onCopy: () => void }) =>
         </Link>
       </li>
 
-      <li onClick={onCopy} className="cursor-pointer text-white">
-       <FaRegCopy size={24} />
-      </li>
+     
     </ul>
   );
 };
