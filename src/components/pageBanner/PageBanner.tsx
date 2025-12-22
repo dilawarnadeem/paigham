@@ -13,15 +13,15 @@ const PageBanner = ({ title, image, mobile }: IPageBanner) => {
     <section className="relative">
       <picture>
         {/* Mobile image only if provided */}
-        {mobile && (
+        {/* {mobile && (
           <img
           src={mobile}
           alt={title}
           width={450}
-          height={450}
+          height={350}
           className="w-full h-[110px] md:h-[450px] object-cover"
         />
-        )}
+        )} */}
 
         {/* Default image (desktop + fallback) */}
         <img
