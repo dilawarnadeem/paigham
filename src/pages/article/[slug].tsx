@@ -153,7 +153,7 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
             >
               <img
                 src={item?.featuredImage?.node?.mediaItemUrl}
-                className="rounded-lg object-cover h-[180px] w-full"
+                className="rounded-lg object-cover h-[205px] w-full"
               />
               <h4 className="mt-3 text-white font-medium line-clamp-2">
                 {item?.title}
