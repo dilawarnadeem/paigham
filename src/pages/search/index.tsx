@@ -22,7 +22,7 @@ const Search = ({ allPosts }: any) => {
 
      return (
           <>
-               <SeoMeta title={`${q} | Paigham TV`} url="/series" description="Paigham TV is a satellite TV channel the objectives of which are preaching the true teachings of the Holy Quran and Sunnah " />
+               <SeoMeta title={`${q} | Paigham TV`} url="/programs" description="Paigham TV is a satellite TV channel the objectives of which are preaching the true teachings of the Holy Quran and Sunnah " />
                <section className='bg-[#161F28]'>
                     {videoLink?.length > 4 && <Category_Banner item={videoLink} />}
                </section>

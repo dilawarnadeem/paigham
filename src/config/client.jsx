@@ -1,7 +1,7 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const apolloClient = new ApolloClient({
-  uri: process.env.WP_GRAPHQL_URI,
+  uri: "https://zamzamwelfaretrust.com/graphql", 
   cache: new InMemoryCache(),
 });
 

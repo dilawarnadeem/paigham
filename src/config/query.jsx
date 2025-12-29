@@ -59,18 +59,18 @@ export const AllPosts = gql`
 `;
 
 export const NewsTickers = gql`
-query NewQuery {
-  hadithBy(hadithId: 4299) {
-    title
-    news_tickers {
-      newsTicker {
-        title
-        info
+  query NewQuery {
+    hadithBy(hadithId: 4299) {
+      title
+      news_tickers {
+        newsTicker {
+          title
+          info
+        }
       }
     }
   }
-}
-`
+`;
 
 export const SinglePost = gql`
   query SinglePost($slug: ID!) {
@@ -140,17 +140,19 @@ export const AllTags = gql`
 
 // post by category pass category slug in qury
 export const PostsByCategory = gql`
-  query PostsByCategory($slug: ID!, $order: OrderEnum = DESC) {
+  query PostsByCategory($slug: ID!, $order: OrderEnum = ASC) {
     category(id: $slug, idType: SLUG) {
       name
       slug
       description
       categoryInfo {
         categoryBanner {
-          mediaItemUrl
+          node {
+            mediaItemUrl
+          }
         }
       }
-      posts(first: 1000, where: { orderby: { field: DATE, order: $order } }) {
+      posts(first: 60, where: { orderby: { field: MENU_ORDER, order: $order } }) {
         nodes {
           title
           slug
@@ -176,50 +178,54 @@ export const PostsByCategory = gql`
 `;
 
 export const Categories = gql`
-query Categories {
-  categories(first: 1000) {
-    nodes {
-      name
-      slug
-      count
-      categoryInfo {
-        catImage {
-          mediaItemUrl
-        }
-        categoryBanner {
-          mediaItemUrl
-        }
-        featured
-      }
-      posts {
-        nodes {
-          title
-          status
-          featuredImage {
+  query Categories {
+    categories(first: 1000) {
+      nodes {
+        name
+        slug
+        count
+        categoryInfo {
+          catImage {
             node {
               mediaItemUrl
             }
           }
-          categories {
-            nodes {
-              name
-              slug
+          categoryBanner {
+            node {
+              mediaItemUrl
             }
           }
-          postInfo {
-            tmVideoUrl
+          featured
+        }
+        posts {
+          nodes {
+            title
+            status
+            slug
+            featuredImage {
+              node {
+                mediaItemUrl
+              }
+            }
+            categories {
+              nodes {
+                name
+                slug
+              }
+            }
+            postInfo {
+              tmVideoUrl
+            }
           }
         }
       }
     }
   }
-}
 `;
 export const HomeCategories = gql`
   query HomeCategories {
     categories(
-      first: 1000
-      where: { include: ["1", "80", "123", "60"], order: DESC }
+      first: 4, where: {order: ASC, orderby: TERM_ORDER}
     ) {
       nodes {
         name
@@ -227,10 +233,14 @@ export const HomeCategories = gql`
         count
         categoryInfo {
           catImage {
-            mediaItemUrl
+            node {
+              mediaItemUrl
+            }
           }
           categoryBanner {
-            mediaItemUrl
+            node {
+              mediaItemUrl
+            }
           }
           featured
         }
@@ -241,13 +251,36 @@ export const HomeCategories = gql`
 
 export const programsScheduling = gql`
   query programsScheduling {
-    programsScheduling(first: 3) {
-      nodes {
-        title
-        excerpt
-        programInfo {
-          videoUrl
-          programTime
+    allDay {
+      edges {
+        node {
+          name
+         programsScheduling(where: {orderby: {field: MENU_ORDER, order: ASC}}, first: 90) {
+            nodes {
+              title
+              excerpt
+              programInfo {
+                programTime
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const ProgramsSchedulingByDay = gql`
+  query ProgramsSchedulingByDay($id: ID = "monday") {
+    singleDay(id: $id, idType: SLUG) {
+      id
+      name
+      programsScheduling(where: {orderby: {field: MENU_ORDER, order: ASC}}, first: 90) {
+        nodes {
+          title
+          programInfo {
+            programTime
+          }
         }
       }
     }
@@ -299,6 +332,7 @@ export const PostsByScholar = gql`
     ) {
       nodes {
         title
+        slug
         content
         postInfo {
           tmVideoUrl
@@ -323,6 +357,7 @@ export const SearchPost = gql`
       nodes {
         title
         content
+        slug
         postInfo {
           tmVideoUrl
           urduTitle
@@ -336,4 +371,71 @@ export const SearchPost = gql`
       }
     }
   }
+`;
+
+export const SlidesQuery = gql`
+  query Slides {
+    slides {
+      nodes {
+        title
+        featuredImage {
+          node {
+            mediaItemUrl
+          }
+        }
+        slideInfo {
+          mobileImage {
+            node {
+              mediaItemUrl
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_LIVE = gql`
+  query LivePage {
+    page(id: "35", idType: DATABASE_ID) {
+      title
+      liveInfo {
+        quranTv
+        pashtoTv
+        liveLink
+        alternateLink
+      }
+    }
+  }
+`;
+
+export const ThemeOptionsQuery = gql`
+  query ThemeOptions {
+    themeGeneralSettings {
+      zamzamOptions {
+        categories {
+          ...AcfTermNodeConnectionFragment
+        }
+        pashtoTv
+        quranTv
+        urduTv
+      }
+    }
+  }
+
+  fragment AcfTermNodeConnectionFragment on AcfTermNodeConnection {
+    nodes {
+      name
+      slug
+    }
+  }
+`;
+
+export const Get_Scholar_By_ID = gql`
+query GetScholar($sid: ID!) {
+  scholar(id: $sid, idType: DATABASE_ID) {
+    content
+    title
+  }
+}
 `;

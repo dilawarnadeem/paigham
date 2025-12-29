@@ -26,6 +26,7 @@ const Category_Banner = ({ item }: any) => {
                         <div className="container mx-auto flex justify-center bg-black items-center">
                             <div className={'iframe-container mb0 relative pt-[56%] md:pt-[40.25%] fbVideo'}
                             >
+                               
                                 <ReactPlayer
                                     url={link}
                                     playing={true}
@@ -35,6 +36,7 @@ const Category_Banner = ({ item }: any) => {
                                     style={{ position: 'absolute', top: 0, right: '50%', transform: 'translateX(50%)' }}
                                     className="!w-full md:w-[71.50%]"
                                 />
+                                123456
                             </div>
                         </div>
                     </section> :

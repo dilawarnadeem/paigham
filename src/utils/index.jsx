@@ -13,6 +13,48 @@ export const getVideoCode=(link) => {
      }
 
 }
+export const extractVideoInfo = (url) => {
+  if (!url) return null;
+
+  url = url.trim();
+
+  // ====================
+  //   YOUTUBE
+  // ====================
+  if (url.includes("youtu.be/")) {
+    return {
+      type: "youtube",
+      id: url.split("youtu.be/")[1].split(/[?&]/)[0]
+    };
+  }
+
+  if (url.includes("watch?v=")) {
+    return {
+      type: "youtube",
+      id: url.split("watch?v=")[1].split("&")[0]
+    };
+  }
+
+  if (url.includes("youtube.com/shorts/")) {
+    return {
+      type: "youtube",
+      id: url.split("youtube.com/shorts/")[1].split(/[?&]/)[0]
+    };
+  }
+
+  // ====================
+  //   FACEBOOK
+  // ====================
+  if (url.includes("facebook.com") || url.includes("fb.watch")) {
+    return {
+      type: "facebook",
+      url // FB player needs full original URL
+    };
+  }
+
+  return null;
+};
+
 
 
 export var sliderSettings = {
@@ -66,3 +108,31 @@ export var sliderSettings = {
        }
      ]
    };
+
+
+   const reorderDays = (days) => {
+  const order = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  // Get today’s weekday
+  const todayIndex = new Date().getDay(); 
+  // JS: 0=Sun, 1=Mon...
+  const mappedToday = todayIndex === 0 ? 6 : todayIndex - 1; // convert so Monday=0
+
+  const todayName = order[mappedToday];
+
+  // Reorder: today → rest
+  const sorted = [
+    ...days.filter((d) => d.node.name === todayName),
+    ...days.filter((d) => d.node.name !== todayName),
+  ];
+
+  return { sorted, todayName };
+};
