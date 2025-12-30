@@ -1,4 +1,3 @@
-
 export const footerNav = [
   {
     name: "SHOWS",
@@ -34,12 +33,12 @@ export const footerNav = [
         link: "/scholars/dr-hammad-lakhvi?id=220",
       },
       {
-        name: "Yousuf Siraj",
-        link: "/scholars/hafiz-m-yousuf-siraj?id=1337",
-      },
-      {
         name: "Abdul Malik Mujahid",
         link: "/scholars/abdul-malik-mujahid?id=2664",
+      },
+      {
+        name: "Yousuf Siraj",
+        link: "/scholars/hafiz-m-yousuf-siraj?id=1337",
       },
     ],
   },
