@@ -41,8 +41,6 @@ const Header = () => {
     }
   };
 
-
-
   useEffect(() => {
     // Update the document's direction and language when the state changes
     const d = sessionStorage.getItem("direction");
@@ -82,7 +80,7 @@ const Header = () => {
                 <RiMenu5Fill size={32} className="text-white" />
               )}
             </button>
-           
+
             <i className="lg:hidden">
               <FiSearch size={24} onClick={() => OpenSearch()} />
             </i>
@@ -143,6 +141,12 @@ const Header = () => {
               className="uppercase mt-5 lg:mt-0 text-base w-[200px] lg:w-auto hover:bg-orange inline-block text-center active:scale:105 hover:border-orange text-pure border px-5 py-[9.5px] font-anton tracking-widest border-pure"
             >
               Donate us
+            </Link>
+            <Link
+              href="/paigham-club"
+              className="uppercase mt-5 lg:mt-0 text-base w-[200px] lg:w-auto bg-orange inline-block text-center active:scale:105 hover:border-orange text-pure border px-5 py-[9.5px] font-anton tracking-widest border-pure"
+            >
+              Paigham Club
             </Link>
             <div className="text-white mt-5 lg:mt-0">
               <Socials />
