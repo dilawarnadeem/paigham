@@ -146,7 +146,7 @@ export default function DonateUs() {
         <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg lg:max-w-6xl">
           {/* Side Image - Hidden on Mobile */}
           <div
-            className="hidden bg-cover bg-no-repeat bg-center lg:block lg:w-1/2"
+            className="hidden bg-contain bg-no-repeat bg-center lg:block lg:w-1/2"
             style={{
               backgroundImage: "url('/images/pagclub.jpeg')",
             }}
@@ -569,43 +569,69 @@ export default function DonateUs() {
                   className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                 />
               </div>
-
-              {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-all duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 hover:scale-105 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50 hover:animate-none"
+                style={{
+                  animation: loading
+                    ? "none"
+                    : "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                }}
                 disabled={loading}
               >
                 {loading ? "Donating..." : "Become Member"}
               </button>
 
+              {/* Submit Button */}
+              {/* <div className="flex flex-row gap-2">
+                <button
+                  type="submit"
+                  className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                  disabled={loading}
+                >
+                  {loading ? "Donating..." : "Become Member"}
+                </button>
+                <button
+                  type="submit"
+                  className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                  disabled={loading}
+                >
+                  {loading ? "Donating..." : "Donate Now"}
+                </button>
+              </div> */}
               {message && <p className="text-center mt-2">{message}</p>}
             </form>
           </div>
         </div>
       </section>
       <footer className="footer-new p-5 bg-gray-50 border-t border-gray-200">
-        <div className="footer-content max-w-4xl mx-auto text-center">
+        <div className="footer-content max-w-5xl mx-auto text-center">
           <p className="text-sm text-gray-600">For confirmation and Query </p>
           <div className="contact-info mt-3 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
-            <p className="text-sm text-gray-600">
-              <strong>Tel:</strong> +92 42 111 700 000
-            </p>
-            <p className="text-sm text-gray-600">
-              <strong>Tel:</strong>+92321-7165256
-            </p>
-            <p className="text-sm text-gray-600">
-              <strong>Tel:</strong>+92301-0872020
-            </p>
-            <p className="text-sm text-gray-600">
-              <strong>Tel:</strong>+92308-4089688
-            </p>
-            <p className="text-sm text-gray-600">
-              <strong>Tel:</strong>+92321-0294000
-            </p>
-            <p className="text-sm text-gray-600">
-              <strong>Email:</strong> aqzaheer@paigham.tv
-            </p>
+            <div className="text-center text-sm text-gray-600">
+              <div className="font-semibold">Tel:</div>
+              <div>+92 42 111 700 000</div>
+            </div>
+            <div className="text-center text-sm text-gray-600">
+              <div className="font-semibold">Tel:</div>
+              <div>+92321-7165256</div>
+            </div>
+            <div className="text-center text-sm text-gray-600">
+              <div className="font-semibold">Tel:</div>
+              <div>+92301-0872020</div>
+            </div>
+            <div className="text-center text-sm text-gray-600">
+              <div className="font-semibold">Tel:</div>
+              <div>+92308-4089688</div>
+            </div>
+            <div className="text-center text-sm text-gray-600">
+              <div className="font-semibold">Tel:</div>
+              <div>+92321-0294000</div>
+            </div>
+            <div className="text-center text-sm text-gray-600">
+              <div className="font-semibold">Email:</div>
+              <div>aqzaheer@paigham.tv</div>
+            </div>
           </div>
         </div>
       </footer>
