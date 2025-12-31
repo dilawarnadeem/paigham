@@ -27,7 +27,7 @@ export default function DonateUs() {
     contactNumber: "",
     email: "",
     city: "",
-    purpose: "Donation",
+    purpose: "Paigham Club Membership",
     donationAmount: "",
     personalMessage: "",
     paymentMethod: "Bank Transfer",
