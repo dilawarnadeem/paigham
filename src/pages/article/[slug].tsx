@@ -106,7 +106,7 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
             width={1200}
             height={800}
             alt={post?.title}
-            className="h-[500px] w-full object-cover"
+            className="h-[500px] w-full object-cover -mt-24"
           />
 
           <div className="absolute inset-0 bg-gradient-to-t from-[#161F28] via-[#161F28]/60 to-black/0" />
