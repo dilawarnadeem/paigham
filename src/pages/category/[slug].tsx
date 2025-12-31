@@ -70,7 +70,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
   };
 
   return (
-    <section className="bg-[rgb(22,31,40)] pb-20">
+    <section className="bg-[rgb(22,31,40)] pb-20 pt-12" id="videoplayer">
       <SeoMeta
         title={`${slug} | Paigham TV`}
         url={`/category/${slug}`}
@@ -79,7 +79,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
 
       {/* ----------------- SHOW VIDEO PLAYER ----------------- */}
       {currentVideo ? (
-        <div className="container mx-auto px-4 pt-10" id="videoplayer">
+        <div className="container mx-auto px-4 " >
           {(() => {
             const video = extractVideoInfo(currentVideo);
             if (!video) return null;
@@ -87,8 +87,9 @@ const Category = ({ posts, slug, allCategories }: any) => {
             if (video.type === "youtube") {
               return (
                 <iframe
-                  className="w-full md:h-[720px] h-[280px] aspect-video   rounded-xl mb-10"
-                  src={`https://www.youtube.com/embed/${video.id}`}
+                  className="w-full md:h-[720px] h-[280px] aspect-video   rounded-xl mb-10 "
+                 src={`https://www.youtube.com/embed/${video.id}?autoplay=1&mute=0&rel=0`}
+                  allow="autoplay; encrypted-media; picture-in-picture"
                   allowFullScreen
                 ></iframe>
               );

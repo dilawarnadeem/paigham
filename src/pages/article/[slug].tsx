@@ -67,6 +67,7 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
                   className="w-full md:h-[620px] h-[280px] aspect-video rounded-xl mb-10"
                   src={`https://www.youtube.com/embed/${video.id}`}
                   allowFullScreen
+                  allow="autoplay; encrypted-media; picture-in-picture"
                 ></iframe>
               );
             }

@@ -375,7 +375,7 @@ export const SearchPost = gql`
 
 export const SlidesQuery = gql`
   query Slides {
-    slides {
+      slides(where: {orderby: {field: MENU_ORDER, order: ASC}}) {
       nodes {
         title
         featuredImage {
