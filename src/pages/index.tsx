@@ -72,7 +72,7 @@ export default function Home({
         {/* heading  */}
         <div className="flex justify-between items-center mt-20 mb-10 border-b-[3px] border-darkgray pb-5">
           <h2 className="font-metapro text-3xl md:text-5xl text-darkgray font-bold">
-            Categories
+            Programs
           </h2>
           <Link
             href="/programs"
@@ -92,7 +92,7 @@ export default function Home({
       <section className="container mx-auto mb-28 px-4">
         <div className="flex justify-between items-center mt-20 mb-10 border-b-[3px] border-darkgray pb-5">
           <h2 className="font-metapro text-3xl md:text-5xl text-darkgray font-bold">
-            Scholar
+            Scholars
           </h2>
           <Link
             href="/scholars"
