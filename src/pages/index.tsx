@@ -47,6 +47,8 @@ export default function Home({
       slug: cat.slug,
     })) || []; // fallback if empty
 
+    
+
   return (
     <>
       <SeoMeta
@@ -241,8 +243,11 @@ const PaighamChannelPresents = ({ programs }: any) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const today = new Date()
-    .toLocaleDateString("en-US", { weekday: "long" })
+    const today = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Karachi",
+    weekday: "long",
+  })
+    .format(new Date())
     .toLowerCase();
   const [
     postsResponse,
