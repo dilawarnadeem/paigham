@@ -15,8 +15,6 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
   const [currentVideo, setCurrentVideo] = useState<string | null>(null);
   const [selectItem, setSelectedItem] = useState<any>(post);
 
-
-
   // ---------------- PLAY VIDEO ----------------
   const handlePlay = () => {
     const link = post.postInfo?.tmVideoUrl;
@@ -46,7 +44,7 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
   };
 
   return (
-    <section className="bg-[rgb(22,31,40)] pb-20" id="videoplayer">
+    <section className="bg-[rgb(22,31,40)] pb-20 pt-24 " id="videoplayer">
       <SeoMeta
         title={`${post?.title} | Paigham TV`}
         url={`/article/${post?.slug}`}
@@ -55,7 +53,7 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
 
       {/* ---------------- VIDEO PLAYER ---------------- */}
       {currentVideo ? (
-        <div className="container mx-auto px-4 pt-10">
+        <div className="container mx-auto px-4">
           {(() => {
             const video = extractVideoInfo(currentVideo);
             if (!video) return null;
@@ -66,7 +64,6 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
                   className="w-full md:h-[620px] h-[280px] aspect-video rounded-xl mb-10"
                   src={`https://www.youtube.com/embed/${video.id}?autoplay=1&mute=0&rel=0`}
                   allow="autoplay; encrypted-media; picture-in-picture"
-                
                 ></iframe>
               );
             }
@@ -84,16 +81,16 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
               );
             }
             if (video.type === "mp4") {
-                return (
-                  <video
-                    className="w-full md:h-[720px] h-[280px] aspect-video rounded-xl mb-10"
-                    src={video.url}
-                    controls
-                    autoPlay
-                    playsInline
-                  />
-                );
-              }
+              return (
+                <video
+                  className="w-full md:h-[720px] h-[280px] aspect-video rounded-xl mb-10"
+                  src={video.url}
+                  controls
+                  autoPlay
+                  playsInline
+                />
+              );
+            }
 
             return null;
           })()}
@@ -159,6 +156,10 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
                 setVideoLink(item.postInfo.tmVideoUrl);
                 setCurrentVideo(item.postInfo.tmVideoUrl);
                 setSelectedItem(item);
+                // Scroll to video player
+                document.getElementById("videoplayer")?.scrollIntoView({
+                  behavior: "smooth",
+                });
               }}
               className="cursor-pointer"
             >

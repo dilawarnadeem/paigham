@@ -70,7 +70,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
   };
 
   return (
-    <section className="bg-[rgb(22,31,40)] pb-20 pt-12" id="videoplayer">
+    <section className="bg-[rgb(22,31,40)] pb-20 pt-24 " id="videoplayer">
       <SeoMeta
         title={`${slug} | Paigham TV`}
         url={`/category/${slug}`}
@@ -133,7 +133,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
             width={1200}
             height={800}
             alt={posts.name}
-            className="h-[500px] w-full object-cover"
+            className="h-[500px] w-full object-cover -mt-24"
           />
 
           <div className="absolute inset-0 bg-gradient-to-t from-[#161F28] via-[#161F28]/60 to-black/0" />
