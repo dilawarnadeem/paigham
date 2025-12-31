@@ -70,7 +70,7 @@ const Category = ({ posts, slug, allCategories }: any) => {
   };
 
   return (
-    <section className="bg-[rgb(22,31,40)] pb-20 pt-24 " id="videoplayer">
+    <section className="bg-[rgb(22,31,40)] pb-20 pt-10 md:pt-24" id="videoplayer">
       <SeoMeta
         title={`${slug} | Paigham TV`}
         url={`/category/${slug}`}

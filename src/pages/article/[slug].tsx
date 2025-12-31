@@ -44,7 +44,7 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
   };
 
   return (
-    <section className="bg-[rgb(22,31,40)] pb-20 pt-24 " id="videoplayer">
+    <section className="bg-[rgb(22,31,40)] pb-20 pt-10 md:pt-24 " id="videoplayer">
       <SeoMeta
         title={`${post?.title} | Paigham TV`}
         url={`/article/${post?.slug}`}
