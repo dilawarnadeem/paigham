@@ -12,7 +12,6 @@ import Link from "next/link";
 
 const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
   const { setVideoLink, videoLink } = useContext(SettingsContext);
-
   const [currentVideo, setCurrentVideo] = useState<string | null>(null);
   const [selectItem, setSelectedItem] = useState<any>(post);
 
@@ -47,7 +46,7 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
   };
 
   return (
-    <section className="bg-[rgb(22,31,40)] pb-20">
+    <section className="bg-[rgb(22,31,40)] pb-20" id="videoplayer">
       <SeoMeta
         title={`${post?.title} | Paigham TV`}
         url={`/article/${post?.slug}`}
@@ -65,9 +64,9 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
               return (
                 <iframe
                   className="w-full md:h-[620px] h-[280px] aspect-video rounded-xl mb-10"
-                  src={`https://www.youtube.com/embed/${video.id}`}
-                  allowFullScreen
+                  src={`https://www.youtube.com/embed/${video.id}?autoplay=1&mute=0&rel=0`}
                   allow="autoplay; encrypted-media; picture-in-picture"
+                
                 ></iframe>
               );
             }
@@ -84,6 +83,17 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
                 ></iframe>
               );
             }
+            if (video.type === "mp4") {
+                return (
+                  <video
+                    className="w-full md:h-[720px] h-[280px] aspect-video rounded-xl mb-10"
+                    src={video.url}
+                    controls
+                    autoPlay
+                    playsInline
+                  />
+                );
+              }
 
             return null;
           })()}

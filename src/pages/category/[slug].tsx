@@ -107,6 +107,17 @@ const Category = ({ posts, slug, allCategories }: any) => {
                 ></iframe>
               );
             }
+             if (video.type === "mp4") {
+                return (
+                  <video
+                    className="w-full md:h-[720px] h-[280px] aspect-video rounded-xl mb-10"
+                    src={video.url}
+                    controls
+                    autoPlay
+                    playsInline
+                  />
+                );
+              }
 
             return null;
           })()}

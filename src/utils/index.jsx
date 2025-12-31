@@ -24,21 +24,21 @@ export const extractVideoInfo = (url) => {
   if (url.includes("youtu.be/")) {
     return {
       type: "youtube",
-      id: url.split("youtu.be/")[1].split(/[?&]/)[0]
+      id: url.split("youtu.be/")[1].split(/[?&]/)[0],
     };
   }
 
   if (url.includes("watch?v=")) {
     return {
       type: "youtube",
-      id: url.split("watch?v=")[1].split("&")[0]
+      id: url.split("watch?v=")[1].split("&")[0],
     };
   }
 
   if (url.includes("youtube.com/shorts/")) {
     return {
       type: "youtube",
-      id: url.split("youtube.com/shorts/")[1].split(/[?&]/)[0]
+      id: url.split("youtube.com/shorts/")[1].split(/[?&]/)[0],
     };
   }
 
@@ -48,7 +48,17 @@ export const extractVideoInfo = (url) => {
   if (url.includes("facebook.com") || url.includes("fb.watch")) {
     return {
       type: "facebook",
-      url // FB player needs full original URL
+      url,
+    };
+  }
+
+  // ====================
+  //   MP4 / DIRECT VIDEO
+  // ====================
+  if (url.match(/\.(mp4|webm|ogg)(\?.*)?$/i)) {
+    return {
+      type: "mp4",
+      url,
     };
   }
 
