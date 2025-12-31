@@ -28,7 +28,7 @@ const Main = ({ posts , Options }: any) => {
                 className="relative w-full h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat"
                 key={index}
               >
-                <Image
+                <img
                   src={image}
                   width={1600}
                   height={583}
@@ -52,7 +52,7 @@ const Main = ({ posts , Options }: any) => {
                 className="relative w-full h-[40vh] sm:h-[65vh] md:h-[80vh] bg-cover md:bg-cover bg-no-repeat"
                 key={index}
               >
-                <Image
+                <img
                   src={mobileimage}
                   width={360}
                   height={460}
