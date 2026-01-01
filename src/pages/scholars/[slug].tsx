@@ -34,7 +34,8 @@ const SingleScholar = ({ posts, slug, scholar }: any) => {
                   width="100%"
                   height="100%"
                   className="w-full md:h-[620px] h-[280px]  aspect-video  rounded-xl overflow-hidden mb-10"
-                  src={`https://www.youtube.com/embed/${video.id}`}
+                   src={`https://www.youtube.com/embed/${video.id}?autoplay=1&mute=0&rel=0`}
+                  allow="autoplay; encrypted-media; picture-in-picture"
                   allowFullScreen
                 ></iframe>
               );
