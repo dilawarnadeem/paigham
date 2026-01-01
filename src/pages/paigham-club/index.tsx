@@ -27,7 +27,7 @@ export default function DonateUs() {
     contactNumber: "",
     email: "",
     city: "",
-    purpose: "Donation",
+    purpose: "Paigham Club Membership",
     donationAmount: "",
     personalMessage: "",
     paymentMethod: "Bank Transfer",
@@ -266,7 +266,7 @@ export default function DonateUs() {
                   required
                   className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                 >
-                  <option value="paigham-club-cembership">
+                  <option value="Paigham Club Membership">
                     Paigham Club Membership
                   </option>
                 </select>
