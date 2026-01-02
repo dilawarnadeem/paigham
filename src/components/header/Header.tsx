@@ -138,7 +138,7 @@ const Header = () => {
             </ul>
             <Link
               href="/donate-us"
-              className="uppercase mt-5 lg:mt-0 text-base w-[200px] lg:w-auto hover:bg-orange inline-block text-center active:scale:105 hover:border-orange text-pure border px-5 py-[9.5px] font-anton tracking-widest border-pure"
+              className="uppercase mt-5 lg:mt-0 text-base w-[200px] lg:w-auto bg-secondary hover:bg-orange inline-block text-center active:scale:105 hover:border-orange text-black border px-5 py-[9.5px] font-anton tracking-widest border-pure animate-scaleIn "
             >
               Donate us
             </Link>
