@@ -15,6 +15,8 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
   const [currentVideo, setCurrentVideo] = useState<string | null>(null);
   const [selectItem, setSelectedItem] = useState<any>(post);
 
+  console.log("Post Data:", post);
+
   // ---------------- PLAY VIDEO ----------------
   const handlePlay = () => {
     const link = post.postInfo?.tmVideoUrl;
@@ -23,10 +25,12 @@ const SingleArticle = ({ post, allCategories, relatedPost }: any) => {
     setSelectedItem(post);
   };
 
-  // Sync selected post when videoLink changes
-  useEffect(() => {
-    if (videoLink) setCurrentVideo(videoLink);
-  }, [videoLink]);
+useEffect(() => {
+  // HARD RESET when opening a new article
+  setCurrentVideo(null);
+  setVideoLink(null);
+  setSelectedItem(post);
+}, [post?.slug]);
 
   const {
     posts: { nodes },
