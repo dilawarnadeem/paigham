@@ -16,7 +16,7 @@ const PaighamChannelPresents = ({ programs }: any) => {
   return (
 
 
-    <section className="bg-white">
+    <section className="bg-[url('/images/guide.png')] bg-cover bg-center bg-no-repeat ">
       <div className="container font-metapro mx-auto px-4 text-primary py-16">
         {/* === TABS === */}
         <div className="flex gap-3 overflow-x-auto  pb-4">
