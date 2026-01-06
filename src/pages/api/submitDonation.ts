@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { request, gql } from "graphql-request";
 
-const WP_GRAPHQL_URI = "https://zamzamwelfaretrust.com/graphql";
+const WP_GRAPHQL_URI = "https://zamzamwelfaretrust.com/paighamtv/graphql";
 
 interface CreateDonationLeadInput {
   title: string;
