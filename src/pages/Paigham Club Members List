@@ -1,0 +1,14 @@
+export default function ClubMembershipList() {
+  return (
+    <iframe
+      src="https://zamzamwelfaretrust.com/paighamtv/club-membership-list/"
+      style={{
+        width: "100%",
+        height: "100vh",
+        border: "none"
+      }}
+      loading="lazy"
+      title="Club Membership List"
+    />
+  );
+}
