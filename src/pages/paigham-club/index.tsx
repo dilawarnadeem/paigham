@@ -143,6 +143,19 @@ export default function DonateUs() {
 
       {/* Donation Form Section */}
       <section className="container mx-auto mb-28 px-4 mt-28 ">
+        
+{/* Top Button Section */}
+<div className="w-full text-center mb-8">
+  <a
+    href="https://zamzamwelfaretrust.com/paighamtv/club-membership-list/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block px-10 py-4 text-base font-bold text-white bg-orange-600 rounded-full hover:bg-orange-700 transition-all duration-300 shadow-lg"
+  >
+    View Paigham Club Members List
+  </a>
+</div>
+
         <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg lg:max-w-6xl">
           {/* Side Image - Hidden on Mobile */}
           <div
