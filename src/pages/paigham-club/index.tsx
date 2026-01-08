@@ -147,14 +147,31 @@ export default function DonateUs() {
 {/* Top Button Section */}
 <div className="w-full text-center mb-8">
   <a
-    href="https://zamzamwelfaretrust.com/paighamtv/club-membership-list/"
+    href="https://paigham.tv/paigham-membership-list"
     target="_blank"
     rel="noopener noreferrer"
-    className="inline-block px-10 py-4 text-base font-bold text-white bg-orange-600 rounded-full hover:bg-orange-700 transition-all duration-300 shadow-lg"
+    className="
+      inline-flex 
+      items-center 
+      justify-center 
+      px-8 
+      py-3 
+      text-sm 
+      font-semibold 
+      uppercase 
+      tracking-widest 
+      text-white 
+      bg-orange-500 
+      hover:bg-orange-600 
+      transition-colors 
+      duration-300
+    "
+    style={{ borderRadius: "12px" }}
   >
-    View Paigham Club Members List
+    Paigham Club Members List
   </a>
 </div>
+
 
         <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg lg:max-w-6xl">
           {/* Side Image - Hidden on Mobile */}
