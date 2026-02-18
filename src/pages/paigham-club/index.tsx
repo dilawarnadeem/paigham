@@ -638,7 +638,10 @@ export default function DonateUs() {
               <div className="font-semibold">Tel:</div>
               <div>+92 42 111 700 000</div>
             </div>
-          
+           <div className="text-center text-sm text-gray-600">
+              <div className="font-semibold">Tel:</div>
+              <div>+92321-7165256</div>
+            </div>
             <div className="text-center text-sm text-gray-600">
               <div className="font-semibold">Tel:</div>
               <div>+92301-0872020</div>
