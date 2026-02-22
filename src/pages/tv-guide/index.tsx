@@ -16,8 +16,9 @@ const PaighamChannelPresents = ({ programs }: any) => {
   return (
 
 
-    <section className="bg-[url('/images/guide.png')] bg-cover bg-center bg-no-repeat ">
-      <div className="container font-metapro mx-auto px-4 text-primary py-16">
+    <section className="bg-[url('/images/guide.png')] bg-opacity-100 bg-cover bg-center bg-no-repeat tvguide relative ">
+      
+      <div className="container font-metapro mx-auto px-4 text-primary py-16 relative z-10">
         {/* === TABS === */}
         <div className="flex gap-3 overflow-x-auto  pb-4">
           {days.map((day: string, idx: number) => (
@@ -46,20 +47,20 @@ const PaighamChannelPresents = ({ programs }: any) => {
             activePrograms?.map((program: any, idx: number) => (
               <li
                 key={idx}
-                className="flex md:flex-row flex-col-1 items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-500 py-5"
+                className="flex md:flex-row flex-col-1 items-start gap-6 lg:gap-x-12 border-t-[1px] border-gray-300 py-5"
               >
                 <div className="w-full max-w-[200px] lg:max-w-[280px]">
-                  <time className="font-medium font-sm md:text-xl">
+                  <time className="font-medium font-sm md:text-xl text-white">
                     {program?.programInfo?.programTime || `0000`}
                   </time>
                 </div>
 
                 <div>
-                  <h6 className="text-primary sm:text-xl font-medium text-start -tracking-wide">
+                  <h6 className="text-white sm:text-xl font-medium text-start -tracking-wide ">
                     {program.title}
                   </h6>
                   <div
-                    className="text-start sm:text-lg mt-2"
+                    className="text-start sm:text-lg mt-2 text-white"
                     dangerouslySetInnerHTML={{ __html: program?.excerpt }}
                   />
                 </div>

@@ -185,4 +185,12 @@ body {
   @apply text-base mb-4;
 }
 
+.tvguide::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: #00000073;
+}
 
