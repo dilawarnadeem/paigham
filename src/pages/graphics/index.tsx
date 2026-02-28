@@ -1,3 +1,5 @@
+import PageBanner from "@/components/pageBanner/PageBanner";
+import SeoMeta from "@/components/seo";
 import apolloClient from "@/config/client";
 import { GET_GRAPHICS } from "@/config/query";
 import { GetStaticProps } from "next";
@@ -7,6 +9,16 @@ const GraphicPage: React.FC<any> = ({ pageData }: any) => {
   const nodes = pageData?.graphicGallery?.nodes ?? [];
 
   return (
+
+    <>
+     <SeoMeta
+        title="Graphics of Paigham TV | Paigham TV"
+        url="/graphics"
+        description="Paigham TV is a satellite TV channel the objectives of which are preaching the true teachings of the Holy Quran and Sunnah "
+      />
+      <PageBanner title="Graphics" image="/images/scholars.jpg" />
+    
+   
     <div className="container mx-auto text-white px-4 py-16">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         {nodes.map((item: any, index: number) => (
@@ -23,6 +35,7 @@ const GraphicPage: React.FC<any> = ({ pageData }: any) => {
         ))}
       </div>
     </div>
+     </>
   );
 };
 
