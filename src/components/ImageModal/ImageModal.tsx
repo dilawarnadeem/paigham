@@ -55,9 +55,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
           className="max-h-[85vh] max-w-full rounded-lg shadow-2xl"
         />
 
-        {title && (
-          <p className="mt-4 text-center text-white/80">{title}</p>
-        )}
+        
       </div>
     </div>
   );
