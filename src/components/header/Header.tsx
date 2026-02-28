@@ -181,6 +181,10 @@ const navList = [
     link: "/scholars",
   },
   {
+    name: "Graphics",
+    link: "/graphics",
+  },
+  {
     name: "TV Guide",
     link: "/tv-guide",
   },

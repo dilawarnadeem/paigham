@@ -408,6 +408,33 @@ export const GET_LIVE = gql`
     }
   }
 `;
+export const GET_GRAPHICS = gql`
+  query GraphicPage {
+    page(id: "7529", idType: DATABASE_ID) {
+      title
+      graphicsInfo {
+      graphicGallery {
+        nodes {         
+          title
+          mediaItemUrl
+        }
+      }
+    }
+    }
+  }
+`;
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const ThemeOptionsQuery = gql`
   query ThemeOptions {
