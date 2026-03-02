@@ -5,7 +5,6 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import React from "react";
 
-
 const navButons = [
   {
     name: "TV Urdu",
@@ -17,14 +16,13 @@ const navButons = [
     name: "Quran TV",
     icon: "/images/tv_icon.png",
     live: "/images/live.png",
-       link: "/channel/quran-tv", 
+    link: "/channel/quran-tv",
   },
   {
     name: "TV Pashto",
-    link: "/channel/pashto-tv", 
+    link: "/channel/pashto-tv",
     icon: "/images/pashto_icon.png",
     live: "/images/live.png",
-
   },
 ];
 
@@ -39,47 +37,44 @@ const toEmbed = (url: string) => {
 };
 
 const LivePage: React.FC<LivePageProps> = ({ pageData }) => {
-
-
   const TVUrdu = pageData.liveLink;
-  const AlterUrdu = pageData.alternateLink;
-  const TVQuran = pageData.quranTv;
-  const TVPashto = pageData.pashtoTv;
+  // const AlterUrdu = pageData.alternateLink;
+  // const TVQuran = pageData.quranTv;
+  // const TVPashto = pageData.pashtoTv;
 
   console.log("Live Page Data:", TVUrdu);
 
   return (
     <>
-     <div className="container mx-auto text-white px-4 py-16">
-      <div className="youtube-embed">
-      <iframe
-  width="560"
-  height="315"
-  src={toEmbed(TVUrdu)}
-  title="YouTube video player"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-></iframe>
+      <div className="container mx-auto text-white px-4 py-16">
+        <div className="youtube-embed">
+          <iframe
+            width="560"
+            height="315"
+            src={toEmbed(TVUrdu)}
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          ></iframe>
+        </div>
 
-      </div>
+        <ChannelsLinks />
 
-       <ChannelsLinks />
-
-      <style jsx>{`
-        .youtube-embed {
-          position: relative;
-          width: 100%; /* Full width of parent container */
-          padding-bottom: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
-          height: 0;
-          overflow: hidden;
-        }
-        .youtube-embed iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-        }
-      `}</style>
+        <style jsx>{`
+          .youtube-embed {
+            position: relative;
+            width: 100%; /* Full width of parent container */
+            padding-bottom: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
+            height: 0;
+            overflow: hidden;
+          }
+          .youtube-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+        `}</style>
       </div>
     </>
   );
