@@ -437,8 +437,6 @@ export default function DonateUs() {
                 </div>
               )}
 
-
-<!--
               {/* EasyPaisa Details */}
               {formData.paymentMethod === "EasyPaisa" && (
                 <div className="mt-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm space-y-2 text-gray-600">
@@ -519,8 +517,6 @@ export default function DonateUs() {
                   </button>
                 </div>
               )}
-
--->
               
               {/* Transaction ID */}
               <div>
