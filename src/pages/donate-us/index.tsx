@@ -437,7 +437,11 @@ export default function DonateUs() {
                 </div>
               )}
 
-              {/* EasyPaisa Details */}
+
+              {false && (
+               <>
+
+                 {/* EasyPaisa Details */}
               {formData.paymentMethod === "EasyPaisa" && (
                 <div className="mt-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm space-y-2 text-gray-600">
                   <div className="text-center mb-4 flex items-center justify-center">
@@ -517,7 +521,9 @@ export default function DonateUs() {
                   </button>
                 </div>
               )}
-              
+
+    </>
+)}
               {/* Transaction ID */}
               <div>
                 <label
