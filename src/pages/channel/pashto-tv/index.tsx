@@ -51,7 +51,6 @@ const PashtoTVPage: React.FC<LivePageProps> = ({ pageData }) => {
     </>
   );
 };
-
 export const getStaticProps: GetStaticProps = async () => {
   const livedata = await apolloClient.query({ query: GET_LIVE });
   const pageData = livedata?.data?.page?.liveInfo;
