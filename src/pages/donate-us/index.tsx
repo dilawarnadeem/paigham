@@ -428,7 +428,7 @@ export default function DonateUs() {
     <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm space-y-2 text-gray-600">
       <div className="text-center mb-4 flex items-center justify-center">
         <img
-          src="/images/meezanlogo.png" 
+          
           alt="Meezan Bank"
           className="w-8 m-2"
         />
