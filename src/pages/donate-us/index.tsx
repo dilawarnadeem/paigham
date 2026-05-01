@@ -434,7 +434,83 @@ export default function DonateUs() {
                   <p className="text-sm text-gray-600">
                     <strong>Branch Code:</strong> 0219
                   </p>
-                </div>
+
+{/* Divider between accounts */}
+<hr className="border-gray-300 my-4" />
+
+{/* SECOND BANK ACCOUNT */}
+<div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm space-y-2 text-gray-600">
+
+  <div className="text-center mb-4 flex items-center justify-center">
+    <img
+      src="/images/banklogo.png"
+      alt="Second Bank"
+      className="w-8 m-2"
+    />
+    <h2 className="text-xl font-semibold text-gray-800">
+      Meezan Bank
+    </h2>
+  </div>
+
+  <hr className="border-gray-200" />
+
+  <p className="text-sm text-gray-600">
+    <strong>Account Title:</strong> Your Second Account Name
+  </p>
+
+  <hr className="border-gray-200" />
+
+  <button
+    type="button"
+    onClick={() => {
+      navigator.clipboard.writeText("1234567890");
+      alert("Account Number copied!");
+    }}
+    className="text-gray-500 hover:text-gray-700 flex justify-between w-full"
+  >
+    <p className="text-sm text-gray-600">
+      <strong>Account Number:</strong> 1234567890
+    </p>
+    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path d="M8 3a1 1 0 011-1h2a1 1 0 011 1v1h3a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1h3V3z" />
+      <path d="M6 5a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V6a1 1 0 00-1-1H6z" />
+    </svg>
+  </button>
+
+  <hr className="border-gray-200" />
+
+  <button
+    type="button"
+    onClick={() => {
+      navigator.clipboard.writeText("PK00XXXX0000000000000000");
+      alert("IBAN copied!");
+    }}
+    className="text-gray-500 hover:text-gray-700 flex justify-between w-full"
+  >
+    <p className="text-sm text-gray-600">
+      <strong>IBAN NO:</strong> PK00XXXX0000000000000000
+    </p>
+    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path d="M8 3a1 1 0 011-1h2a1 1 0 011 1v1h3a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1h3V3z" />
+      <path d="M6 5a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V6a1 1 0 00-1-1H6z" />
+    </svg>
+  </button>
+
+  <hr className="border-gray-200" />
+
+  <p className="text-sm text-gray-600">
+    <strong>Branch Name:</strong> Your Branch Name
+  </p>
+
+  <hr className="border-gray-200" />
+
+  <p className="text-sm text-gray-600">
+    <strong>Branch Code:</strong> 0000
+  </p>
+
+</div>
+                  
+              
               )}
 
 
