@@ -513,7 +513,6 @@ export default function DonateUs() {
                   <p className="text-sm text-gray-600">
                     <strong>Branch Code:</strong> 0219
                   </p>
-</div>
 
               
               )}
