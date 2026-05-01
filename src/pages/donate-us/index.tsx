@@ -356,10 +356,10 @@ export default function DonateUs() {
               </div>
 
        {/* Bank Transfer Details Section */}
+{/* Bank Transfer Details Section */}
 {formData.paymentMethod === "Bank Transfer" && (
-  <div className="mt-4 space-y-4"> {/* Container to hold both cards with spacing between them */}
-    
-    {/* FIRST BANK ACCOUNT */}
+  <div className="mt-4 space-y-4">
+    {/* FIRST BANK ACCOUNT: Dubai Islamic Bank */}
     <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm space-y-2 text-gray-600">
       <div className="text-center mb-4 flex items-center justify-center">
         <img
@@ -382,7 +382,7 @@ export default function DonateUs() {
         type="button"
         onClick={() => {
           navigator.clipboard.writeText("0709217001");
-          alert("Account Number copied to clipboard!");
+          alert("Dubai Islamic Bank Account Number copied!");
         }}
         className="text-gray-500 hover:text-gray-700 focus:outline-none flex justify-between w-full"
       >
@@ -400,7 +400,7 @@ export default function DonateUs() {
         type="button"
         onClick={() => {
           navigator.clipboard.writeText("PK45DUIB0000000709217001");
-          alert("IBAN copied to clipboard!");
+          alert("Dubai Islamic Bank IBAN copied!");
         }}
         className="text-gray-500 hover:text-gray-700 focus:outline-none flex justify-between w-full"
       >
@@ -424,12 +424,11 @@ export default function DonateUs() {
       </p>
     </div>
 
-    {/* SECOND BANK ACCOUNT */}
+    {/* SECOND BANK ACCOUNT: Meezan Bank */}
     <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm space-y-2 text-gray-600">
       <div className="text-center mb-4 flex items-center justify-center">
-        {/* Update logo path and Bank Name below */}
         <img
-          src="/images/secondbanklogo.png" 
+          src="/images/meezanlogo.png" 
           alt="Meezan Bank"
           className="w-8 m-2"
         />
@@ -440,20 +439,20 @@ export default function DonateUs() {
 
       <hr className="border-gray-200" />
       <p className="text-sm text-gray-600">
-        <strong>Account Title:</strong> Zam Zam Welfare Trust
+        <strong>Account Title:</strong> Zam Zam Welfare Foundation
       </p>
 
       <hr className="border-gray-200" />
       <button
         type="button"
         onClick={() => {
-          navigator.clipboard.writeText("1234567890");
-          alert("Second Account Number copied!");
+          navigator.clipboard.writeText("0114116340");
+          alert("Meezan Bank Account Number copied!");
         }}
         className="text-gray-500 hover:text-gray-700 focus:outline-none flex justify-between w-full"
       >
         <p className="text-sm text-gray-600">
-          <strong>Account Number:</strong> 1234567890
+          <strong>Account Number:</strong> 0114116340
         </p>
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
           <path d="M8 3a1 1 0 011-1h2a1 1 0 011 1v1h3a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1h3V3z" />
@@ -462,13 +461,34 @@ export default function DonateUs() {
       </button>
 
       <hr className="border-gray-200" />
-      {/* ... Add further details for the second bank as needed ... */}
+      <button
+        type="button"
+        onClick={() => {
+          navigator.clipboard.writeText("PK66MEZN0002750114116340");
+          alert("Meezan Bank IBAN copied!");
+        }}
+        className="text-gray-500 hover:text-gray-700 focus:outline-none flex justify-between w-full"
+      >
+        <p className="text-sm text-gray-600">
+          <strong>IBAN NO:</strong> PK66MEZN0002750114116340
+        </p>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M8 3a1 1 0 011-1h2a1 1 0 011 1v1h3a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1h3V3z" />
+          <path d="M6 5a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V6a1 1 0 00-1-1H6z" />
+        </svg>
+      </button>
+
+      <hr className="border-gray-200" />
       <p className="text-sm text-gray-600">
-        <strong>Branch Name:</strong> Main Branch Lahore, Pakistan
+        <strong>Branch Name:</strong> Naseerabad Gulberg III Branch Lahore, Pakistan.
+      </p>
+
+      <hr className="border-gray-200" />
+      <p className="text-sm text-gray-600">
+        <strong>Branch Code:</strong> 0275
       </p>
     </div>
-
-  </div> // End of main container div
+  </div>
 )}
             
 
