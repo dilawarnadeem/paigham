@@ -427,11 +427,7 @@ export default function DonateUs() {
     {/* SECOND BANK ACCOUNT: Meezan Bank */}
     <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm space-y-2 text-gray-600">
       <div className="text-center mb-4 flex items-center justify-center">
-        <img
-          
-          alt="Meezan Bank"
-          className="w-8 m-2"
-        />
+        
         <h2 className="text-xl font-semibold text-gray-800">
           Meezan Bank
         </h2>
