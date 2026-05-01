@@ -482,7 +482,7 @@ export default function DonateUs() {
                 </div>
               )}
 
-              {false && (
+            
               <>
                 
               {formData.paymentMethod === "EasyPaisa" && (
